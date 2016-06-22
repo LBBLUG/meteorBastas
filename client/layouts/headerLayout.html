@@ -1,0 +1,14 @@
+<template name="headerLayout">
+    <pusher>
+    <header>
+        <div class="ui inverted segment">
+            <h1 class="ui inverted green header">Welcome to Be A Santa To A Senior</h1>
+            {{#if currentUser}}
+                <i id="menuSide" class="sidebar icon"></i>
+            {{/if}}
+        </div>
+
+            {{> loginButtons}}
+    </header>
+    </pusher>
+</template>
