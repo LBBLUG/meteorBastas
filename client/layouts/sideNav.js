@@ -3,7 +3,7 @@ Template.sideNav.events({
         console.log('Clicked Menu Icon');
         $("#sideMenu").sidebar('show');
     },
-    'click .item'() {
+    'click .sideMenu.item'() {
         // event.preventDefault();
 
         var clickedTarget = event.target.id;
