@@ -3,14 +3,30 @@
     <header>
         <div class="ui inverted segment myHeader">
             <h1 class="ui inverted green header">Welcome to Be A Santa To A Senior</h1>
+            <div class="ui grid">
+                <div class="six column row">
+                    <div class="column">
+                        {{#if currentUser}}
+                            <i id="menuSide" class="sidebar icon"></i>
+                        {{/if}}
+                    </div>
+                    <div class="column">
 
+                    </div>
+                    <div class="column">
 
-            {{#if currentUser}}
-                <i id="menuSide" class="sidebar icon"></i>
-            {{/if}}
+                    </div>
+                    <div class="column">
 
+                    </div>
+                    <div class="column">
 
-            {{> loginButtons}}
+                    </div>
+                    <div class="column loginInfo">
+                        {{> loginButtons}}
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 

@@ -6,7 +6,7 @@ Template.sideNav.events({
             .sidebar('toggle')
         ;
     },
-    'click #sideMenu .item .icon' (event) {
+    'click  #sideMenu' (event) {
         event.preventDefault();
 
         var clickedTarget = event.target.id;

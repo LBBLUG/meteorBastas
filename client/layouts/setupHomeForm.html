@@ -1,12 +1,14 @@
 <template name="setupHomeForm">
-        <div id="main" class="four column grid">
+    <div class="ui container contentInfo">
+        <div id="main" class="ui four column grid">
             <div id="FormFields" class="one column row">
-                <div class="column">
-                    <input type="textarea" id="mainHomeInfo" class="ui textarea" />
+                <div class="sixteen wide column">
+                    <textarea id="mainHomeInfo" rows="4" class="ui textarea wide" placeholder="Home Page Information"></textarea>
                 </div>
             </div>
             <div id="imageUpload" class="one column row">
                 <div class="column">
+                    Choose an Image to go on the Page with this Post<br />
                     <input type="file" name="homeImage" id="homeImage" accept="image/*" />
                 </div>
             </div>
@@ -19,8 +21,9 @@
             <div class="column">
 
             </div>
-            <div id="btnSubmitHomeSetupdiv" class="column">
+            <div id="btnSubmitHomeSetupdiv" class="right floated column">
                 <button id="btnSubmitHomeSetup" class="ui button primary">Save Changes</button>
             </div>
         </div>
+    </div>
 </template>
