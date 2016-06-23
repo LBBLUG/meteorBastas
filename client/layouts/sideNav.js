@@ -1,10 +1,13 @@
 Template.sideNav.events({
     'click .sidebar'() {
         console.log('Clicked Menu Icon');
-        $("#sideMenu").sidebar('show');
+        $("#sideMenu")
+            .sidebar('overlay')
+            .sidebar('toggle')
+        ;
     },
-    'click .sideMenu.item'() {
-        // event.preventDefault();
+    'click #sideMenu .item .icon' (event) {
+        event.preventDefault();
 
         var clickedTarget = event.target.id;
         console.log("User clicked: " + clickedTarget);
