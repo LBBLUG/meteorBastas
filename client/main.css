@@ -7,13 +7,6 @@ textarea {
     width: 100% !important;
 }
 
-#sideMenu {
-    position: fixed;
-}
-
 .contentInfo {
-    position: relative;
-    float: right;
-    margin-left: 2%;
     margin-top: 5%;
 }
