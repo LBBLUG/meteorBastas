@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 .loginInfo {
-    align: right;
+    float: right;
 }
 
 textarea {
@@ -9,4 +9,12 @@ textarea {
 
 .contentInfo {
     margin-top: 5%;
+}
+
+.recipientsForm {
+    margin: 2%;
+}
+
+.giftsForm {
+    margin: 3%;
 }
