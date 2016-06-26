@@ -6,64 +6,64 @@
                 {{recipName}}
             </div>
         </div>
-        <div class="ui form giftsForm">
-            <div class="ui grid">
-                <div class="two column row">
-                    <div class="column">
-                        <label>Gift</label>
-                        <input type="text" id="gifType" placeholder="Gift" />
-                    </div>
-                    <div class="column">
-                        <label>Size</label>
-                        <input type="text" id="giftSize" placeholder="Size" />
-                    </div>
-                </div>
-                <div class="four column row">
-                    <div class="column">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="selected" id="selected" />
-                            <label>Selected</label>
+        <form id="addGiftsForm">
+            <div class="ui form giftsForm">
+                <div class="ui grid">
+                    <div class="two column row">
+                        <div class="column">
+                            <label>Gift</label>
+                            <input type="text" id="gifType" placeholder="Gift" />
+                        </div>
+                        <div class="column">
+                            <label>Size</label>
+                            <input type="text" id="giftSize" placeholder="Size" />
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="checkedIn" id="checkedIn" />
-                            <label>Checked In</label>
+                    <div class="four column row">
+                        <div class="column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="selected" id="selected" />
+                                <label>Selected</label>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="checkedIn" id="checkedIn" />
+                                <label>Checked In</label>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="outForDelivery" id="outForDelivery" />
+                                <label>Out for Delivery</label>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="delivered" id="delivered" />
+                                <label>Delivered</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="outForDelivery" id="outForDelivery" />
-                            <label>Out for Delivery</label>
+                    <div class="two column row">
+                        <div class="column">
+                            <label>Delivery Person</label>
+                            <input type="text" id="deliveryPerson" placeholder="Delivery Person" />
+                        </div>
+                        <div class="column">
+                            <label>Delivery Phone</label>
+                            <input type="text" id="deliveryPhone" placeholder="000-111-2345" />
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="delivered" id="delivered" />
-                            <label>Delivered</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="two column row">
-                    <div class="column">
-                        <label>Delivery Person</label>
-                        <input type="text" id="deliveryPerson" placeholder="Delivery Person" />
-                    </div>
-                    <div class="column">
-                        <label>Delivery Phone</label>
-                        <input type="text" id="deliveryPhone" placeholder="000-111-2345" />
-                    </div>
-                </div>
-                <div class="actions">
-                    <div class="ui black deny button">
-                        Cancel
-                    </div>
-                    <div class="ui positive right labeled icon button">
-                        Add Gift
-                        <i class="checkmark icon"></i>
+                    <div>
+                        <button id="cancelAddGifts" class="ui button black">Cancel</button>
+                        <button id="submitAddGifts" class="ui positive right labeled icon button">
+                            Add Gift
+                            <i class="checkmark icon"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </template>
