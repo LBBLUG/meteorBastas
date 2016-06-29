@@ -6,26 +6,107 @@ export const Recipients = new Mongo.Collection('recipients');
 
 Meteor.methods({
     // insert a new Recipients
-    
+    'recipients.insert' (ibastasId, iroute, ifirstName, ilastName, igender, istreetAddress, icomplexName, iaptNo, icity, istate, izip, ihomePhone, icellPhone, inotes) {
 
+        //check that the info being passed in is of the correct type
+        check(ibastasId, String);
+        check(iroute, String);
+        check(ifirstName, String);
+        check(ilastName, String);
+        check(igender, String);
+        check(istreetAddress, String);
+        check(icomplexName, String);
+        check(iaptNo, String);
+        check(icity, String);
+        check(istate, String);
+        check(izip, String);
+        check(ihomePhone, String);
+        check(icellPhone, String);
+        check(inotes, String);
 
+        // make sure a user is logged in before posting the recipient info
+        if (! this.userId) {
+            throw new Meteor.Error('User is not authorized to add recipient information.');
+        }
 
-
-    // insert a gift for a recipient into a recipient document
-
-
-
+        // insert the recipient information to the database
+        Recipients.insert({
+            bastasId: ibastasId,
+            route: iroute,
+            name: {
+                first: ifirstName,
+                last: ilastName,
+            },
+            gender: igender,
+            address: {
+                streetAddress: istreetAddress,
+                complexName: icomplexName,
+                aptNo: iaptNo,
+                city: icity,
+                state: istate,
+                zip: izip,
+            }
+            phone: {
+                home: ihomePhone,
+                cell: icellPhone,
+            },
+            notes: inotes,
+            enteredBy: Meteor.users.fineOne(this.userId).username,
+            addedOn: new Date(),
+        });
+    },
     // edit a recipient
+    'recipients.update' (recipientsId, ibastasId, iroute, ifirstName, ilastName, igender, istreetAddress, icomplexName, iaptNo, icity, istate, izip, ihomePhone, icellPhone, inotes) {
+        //check that the info being passed in is of the correct type
+        check(recipientsId, String);
+        check(ibastasId, String);
+        check(iroute, String);
+        check(ifirstName, String);
+        check(ilastName, String);
+        check(igender, String);
+        check(istreetAddress, String);
+        check(icomplexName, String);
+        check(iaptNo, String);
+        check(icity, String);
+        check(istate, String);
+        check(izip, String);
+        check(ihomePhone, String);
+        check(icellPhone, String);
+        check(inotes, String);
+
+        // make sure a user is logged in before posting the recipient info
+        if (! this.userId) {
+            throw new Meteor.Error('User is not authorized to add recipient information.');
+        }
+
+        // update the recipient info
+
+        Recipients.update(recipientsId, {$set: {
+            bastasId: ibastasId,
+            route: iroute,
+            name: {
+                first: ifirstName,
+                last: ilastName,
+            },
+            gender: igender,
+            address: {
+                streetAddress: istreetAddress,
+                complexName: icomplexName,
+                aptNo: iaptNo,
+                city: icity,
+                state: istate,
+                zip: izip,
+            }
+            phone: {
+                home: ihomePhone,
+                cell: icellPhone,
+            },
+            notes: inotes,
+            editedBy: Meteor.users.fineOne(this.userId).username,
+            lastEditedOn: new Date(),
+        }
+    });
+    }
 
 
-
-    // edit a gift
-
-
-
-    // insert a giver for gifts
-
-
-
-    // edit a giver for gifts
 });
