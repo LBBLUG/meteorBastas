@@ -1,8 +1,15 @@
-miport { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Recipients = new Mongo.Collection('recipients');
+
+Recipients.allow({
+    insert: function(userId, doc) {
+        // if user id exists, allow insert
+        return !!userId;
+    }
+});
 
 Meteor.methods({
     // insert a new Recipients
@@ -30,7 +37,7 @@ Meteor.methods({
         }
 
         // insert the recipient information to the database
-        Recipients.insert({
+        return Recipients.insert({
             bastasId: ibastasId,
             route: iroute,
             name: {
@@ -45,13 +52,13 @@ Meteor.methods({
                 city: icity,
                 state: istate,
                 zip: izip,
-            }
+            },
             phone: {
                 home: ihomePhone,
                 cell: icellPhone,
             },
             notes: inotes,
-            enteredBy: Meteor.users.fineOne(this.userId).username,
+            enteredBy: Meteor.user().emails[0].address,
             addedOn: new Date(),
         });
     },
@@ -96,7 +103,7 @@ Meteor.methods({
                 city: icity,
                 state: istate,
                 zip: izip,
-            }
+            },
             phone: {
                 home: ihomePhone,
                 cell: icellPhone,
