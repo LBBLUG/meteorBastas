@@ -19,13 +19,19 @@ Template.setupAddRecipients.events({
         var cellPhone = $("#cellPhone").val();
         var notes = $("#notes").val();
 
-        Meteor.call('recipients.insert', bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(error, result) {
-            var recipientId = result;
-            console.log("Recipient ID created is: " + recipientId)
-        });
+        if (bastasId == "" || route == "" || firstName == "" || streetAddress == "" || city == "") {
+            var modealInfo = "MissingData";
+            $('#missingDataModalView').modal('show');
+            $("#msgToUser").html("You are missing required information. Please correct the issue, and re-submit.");
+        } else {
+            Meteor.call('recipients.insert', bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(error, result) {
+                var recipientId = result;
+                console.log("Recipient ID created is: " + recipientId)
+            });
+            $('#addGiftsModalView').modal('show');
+        }
 
 
-        $('.ui.modal').modal('show');
     },
     'click #cancelAddRecipient' (event) {
         event.preventDefault();
