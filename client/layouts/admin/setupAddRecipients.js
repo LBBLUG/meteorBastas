@@ -20,18 +20,16 @@ Template.setupAddRecipients.events({
         var notes = $("#notes").val();
 
         if (bastasId == "" || route == "" || firstName == "" || streetAddress == "" || city == "") {
-            var modealInfo = "MissingData";
-            $('#missingDataModalView').modal('show');
-            $("#msgToUser").html("You are missing required information. Please correct the issue, and re-submit.");
+            // console.log("Missing Data! Fix it.");
+            var myModal = document.getElementById("missingDataModalView");
+            myModal.style.display = "block";
         } else {
-            Meteor.call('recipients.insert', bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(error, result) {
-                var recipientId = result;
-                console.log("Recipient ID created is: " + recipientId)
+            Meteor.call('recipients.insert', bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(error, result){
+                recipientsId = result;
             });
-            $('#addGiftsModalView').modal('show');
+            var myGiftsModal = document.getElementById("addGiftsFormView");
+            myGiftsModal.style.display = "block";
         }
-
-
     },
     'click #cancelAddRecipient' (event) {
         event.preventDefault();

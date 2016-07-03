@@ -1,21 +1,26 @@
 <template name="missingDataModal">
-    <div class="ui modal" id="missingDataModalView">
-        <div class="header">
-            <i class="close icon"></i>
-            <div class="missingRequiredInfo">
-                <h3>Missing Required Information</h3>
+    <div class="ui myModal" id="missingDataModalView">
+        <form>
+            <div class="myModal-header">
+                <i class="close icon" id="closeModalX"></i>
+                <h2>Missing Required Information</h2>
             </div>
-        </div>
-        <div id="missingDataMessage">
-            You have not filled in some required fields.  Please go <br />
-            back to the form, and fill in all required fields, then try <br />
-            to re-submit the form.
-        </div>
-        <div>
-            <button id="OKMissingData" class="ui positive right labeled icon button">
-                OK
-                <i class="checkmark icon"></i>
-            </button>
-        </div>
+            <div id="missingDataMessage" class="myModal-content">
+                <p>
+                    You have not filled in some required fields.  Please go
+                    back to the form, and fill in all required fields, then try
+                    to re-submit the form.
+                    <br />
+                    Required fields are notated with an asterisk (*) next to the field name.
+                </p>
+                <div>
+                    <button id="OKMissingData" class="ui positive right labeled icon button">
+                        OK
+                        <i class="checkmark icon"></i>
+                    </button>
+                </div>
+            </div>
+
+        </form>
     </div>
 </template>

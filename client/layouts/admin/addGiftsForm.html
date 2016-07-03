@@ -1,18 +1,16 @@
-<template name="addGiftsModal">
-    <div class="ui modal" id="addGiftsModalView">
-        <div class="header">
-            <i class="close icon"></i>
-            <div class="showRecipientName">
-                {{recipName}}
+<template name="addGiftsForm">
+    <div class="ui myModal" id="addGiftsFormView">
+        <form>
+            <div class="myModal-header">
+                <i class="close icon" id="closeGiftsModal"></i>
+                <h2>Add Gifts for Recipient</h2>
             </div>
-        </div>
-        <form id="addGiftsForm">
-            <div class="ui form giftsForm">
+            <div class="ui form myModal-content">
                 <div class="ui grid">
                     <div class="two column row">
                         <div class="column">
                             <label>Gift</label>
-                            <input type="text" id="gifType" placeholder="Gift" />
+                            <input type="text" id="giftType" placeholder="Gift" />
                         </div>
                         <div class="column">
                             <label>Size</label>
