@@ -1,0 +1,18 @@
+<template name="importRecipients">
+        <form class="ui form recipientsForm">
+            <div class="ui grid">
+                <div class="ui row">
+                    <div class="column">
+                        <label>Select a .csv file to import:</label>
+                        <input type="file" name="recipientFile" id="recipientFile" accept="document/*" />
+                    </div>
+                </div>
+                <div class="ui row">
+                    <div class="column">
+                        <button id="addImportFile" class="ui approve button primary">Upload and Import</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {{> missingDataModal}}
+</template>

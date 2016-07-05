@@ -21,8 +21,9 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 insecure                # Allow all DB writes from clients (for prototyping)
 accounts-ui
 accounts-password
-momentjs:moment
-kadira:flow-router
+momentjs:moment         # get Date / Time in all kinds of great formats
+kadira:flow-router      # Routing for page loading
 kadira:blaze-layout
-meteortoys:allthings
-semantic:ui-css
+meteortoys:allthings    # use CTRL+M to show some nice helpers on Chrome
+semantic:ui-css         # A nice user interface css library
+harrison:papa-parse     # parsing package to get csv to json
