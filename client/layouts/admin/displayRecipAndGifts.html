@@ -1,5 +1,61 @@
 <template name="displayRecipAndGifts">
-    {{#each getRecipientsAndGifts}}
-        {{> getRecipientsAndGift}}
-    {{/each}}
+    <table class="ui selectable celled table">
+        <thead>
+        <tr>
+            <th>
+                Bastas ID
+            </th>
+            <th>
+                Route
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Street Address
+            </th>
+            <th>
+                Complex Name
+            </th>
+            <th>
+                Apt. No
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Zip
+            </th>
+            <th>
+                Home PHone
+            </th>
+            <th>
+                Cell Phone
+            </th>
+            <th>
+                Notes
+            </th>
+            <th>
+                Gift Type
+            </th>
+            <th>
+                Gift Size
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each getRecipientsAndGifts}}
+            {{> getRecipientsAndGift}}
+        {{/each}}
+    </tbody>
+    </table>
 </template>
