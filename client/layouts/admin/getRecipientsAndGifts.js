@@ -4,4 +4,7 @@ Template.displayRecipAndGifts.helpers({
     getRecipientsAndGifts() {
         return Recipients.find({});
     },
+    isSelected: function(selected) {
+        return selected;
+    },
 });

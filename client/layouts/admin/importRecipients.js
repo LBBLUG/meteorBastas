@@ -14,7 +14,7 @@ Template.importRecipients.events({
             } else {
                 // handle the file selected, and import the Data
                 console.log("File selected is: " + recipientFile);
-                alert("You picked a file!");
+                
             }
     },
 });

@@ -1,61 +1,66 @@
 <template name="displayRecipAndGifts">
-    <table class="ui selectable celled table">
-        <thead>
-        <tr>
-            <th>
-                Bastas ID
-            </th>
-            <th>
-                Route
-            </th>
-            <th>
-                First Name
-            </th>
-            <th>
-                Last Name
-            </th>
-            <th>
-                Gender
-            </th>
-            <th>
-                Street Address
-            </th>
-            <th>
-                Complex Name
-            </th>
-            <th>
-                Apt. No
-            </th>
-            <th>
-                City
-            </th>
-            <th>
-                State
-            </th>
-            <th>
-                Zip
-            </th>
-            <th>
-                Home PHone
-            </th>
-            <th>
-                Cell Phone
-            </th>
-            <th>
-                Notes
-            </th>
-            <th>
-                Gift Type
-            </th>
-            <th>
-                Gift Size
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each getRecipientsAndGifts}}
-            {{> getRecipientsAndGift}}
-        {{/each}}
-    </tbody>
-    </table>
+    <form class="ui form recipientsForm">
+        <table class="ui selectable celled table">
+            <thead>
+            <tr>
+                <th>
+                    Bastas ID
+                </th>
+                <th>
+                    Route
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Street Address
+                </th>
+                <th>
+                    Complex Name
+                </th>
+                <th>
+                    Apt. No
+                </th>
+                <th>
+                    Zip
+                </th>
+                <th>
+                    Gift Type 1
+                </th>
+                <th>
+                    Gift Size 1
+                </th>
+                <th>
+                    Gift Sel 1
+                </th>
+                <th>
+                    Gift Chekd In 1
+                </th>
+                <th>
+                    Gift Type 2
+                </th>
+                <th>
+                    Gift Size 2
+                </th>
+                <th>
+                    Gift Sel 2
+                </th>
+                <th>
+                    Gift Chekd In 2
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each getRecipientsAndGifts}}
+                {{> getRecipientsAndGift}}
+            {{/each}}
+        </tbody>
+        </table>
+    </form>
 </template>

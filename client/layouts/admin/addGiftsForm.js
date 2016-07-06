@@ -8,30 +8,30 @@ Template.addGiftsForm.events({
 
         // get selected state
         if($("#selected").prop('checked') == true){
-            var selected = 'true';
+            var selected = 'Yes';
         } else {
-            var selected = 'false';
+            var selected = 'No';
         }
 
         // get checkedIn state
         if($("#checkedIn").prop('checked') == true){
-            var checkedIn = 'true';
+            var checkedIn = 'Yes';
         } else {
-            var checkedIn = 'false';
+            var checkedIn = 'No';
         }
 
         // get outForDelivery state
         if($("#outForDelivery").prop('checked') == true){
-            var outForDelivery = 'true';
+            var outForDelivery = 'Yes';
         } else {
-            var outForDelivery = 'false';
+            var outForDelivery = 'No';
         }
 
         // get delivered state
         if($("#delivered").prop('checked') == true){
-            var delivered = 'true';
+            var delivered = 'Yes';
         } else {
-            var delivered = 'false';
+            var delivered = 'No';
         }
 
         var deliveryPerson = $("#deliveryPerson").val();
