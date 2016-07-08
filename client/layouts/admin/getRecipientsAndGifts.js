@@ -4,7 +4,10 @@ Template.displayRecipAndGifts.helpers({
     getRecipientsAndGifts() {
         return Recipients.find({});
     },
-    isSelected: function(selected) {
-        return selected;
+});
+
+Template.getRecipientsAndGift.helpers({
+    isSelected: function() {
+        return Recipients.find({selected: "true"});
     },
 });
