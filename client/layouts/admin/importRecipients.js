@@ -1,9 +1,12 @@
+import { Recipients } from '../../../imports/api/recipients.js';
+
 Template.importRecipients.events({
     'click #addImportFile' (event) {
             event.preventDefault();
 
+            var data = [];
             // first check to see if the user has selected a file
-            var recipientFile = $("#recipientFile").val();
+            var recipientFile = document.getElementById("recipientFile").files[0];
             if (recipientFile == "") {
                 myModalTitle = "No File Selected";
                 myModalText = "You must select a file to be uploaded and imported.";
@@ -13,8 +16,16 @@ Template.importRecipients.events({
                 $("#myModalTextSection").html(myModalText);
             } else {
                 // handle the file selected, and import the Data
-                console.log("File selected is: " + recipientFile);
-                
+                Papa.parse(recipientFile, {
+                    delimiter: ",",
+                	header: true,
+                    dynamicTyping: false,
+                    complete: function(results) {
+                        data = results;
+                        console.dir(data);
+                        Meteor.call('Recipients.import', data);
+                    },
+                });
             }
     },
 });
