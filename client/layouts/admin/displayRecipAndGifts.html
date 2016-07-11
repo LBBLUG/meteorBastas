@@ -1,66 +1,41 @@
 <template name="displayRecipAndGifts">
     <form class="ui form recipientsForm">
-        <table class="ui selectable celled table">
-            <thead>
-            <tr>
-                <th>
-                    Bastas ID
-                </th>
-                <th>
-                    Route
-                </th>
-                <th>
-                    First Name
-                </th>
-                <th>
-                    Last Name
-                </th>
-                <th>
-                    Gender
-                </th>
-                <th>
-                    Street Address
-                </th>
-                <th>
-                    Complex Name
-                </th>
-                <th>
-                    Apt. No
-                </th>
-                <th>
-                    Zip
-                </th>
-                <th>
-                    Gift Type 1
-                </th>
-                <th>
-                    Gift Size 1
-                </th>
-                <th>
-                    Gift Sel 1
-                </th>
-                <th>
-                    Gift Chekd In 1
-                </th>
-                <th>
-                    Gift Type 2
-                </th>
-                <th>
-                    Gift Size 2
-                </th>
-                <th>
-                    Gift Sel 2
-                </th>
-                <th>
-                    Gift Chekd In 2
-                </th>
-            </tr>
-        </thead>
-        <tbody>
+        <div class="ui stackable grid">
+            <div class="row headerRow">
+                <div class="column">
+                    <b>Bastas ID</b>
+                </div>
+                <div class="column">
+                    <b>Route</b>
+                </div>
+                <div class="column">
+                    <b>Name</b>
+                </div>
+                <div class="two wide column">
+                    <b>Address</b>
+                </div>
+                <div class="two wide column">
+                    <b>Gift Type 1</b>
+                </div>
+                <div class="column">
+                    <b>Gift Size 1</b>
+                </div>
+                <div class="two wide column">
+                    <b>Gift 1 Status</b>
+                </div>
+                <div class="two wide column">
+                    <b>Gift Type 2</b>
+                </div>
+                <div class="column">
+                    <b>Gift Size 2</b>
+                </div>
+                <div class="two wide column">
+                    <b>Gift 2 Status</b>
+                </div>
+        </div>
             {{#each getRecipientsAndGifts}}
                 {{> getRecipientsAndGift}}
             {{/each}}
-        </tbody>
-        </table>
+        </div>
     </form>
 </template>

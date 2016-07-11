@@ -8,6 +8,31 @@ Template.displayRecipAndGifts.helpers({
 
 Template.getRecipientsAndGift.helpers({
     isSelected: function() {
-        return Recipients.find({selected: "true"});
+        if (this.selected === "true") {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    isCheckedIn: function() {
+        if (this.checkedIn === "true") {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    isOutForDelivery: function() {
+        if (this.outForDelivery === "true") {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    isDelivered: function() {
+        if (this.delivered === "true") {
+            return true;
+        } else {
+            return false;
+        }
     },
 });

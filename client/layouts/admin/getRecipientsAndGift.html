@@ -1,45 +1,44 @@
 <template name="getRecipientsAndGift">
-        <tr>
-            <td>
+        <div class="ui row">
+            <div class="column">
                 {{bastasId}}
-            </td>
-            <td>
+            </div>
+            <div class="column">
                 {{route}}
-            </td>
-            <td>
-                {{name.first}}
-            </td>
-            <td>
-                {{name.last}}
-            </td>
-            <td>
-                {{gender}}
-            </td>
-            <td>
+            </div>
+            <div class="column">
+                {{name.first}} {{name.last}}
+            </div>
+            <div class="two wide column">
                 {{address.streetAddress}}
-            </td>
-            <td>
-                {{address.complexName}}
-            </td>
-            <td>
-                {{address.aptNo}}
-            </td>
-            <td>
+                {{address.complexName}} {{address.aptNo}}
                 {{address.zip}}
-            </td>
+            </div>
                 {{#each gifts}}
-                <td>
+                <div class="two wide column">
                     {{giftType}}
-                </td>
-                <td>
+                </div>
+                <div class="column">
                     {{giftSize}}
-                </td>
-                <td>
-                    <input type="checkbox" checked={{#if isSelected selected}}{{/if}}/>
-                </td>
-                <td>
-                    {{checkedIn}}
-                </td>
+                </div>
+                <div class="two wide column">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="isSelected" checked="{{isSelected}}">
+                        <label>Selected</label>
+                    </div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="isCheckedIn" checked="{{isCheckedIn}}">
+                        <label>Checked In</label>
+                    </div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="isOutForDelivery" checked="{{isOutForDelivery}}">
+                        <label>Out For Delivery</label>
+                    </div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="isDelivered" checked="{{isDelivered}}">
+                        <label>Delivered</label>
+                    </div>
+                </div>
                 {{/each}}
-        </tr>
+        </div>
 </template>

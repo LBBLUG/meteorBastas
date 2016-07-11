@@ -69,3 +69,7 @@ textarea {
     text-decoration: none;
     cursor: pointer;
 }
+
+.headerRow {
+    background: #e2e2e2;
+}
