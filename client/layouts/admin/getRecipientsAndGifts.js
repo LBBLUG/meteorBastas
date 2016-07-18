@@ -36,3 +36,13 @@ Template.getRecipientsAndGift.helpers({
         }
     },
 });
+
+Template.getRecipientsAndGift.events({
+    'click .isSelected' () {
+        console.log("ID: " + this._id + " | checked state sent: " + !this.checked);
+        Meteor.call('Selected.update', this._id, !this.checked);
+    },
+    'click .getRecipDetail' () {
+        // now route to the new page and pull the detail for the row the user utilized to select the button.
+    }
+});

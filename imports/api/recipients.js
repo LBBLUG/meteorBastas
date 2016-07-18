@@ -208,6 +208,13 @@ Meteor.methods({
             });
         }
     },
-
-
+    'Selected.update' (recipientId, selectedState) {
+    Recipients.update(recipientId, {
+         $set: {
+         gifts: {
+             selected: selectedState,
+         }
+     },
+     });
+ },
 });
