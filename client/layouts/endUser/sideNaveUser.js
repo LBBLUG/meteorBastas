@@ -1,4 +1,4 @@
-Template.sideNav.events({
+Template.sideNavUser.events({
     'click .sidebar'() {
         console.log('Clicked Menu Icon');
         $("#sideMenu")
@@ -9,7 +9,7 @@ Template.sideNav.events({
     'click  #sideMenu' (event) {
         event.preventDefault();
 
-        // TODO when a menu item is clicked, get the id of the 
+        // TODO when a menu item is clicked, get the id of the
         // item and route to that id.
         // i hate this right now, because the div id is
         // picked up, but the click directly on the Icon

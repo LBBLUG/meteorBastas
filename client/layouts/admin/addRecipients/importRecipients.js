@@ -1,4 +1,4 @@
-import { Recipients } from '../../../imports/api/recipients.js';
+import { Recipients } from '../../../../imports/api/recipients.js';
 
 Template.importRecipients.events({
     'click #addImportFile' (event) {

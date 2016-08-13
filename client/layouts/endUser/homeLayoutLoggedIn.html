@@ -1,13 +1,14 @@
-<template name="AdminLayout">
+<template name="homeLayoutLoggedIn">
     {{> headerLayout}}
     <div class="ui grid">
         <div class="two column row">
             <div class="two wide column">
-                {{> sideNavAdmin}}
+                {{> sideNav}}
             </div>
             <div class="fourteen wide column">
-                {{> Template.dynamic template=admin}}
+                {{> Template.dynamic template=userTemplate}}
             </div>
         </div>
     </div>
+
 </template>
