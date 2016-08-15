@@ -1,11 +1,4 @@
 /* CSS declarations go here */
-.loginInfo {
-    float: right;
-}
-
-textarea {
-    width: 100% !important;
-}
 
 .contentInfo {
     margin-top: 5%;
@@ -17,7 +10,7 @@ textarea {
     margin-right: 2%;
 }
 
-.giftsForm {
+.giftsForm, .importForm {
     margin: 3%;
 }
 
@@ -55,21 +48,29 @@ textarea {
     width: 80%;
 }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.mainHeader {
+    margin-top: 0;
+    height: 100px;
+    width: 100%;
+    color: #e2e2e2;
+    background: #191970;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.trMain {
+    border: 1px solid #c2c2c2;
 }
 
-.headerRow {
-    background: #e2e2e2;
+.trInner {
+    border: 1px solid #e2e2e2;
+}
+
+.mobile-fab-tip {
+    position: fixed;
+    right: 85px;
+    padding:0px 0.5rem;
+    text-align: right;
+    background-color: #323232;
+    border-radius: 2px;
+    color: #e2e2e2;
+    width:auto;
 }

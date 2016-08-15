@@ -1,43 +1,26 @@
 <template name="displayRecipAndGifts">
     <div class="container">
-    <form class="ui form recipientsForm">
-        <div class="ui stackable grid">
-            <div class="row headerRow">
-                <div class="column">
-                    <b>Bastas ID</b>
-                </div>
-                <div class="column">
-                    <b>Route</b>
-                </div>
-                <div class="column">
-                    <b>Name</b>
-                </div>
-                <div class="two wide column">
-                    <b>Address</b>
-                </div>
-                <div class="two wide column">
-                    <b>Gift Type 1</b>
-                </div>
-                <div class="column">
-                    <b>Gift Size 1</b>
-                </div>
-                <div class="two wide column">
-                    <b>Gift 1 Status</b>
-                </div>
-                <div class="two wide column">
-                    <b>Gift Type 2</b>
-                </div>
-                <div class="column">
-                    <b>Gift Size 2</b>
-                </div>
-                <div class="two wide column">
-                    <b>Gift 2 Status</b>
-                </div>
-        </div>
+        <table>
+            <tr class="trMain">
+                <th>
+                    Bastas ID
+                </th>
+                <th>
+                    Route
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th width="40%">
+                    Gift Info
+                </th>
+            </tr>
             {{#each getRecipientsAndGifts}}
                 {{> getRecipientsAndGift}}
             {{/each}}
-        </div>
-    </form>
+        </table>
     </div>
 </template>

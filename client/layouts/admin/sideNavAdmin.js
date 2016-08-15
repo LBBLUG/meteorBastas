@@ -1,12 +1,5 @@
 Template.sideNavAdmin.events({
-    'click .sidebar'() {
-        console.log('Clicked Menu Icon');
-        $("#sideMenu")
-            .sidebar('overlay')
-            .sidebar('toggle')
-        ;
-    },
-    'click  #sideMenu' (event) {
+    'click  #adminMenu' (event) {
         event.preventDefault();
 
         // TODO when a menu item is clicked, get the id of the
@@ -20,4 +13,10 @@ Template.sideNavAdmin.events({
         console.log("User clicked: " + clickedTarget);
         FlowRouter.go('/' + clickedTarget);
     },
+});
+
+Template.sideNavAdmin.onRendered(function() {
+    $(".button-collapse").sideNav();
+
+    $('.tooltipped').tooltip({delay: 50});
 });

@@ -4,9 +4,7 @@ import { Recipients } from '../../../../imports/api/recipients.js';
 Template.selectedCB.helpers({
     isSelected: function() {
         if (this.selected === "true") {
-            return true;
-        } else {
-            return false;
+            return checked;
         }
     },
 });
@@ -14,7 +12,7 @@ Template.selectedCB.helpers({
 Template.getRecipientsAndGiftCheckbox.helpers({
     isCheckedIn: function() {
         if (this.checkedIn === "true") {
-            return true;
+            return "checked";
         } else {
             return false;
         }

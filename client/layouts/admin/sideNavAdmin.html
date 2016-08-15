@@ -1,29 +1,97 @@
 <template name="sideNavAdmin">
-    <div id="sideMenu" class="ui left vertical labeled icon thin menu">
-        <div class="item" id="home">
-            <i class="home icon" id="home"></i>
-            Home
+    <!-- <div class="navbar-fixed">
+    <nav class="headerRow">
+        <div id="adminMenu" class="nav-wrapper">
+            <a href="#!" class="brand-logo">BASTAS</a>
+            <a href="#" data-activates="narrower" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li>
+                    <a href="#"><i class="material-icons" id="home">home</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="giveAGift">card_giftcard</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="dashboard">dashboard</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="recipientsList">group</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="addRecipients">groupadd</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="importRecipients">system_update_alt</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="sendReminder">email</i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons" id="settings">settings</i></a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="narrower">
+                <li>
+                    <a href="#" id="home"><i class="material-icons">home</i>Home</a>
+                </li>
+                <li>
+                    <a href="#" id="giveAGift"><i class="material-icons">card_giftcard</i>Give</a>
+                </li>
+                <li>
+                    <a href="#" id="dashboard"><i class="material-icons">dashboard</i>Dash</a>
+                </li>
+                <li>
+                    <a href="#" id="recipientsList"><i class="material-icons">group</i>Recipients</a>
+                </li>
+                <li>
+                    <a href="#" id="addRecipients"><i class="material-icons">groupadd</i>Add Recipients</a>
+                </li>
+                <li>
+                    <a href="#" id="importRecipients"><i class="material-icons">system_update_alt</i>Import</a>
+                </li>
+                <li>
+                    <a href="#" id="sendReminder"><i class="material-icons">email</i>Send Reminder</a>
+                </li>
+                <li>
+                    <a href="#" id="settings"><i class="material-icons">settings</i>Settings</a>
+                </li>
+            </ul>
         </div>
-        <div class="item" id="giveAGift">
-            <i class="gift layout icon" id="giveAGift"></i> Give a Gift
-        </div>
-        <div class="item" id="dashboard">
-            <i class="dashboard layout icon" id="dashboard"></i> Dashboard
-        </div>
-        <div class="item" id="recipientsList">
-            <i class="list icon" id="recipientsList"></i> Recipients List
-        </div>
-        <div class="item" id="addRecipients">
-            <i class="add user icon" id="addRecipients"></i> Add Recipients
-        </div>
-        <div class="item" id="importRecipients">
-            <i class="arrow circle down icon" id="importRecipients"></i> Import Recipients
-        </div>
-        <div class="item" id="sendReminder">
-            <i class="send icon" id="sendReminder"></i> Send Reminder
-        </div>
-        <div class="item" id="settings">
-            <i class="settings icon" id="settings"></i> Settings
-        </div>
-    </div>
+    </nav>
+</div> -->
+
+<header class="mainHeader">
+    <a href="#!" class="brand-logo">BASTAS</a>
+    <div id="adminMenu" class="fixed-action-btn horizontal click-to-toggle" style="top: 20px; right: 24px;">
+        <a class="btn-floating btn-large red">
+          <i class="large material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+          <li>
+              <a href="#" id="home" class="btn-floating red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Home"><i class="material-icons">home</i></a>
+          </li>
+          <li>
+              <a id="giveAGift" class="btn-floating yellow darken-1 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Give"><i class="material-icons">card_giftcard</i></a>
+          </li>
+          <li>
+              <a id="dashboard" class="btn-floating green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Dashboard"><i class="material-icons">dashboard</i></a>
+          </li>
+          <li>
+              <a id="recipientsList" class="btn-floating blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Recipients"><i class="material-icons">group</i></a>
+          </li>
+          <li>
+              <a id="addRecipients" class="btn-floating orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Recipient"><i class="material-icons">groupadd</i></a>
+          </li>
+          <li>
+              <a id="importRecipients" class="btn-floating purple tooltipped" data-position="bottom" data-delay="50" data-tooltip="Import Recipients"><i class="material-icons">system_update_alt</i></a>
+          </li>
+          <li>
+              <a id="sendReminder" class="btn-floating gray tooltipped" data-position="bottom" data-delay="50" data-tooltip="Send Reminder"><i class="material-icons">email</i></a>
+          </li>
+          <li>
+              <a id="settings" class="btn-floating black tooltipped" data-position="bottom" data-delay="50" data-tooltip="Settings"><i id="settings" class="material-icons">settings</i></a>
+          </li>
+        </ul>
+      </div>
+</header>
 </template>

@@ -1,33 +1,37 @@
 <template name="getRecipientsAndGift">
-        <div class="ui row">
-            <div class="column">
-                {{bastasId}}
-            </div>
-            <div class="column">
-                {{route}}
-            </div>
-            <div class="column">
-                {{name.first}} {{name.last}}
-            </div>
-            <div class="two wide column">
-                {{address.streetAddress}}
-                {{address.complexName}} {{address.aptNo}}
-                {{address.zip}}
-            </div>
-            {{#each gifts}}
-                <div class="two wide column">
-                    {{giftType}}
-                </div>
-                <div class="column">
-                    {{giftSize}}
-                </div>
-                <div class="two wide column">
-                    {{> selectedCB}}
-                </div>
-            {{/each}}
+            <tr class="trMain">
+                <td>
+                    {{bastasId}}
+                </td>
+                <td>
+                    {{route}}
+                </td>
+                <td>
+                    {{name.first}} {{name.last}}
+                </td>
+                <td>
+                    {{address.streetAddress}}
+                    {{address.complexName}} {{address.aptNo}}
+                    {{address.zip}}
+                </td>
+                <td width="40%">
+                    {{#each gifts}}
+                    <tr class="trInner">
+                        <td>
+                            {{giftType}}
+                        </td>
+                        <td>
+                            {{giftSize}}
+                        </td>
+                        <td>
+                            {{> selectedCB}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </td>
 
-            <div class="column">
-                <button id="getRecipDetail" class="ui button primary getRecipDetail">Details</button>
-            </div>
-        </div>
+                <td>
+                    <a id="getRecipDetail" class="waves-effect waves-light btn">Details</a>
+                </td>
+            </tr>
 </template>

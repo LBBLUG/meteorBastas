@@ -1,5 +1,9 @@
 import { Recipients } from '../../../../imports/api/recipients.js';
 
+Template.setupAddRecipients.onRendered(function() {
+    $('select').material_select();
+});
+
 Template.setupAddRecipients.events({
     'click #submitAddRecipient' (event) {
         event.preventDefault();

@@ -1,65 +1,65 @@
 <template name="setupAddRecipients">
-    <form id="addRecipientsForm" class="ui form recipientsForm">
-        <div class="ui grid">
-            <div class="one column row">
-                <div class="column field">
+    <div class="container">
+    <form id="addRecipientsForm">
+            <div class="row">
+                <div class="col s12">
                     <h3>Add Recipients to the List</h3>
                 </div>
             </div>
-            <div class="three column row">
-                <div class="one column field">
+            <div class="row">
+                <div class="col s4">
                     <label>Bastas ID*</label>
-                    <input type="text" class="textField" id="bastasId" placeholder="Bastas ID" />
+                    <input type="text" id="bastasId" placeholder="Bastas ID" />
                 </div>
-                <div class="one column field">
+                <div class="col s4">
                     <label>Route*</label>
-                    <input type="text" class="textField" id="route" placeholder="Route" />
+                    <input type="text" id="route" placeholder="Route" />
                 </div>
             </div>
-            <div class="three column row">
-                <div class="one column field">
+            <div class="row">
+                <div class="col s4">
                     <label>First Name*</label>
-                    <input type="text" class="textField" id="firstName" placeholder="First Name" />
+                    <input type="text" id="firstName" placeholder="First Name" />
                 </div>
-                <div class="one column field">
+                <div class="col s4">
                     <label>Last Name</label>
-                    <input type="text" class="textField" id="lastName" placeholder="Last Name" />
+                    <input type="text" id="lastName" placeholder="Last Name" />
                 </div>
-                <div class="one column field">
+                <div class="col s4">
                     <label>Gender</label>
-                    <select id="gender" class="ui fluid dropdown">
-                        <option value="">Gender</option>
+                    <select id="gender">
+                        <option value="" disabled>Gender</option>
                         <option value="M">Male</option>
                         <option value="F">Female</option>
                     </select>
                 </div>
             </div>
             <h3>Recipient Address</h3>
-            <div class="one column row">
-                <div class="column field">
+            <div class="row">
+                <div class="column s12">
                     <label>Street Address*</label>
-                    <input type="text" class="textField" id="streetAddress" placeholder="123 Sesame St." />
+                    <input type="text" id="streetAddress" placeholder="123 Sesame St." />
                 </div>
             </div>
-            <div class="three column row">
-                <div class="one column field">
+            <div class="row">
+                <div class="col s4">
                     <label>Complex Name</label>
-                    <input type="text" class="textField" id="complexName" placeholder="Middlebrook Apartments">
+                    <input type="text" id="complexName" placeholder="Middlebrook Apartments">
                 </div>
-                <div class="one column field">
+                <div class="col s4">
                     <label>Apt. Number</label>
-                    <input type="text" class="textField" id="aptNo" placeholder="# A123" />
+                    <input type="text" id="aptNo" placeholder="# A123" />
                 </div>
             </div>
-            <div class="three column row">
-                <div class="one column field">
+            <div class="row">
+                <div class="col s4">
                     <label>City*</label>
                     <input type="text" class="textField" id="city" placeholder="My City" />
                 </div>
-                <div class="one column field">
+                <div class="col s4">
                     <label>State</label>
-                    <select class="ui fluid dropdown" id="state">
-                        <option value="">Select One...</option>
+                    <select id="state">
+                        <option value="" disabled>Select One...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -113,38 +113,38 @@
                         <option value="WY">Wyoming</option>
                     </select>
                 </div>
-                <div class="one column field">
+                <div class="col s4">
                     <label>Zip Code</label>
-                    <input type="text" class="textField" id="zip" placeholder="12345" />
+                    <input type="text" id="zip" placeholder="12345" />
                 </div>
             </div>
             <h3>Recipient Other Information</h3>
-            <div class="two column row">
-                <div class="column field">
+            <div class="row">
+                <div class="col s4">
                     <label>Home Phone</label>
-                    <input type="text" class="textField" id="homePhone" placeholder="000-111-2345" />
+                    <input type="text" id="homePhone" placeholder="000-111-2345" />
                 </div>
-                <div class="column field">
+                <div class="col s4">
                     <label>Cell Phone</label>
-                    <input type="text" class="textField" id="cellPhone" placeholder="111-222-3456" />
+                    <input type="text" id="cellPhone" placeholder="111-222-3456" />
                 </div>
             </div>
-            <div class="one column row">
-                <div class="column field">
+            <div class="row">
+                <div class="col s12">
                     <label>Notes</label>
-                    <textarea rows="4" class="textField" id="notes" placeholder="Notes"></textarea>
+                    <textarea rows="4" class="materialize-textarea" id="notes" placeholder="Notes"></textarea>
                 </div>
             </div>
-            <div class="six column row">
-                <div class="four column">
-                    <button id="cancelAddRecipient" class="ui deny orange button">Cancel</button>
+            <div class="row">
+                <div class="col s10">
+                    <a id="cancelAddRecipient" class="waves-effect waves-light btn orange">Cancel</a>
                 </div>
-                <div class="right floated two column">
-                    <button id="submitAddRecipient" class="ui approve button primary">Save</button>
+                <div class="col s2">
+                    <a id="submitAddRecipient" class="waves-effect waves-light btn">Save</a>
                 </div>
             </div>
-        </div>
     </form>
+</div>
     {{> addGiftsForm}}
     {{> missingDataModal}}
 </template>

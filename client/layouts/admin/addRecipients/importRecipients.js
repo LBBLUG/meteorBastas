@@ -7,7 +7,7 @@ Template.importRecipients.events({
             var data = [];
             // first check to see if the user has selected a file
             var recipientFile = document.getElementById("recipientFile").files[0];
-            if (recipientFile == "") {
+            if (recipientFile == "" || recipientFile == null) {
                 myModalTitle = "No File Selected";
                 myModalText = "You must select a file to be uploaded and imported.";
                 var myModal = document.getElementById("missingDataModalView");

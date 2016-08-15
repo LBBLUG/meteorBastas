@@ -1,24 +1,24 @@
 <template name="setupHomeForm">
     <div class="ui container contentInfo">
-        <div id="main" class="ui grid">
-            <div id="FormFields" class="one column row">
-                <div class="sixteen wide column">
-                    <textarea id="mainHomeInfo" rows="4" class="ui textarea wide" placeholder="Home Page Information"></textarea>
+        <div id="main">
+            <div id="FormFields" class="row">
+                <div class="col s12">
+                    <textarea id="mainHomeInfo" rows="4" class="materialize-textarea" placeholder="Home Page Information"></textarea>
                 </div>
             </div>
-            <div id="imageUpload" class="one column row">
-                <div class="column">
+            <div id="imageUpload" class="row">
+                <div class="col s12">
                     Choose an Image to go on the Page with this Post
                     <br />
                     <input type="file" name="homeImage" id="homeImage" accept="image/*" />
                 </div>
             </div>
-            <div class="six column row">
-                <div class="four column">
-                    <button id="btnCancelHomeSetup" class="ui orange button">Cancel</button>
+            <div class="row">
+                <div class="col s6">
+                    <a id="btnCancelHomeSetup" class="waves-effect waves-light btn orange">Cancel</a>
                 </div>
-                <div class="right floated two column">
-                    <button id="btnSubmitHomeSetup" class="ui button primary">Save</button>
+                <div class="col s6">
+                    <a id="btnSubmitHomeSetup" class="waves-effect waves-light btn right"><i class="material-icons left">done</i>Save</a>
                 </div>
             </div>
         </div>

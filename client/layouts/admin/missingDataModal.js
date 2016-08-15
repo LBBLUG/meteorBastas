@@ -4,7 +4,7 @@ Template.missingDataModal.events({
         var myModal = document.getElementById("missingDataModalView");
         myModal.style.display = "none";
     },
-    'click #closeModalX' (event) {
+    'click #closeModalCheckmark' (event) {
         event.preventDefault();
         var myModal = document.getElementById("missingDataModalView");
         myModal.style.display = "none";
