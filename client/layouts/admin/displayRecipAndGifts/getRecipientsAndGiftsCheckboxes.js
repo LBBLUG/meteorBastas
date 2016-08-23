@@ -9,7 +9,7 @@ Template.selectedCB.helpers({
     },
 });
 
-Template.getRecipientsAndGiftCheckbox.helpers({
+Template.getRecipientsAndGift.helpers({
     isCheckedIn: function() {
         if (this.checkedIn === "true") {
             return "checked";
@@ -34,8 +34,18 @@ Template.getRecipientsAndGiftCheckbox.helpers({
 });
 
 Template.selectedCB.events({
-    'click .isSelected' () {
-        console.log("ID: " + this._id + " | checked state sent: " + !this.checked);
-        Meteor.call('Selected.update', this._id, !this.checked);
+    'click .isSelected' (event, template) {
+        const cTarget = event.currentTarget.checked;
+        const id = this._id;
+        console.log(cTarget + " | " + id);
+        // Meteor.call('Selected.update', this._id, !this.checked);
+    },
+});
+
+Template.getRecipientsAndGift.events({
+    'click .isCheckedIn' (event, template) {
+        const cTarget = event.currentTarget.checked;
+        const id = this._id;
+        console.log(cTarget + " | " + id);
     },
 });
