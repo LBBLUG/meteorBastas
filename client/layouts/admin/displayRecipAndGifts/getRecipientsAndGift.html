@@ -24,12 +24,9 @@
                             {{giftSize}}
                         </td>
                         <td>
-                            {{> selectedCB}}
+                            {{> getRecipientsAndGiftsCheckboxes parent=this}}
                         </td>
-                        <td>
-                            <label>Checked In</label>
-                            <div class="switch"><label>Off<input type="checkbox" {{checkedIn}} class="isCheckedIn"><span class="lever"></span>On</label></div>
-                        </td>
+
                     </tr>
                     {{/each}}
                 </td>

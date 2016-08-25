@@ -36,7 +36,7 @@ Template.getRecipientsAndGift.helpers({
 Template.selectedCB.events({
     'click .isSelected' (event, template) {
         const cTarget = event.currentTarget.checked;
-        const id = this._id;
+        const id = this.parent._id;
         console.log(cTarget + " | " + id);
         // Meteor.call('Selected.update', this._id, !this.checked);
     },

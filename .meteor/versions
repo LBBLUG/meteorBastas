@@ -29,7 +29,6 @@ ejson@1.0.11
 email@1.0.12
 es5-shim@4.5.10
 fastclick@1.0.11
-fourseven:scss@3.2.0
 geojson-utils@1.0.8
 harrison:papa-parse@1.1.1
 hot-code-push@1.0.4
@@ -46,7 +45,7 @@ less@2.6.0
 livedata@1.0.18
 localstorage@1.0.9
 logging@1.0.12
-materialize:materialize@0.97.7
+materialize:materialize@0.97.6
 meteor@1.1.14
 meteor-base@1.0.4
 meteortoys:allthings@3.0.0
