@@ -24,7 +24,4 @@ Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         console.log("Details clicked: " + this._id);
     },
-    'click .isCheckedIn' (event, target) {
-        console.log("Checked In clicked: " + this._id);
-    },
 });
