@@ -41,11 +41,3 @@ Template.selectedCB.events({
         // Meteor.call('Selected.update', this._id, !this.checked);
     },
 });
-
-Template.getRecipientsAndGift.events({
-    'click .isCheckedIn' (event, template) {
-        const cTarget = event.currentTarget.checked;
-        const id = this._id;
-        console.log(cTarget + " | " + id);
-    },
-});
