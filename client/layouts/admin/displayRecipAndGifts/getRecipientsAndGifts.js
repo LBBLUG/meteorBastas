@@ -1,11 +1,13 @@
 import { Recipients } from '../../../../imports/api/recipients.js';
 
+// get the information from the mongoDB collection Recipients
 Template.displayRecipAndGifts.helpers({
     getRecipientsAndGifts() {
         return Recipients.find({});
     },
 });
 
+// use the textBox at the top to search for items in the grid as use types
 Template.displayRecipAndGifts.events({
     'input .textSearch' (event, target) {
         var $rows = $('#table tr');
@@ -20,6 +22,7 @@ Template.displayRecipAndGifts.events({
     },
 });
 
+// getDetails when button clicked for a row
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         console.log("Details clicked: " + this._id);

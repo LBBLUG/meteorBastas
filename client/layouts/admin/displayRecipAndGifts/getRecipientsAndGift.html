@@ -24,9 +24,17 @@
                             {{giftSize}}
                         </td>
                         <td>
-                            {{> getRecipientsAndGiftsCheckboxes _id=../_id}}
+                            {{> selectedCB _id=../_id giftType=giftType selected=selected}}
                         </td>
-
+                        <td>
+                            {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
+                        </td>
+                        <td>
+                            {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
+                        </td>
+                        <td>
+                            {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
+                        </td>
                     </tr>
                     {{/each}}
                 </td>

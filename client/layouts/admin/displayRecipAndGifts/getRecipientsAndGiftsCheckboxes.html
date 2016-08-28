@@ -1,16 +1,16 @@
 <template name="getRecipientsAndGiftsCheckboxes">
     <div>
-        <label>Selected</label>
-        <div class="switch"><label>Off<input type="checkbox" {{selected}} class="isSelected"><span class="lever"></span>On</label></div>
+        <input type="checkbox" checked="{{isSelected}}" id="Selected" class="isSelected" />
+        <label for="Selected">Selected {{isSelected}}</label>
 
-        <label>Checked In</label>
-        <div class="switch"><label>Off<input type="checkbox" {{isCheckedIn}} class="isCheckedIn"><span class="lever"></span>On</label></div>
+        <input type="checkbox" checked={{isCheckedIn}} id="checkedIn" class="isCheckedIn" />
+        <label for="checkedIn">Checked In</label>
     </div>
     <div>
-        <label>Out For Delivery</label>
-        <div class="switch"><label>Off<input type="checkbox" {{isOutForDelivery}} class="isOutForDelivery"><span class="lever"></span>On</label></div>
+        <input type="checkbox" checked={{isOutForDelivery}} id="outForDelivery" class="isOutForDelivery" />
+        <label for="outForDelivery">Out For Delivery</label>
 
-        <label>Delievered</label>
-        <div class="switch"><label>Off<input type="checkbox" {{isDelivered}} class="isDelivered"><span class="lever"></span>On</label></div>
+        <input type="checkbox" checked={{isDelivered}} id="delivered" class="isDelivered" />
+        <label for="delivered">Delivered</label>
     </div>
 </template>

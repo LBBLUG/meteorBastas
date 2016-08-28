@@ -163,6 +163,47 @@ Meteor.methods({
         // start breaking the importData down into its parts
         for (i = 0; i < importData.data.length; i++) {
             console.log("bastas id: " + importData.data[i].bastasId);
+            /* if (importData.data[i].isSelected1 === null || importData.data[i].isSelected1 === '') {
+                importData.data[i].isSelected1 = false;
+            } else {
+                importData.data[i].isSelected1 = true;
+            }
+            if (importData.data[i].checkedIn1 == null || importData.data[i].checkedIn1=== '') {
+                importData.data[i].checkedIn1 = false;
+            } else {
+                importData.data[i].checkedIn1 = true;
+            }
+            if (importData.data[i].outForDelivery1 == null || importData.data[i].outForDelivery1 === '') {
+                importData.data[i].outForDelivery1 = false;
+            } else {
+                importData.data[i].outForDelivery1 = true;
+            }
+            if (importData.data[i].delivered1 == null || importData.data[i].delivered1 === '') {
+                importData.data[i].delivered1 = false;
+            } else {
+                importData.data[i].delivered1 = true;
+            }
+            if (importData.data[i].isSelected2 == null || importData.data[i].isSelected2 === '') {
+                importData.data[i].isSelected2 = false;
+            } else {
+                importData.data[i].isSelected2 = true;
+            }
+            if (importData.data[i].checkedIn2 == null || importData.data[i].checkedIn2 === '') {
+                importData.data[i].checkedIn2 = false;
+            } else {
+                importData.data[i].checkedIn2 = true;
+            }
+            if (importData.data[i].outForDelivery2 == null || importData.data[i].outForDelivery2 === '') {
+                importData.data[i].outForDelivery2 = false;
+            } else {
+                importData.data[i].outForDelivery2 = true;
+            }
+            if (importData.data[i].delivered2 == null || importData.data[i].delivered2 === '') {
+                importData.data[i].delivered2 = false;
+            } else {
+                importData.data[i].delivered2 = true;
+            } */
+
             Recipients.insert({
                 bastasId: importData.data[i].bastasId,
                 route: importData.data[i].route,
@@ -208,13 +249,24 @@ Meteor.methods({
             });
         }
     },
-    'Selected.update' (recipientId, selectedState) {
-    Recipients.update(recipientId, {
-         $set: {
-         gifts: {
-             selected: selectedState,
-         }
-     },
-     });
- },
+    'Selected.update' (recipientId, selectedState, giftTypeInfo) {
+    Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+         $set: { 'gifts.$.selected': selectedState, } },
+    );
+    },
+    'CheckedIn.update' (recipientId, selectedState, giftTypeInfo) {
+        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+            $set: { 'gifts.$.checkedIn': selectedState, } },
+        );
+    },
+    'OutForDelivery.update' (recipientId, selectedState, giftTypeInfo) {
+        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+            $set: { 'gifts.$.outForDelivery': selectedState, } },
+        );
+    },
+    'Delivered.update' (recipientId, selectedState, giftTypeInfo) {
+        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+            $set: { 'gifts.$.delivered': selectedState, } },
+        );
+    },
 });
