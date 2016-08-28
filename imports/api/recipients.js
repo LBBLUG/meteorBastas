@@ -1,12 +1,6 @@
-import {
-    Meteor
-} from 'meteor/meteor';
-import {
-    Mongo
-} from 'meteor/mongo';
-import {
-    check
-} from 'meteor/check';
+import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
 
 export const Recipients = new Mongo.Collection('recipients');
 
@@ -161,49 +155,7 @@ Meteor.methods({
         }
 
         // start breaking the importData down into its parts
-        for (i = 0; i < importData.data.length; i++) {
-            console.log("bastas id: " + importData.data[i].bastasId);
-            /* if (importData.data[i].isSelected1 === null || importData.data[i].isSelected1 === '') {
-                importData.data[i].isSelected1 = false;
-            } else {
-                importData.data[i].isSelected1 = true;
-            }
-            if (importData.data[i].checkedIn1 == null || importData.data[i].checkedIn1=== '') {
-                importData.data[i].checkedIn1 = false;
-            } else {
-                importData.data[i].checkedIn1 = true;
-            }
-            if (importData.data[i].outForDelivery1 == null || importData.data[i].outForDelivery1 === '') {
-                importData.data[i].outForDelivery1 = false;
-            } else {
-                importData.data[i].outForDelivery1 = true;
-            }
-            if (importData.data[i].delivered1 == null || importData.data[i].delivered1 === '') {
-                importData.data[i].delivered1 = false;
-            } else {
-                importData.data[i].delivered1 = true;
-            }
-            if (importData.data[i].isSelected2 == null || importData.data[i].isSelected2 === '') {
-                importData.data[i].isSelected2 = false;
-            } else {
-                importData.data[i].isSelected2 = true;
-            }
-            if (importData.data[i].checkedIn2 == null || importData.data[i].checkedIn2 === '') {
-                importData.data[i].checkedIn2 = false;
-            } else {
-                importData.data[i].checkedIn2 = true;
-            }
-            if (importData.data[i].outForDelivery2 == null || importData.data[i].outForDelivery2 === '') {
-                importData.data[i].outForDelivery2 = false;
-            } else {
-                importData.data[i].outForDelivery2 = true;
-            }
-            if (importData.data[i].delivered2 == null || importData.data[i].delivered2 === '') {
-                importData.data[i].delivered2 = false;
-            } else {
-                importData.data[i].delivered2 = true;
-            } */
-
+        for (i = 0; i < importData.data.length; i++) {;
             Recipients.insert({
                 bastasId: importData.data[i].bastasId,
                 route: importData.data[i].route,
