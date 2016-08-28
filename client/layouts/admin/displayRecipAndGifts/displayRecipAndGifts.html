@@ -1,7 +1,9 @@
 <template name="displayRecipAndGifts">
-    <div class="input-field">
-            <input type="search" id="search" class="textSearch" placeholder="Search.." />
-            <label for="search"><i class="material-icons right" id="searchIcon">search</i></label>
+    <div class="row">
+      <div class="col s12">
+          <label>Search</label>
+          <input id="search" type="search" class="textSearch" placeholder="Search...">
+      </div>
     </div>
     <div>
         <table id="table">
@@ -18,8 +20,11 @@
                 <th>
                     Address
                 </th>
-                <th width="50%">
+                <th width="60%">
                     Gift Info
+                </th>
+                <th>
+                    Details
                 </th>
             </tr>
             {{#each getRecipientsAndGifts}}
