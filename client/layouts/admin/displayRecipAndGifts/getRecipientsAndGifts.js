@@ -26,5 +26,6 @@ Template.displayRecipAndGifts.events({
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         console.log("Details clicked: " + this._id);
+        FlowRouter.go('recipientDetail');
     },
 });
