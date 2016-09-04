@@ -27,6 +27,43 @@
                     Details
                 </th>
             </tr>
+            <tr>
+                <td id="col1Search">
+                    <input type="text" id="searchCol1" class="searchCol" placeholder="Search ..." />
+                </td>
+                <td id="col2Search">
+                    <input type="text" id="searchCol2" class="searchCol" />
+                </td>
+                <td id="col3Search">
+                    <input type="text" id="searchCol3" class="searchCol" />
+                </td>
+                <td id="col4Search">
+                    <input type="text" id="searchCol4" class="searchCol" />
+                </td>
+                <td id="col5Search">
+                    <tr>
+                        <td>
+                            <input type="text" id="searchCol5" class="searchCol" />
+                        </td>
+                        <td>
+                            <input type="checkbox" id="selectedFilter" class="checkFilter" />
+                            <label for="selectedFilter">Selected</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="checkedInFilter" class="checkFilter" />
+                            <label for="checkedInFilter">Checked In</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="outForDeliveryFilter" class="checkFilter" />
+                            <label for="outForDeliveryFilter">Out For Delivery</label>
+                        </td>
+                    </tr>
+
+                </td>
+                <td id="col6Search">
+
+                </td>
+            </tr>
             {{#each getRecipientsAndGifts}}
                 {{> getRecipientsAndGift}}
             {{/each}}
