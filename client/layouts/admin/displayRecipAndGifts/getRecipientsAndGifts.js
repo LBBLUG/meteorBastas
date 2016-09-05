@@ -68,15 +68,16 @@ Template.displayRecipAndGifts.events({
         // console.log('checked or unchecked');
         var colId = event.currentTarget.id;
         var state = event.currentTarget.checked;
-        $row = $('#table tr.trMainData');
         // console.log('State of ' + colId + ' is now ' + state);
-        console.log($('input:checkbox.isSelected:not(:checked)').length);
-        $('table tr').each(function() {
-            if ($('input:checkbox.isSelected:not(:checked)')) {
-                console.log('Unchecked: ' + $.trim($(this).find('td').eq(0).text()));
-                $row.hide();
-            }
-        });
+        console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
+        console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
+        // $('table tr.trInner').each(function() {
+        //     $rows = $('#table tr.trMainData');
+        //     if ($('input:checkbox.isSelected:checked').length == 0) {
+        //         console.log('Checked: ' + $.trim($(this).find('td').eq(0).text()));
+        //     }
+        // });
+        $('input:checkbox.isSelected:not(:checked)').closest('tr').hide();
 
     },
 });
