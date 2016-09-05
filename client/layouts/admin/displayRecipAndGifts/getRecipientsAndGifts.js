@@ -71,13 +71,10 @@ Template.displayRecipAndGifts.events({
         $row = $('#table tr.trMainData');
         // console.log('State of ' + colId + ' is now ' + state);
         console.log($('input:checkbox.isSelected:not(:checked)').length);
-        $('table tr.trInner').each(function() {
+        $('table tr').each(function() {
             if ($('input:checkbox.isSelected:not(:checked)')) {
                 console.log('Unchecked: ' + $.trim($(this).find('td').eq(0).text()));
                 $row.hide();
-            } else {
-                console.log('Checked' + $.trim($(this).find('td').eq(0).text()));
-                $row.show();
             }
         });
 
