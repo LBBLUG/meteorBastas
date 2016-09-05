@@ -68,16 +68,36 @@ Template.displayRecipAndGifts.events({
         // console.log('checked or unchecked');
         var colId = event.currentTarget.id;
         var state = event.currentTarget.checked;
-        // console.log('State of ' + colId + ' is now ' + state);
+        console.log('State of ' + colId + ' is now ' + state);
         console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
         console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
-        // $('table tr.trInner').each(function() {
-        //     $rows = $('#table tr.trMainData');
-        //     if ($('input:checkbox.isSelected:checked').length == 0) {
-        //         console.log('Checked: ' + $.trim($(this).find('td').eq(0).text()));
-        //     }
-        // });
-        $('input:checkbox.isSelected:not(:checked)').closest('tr').hide();
+
+        if (state === true) {
+            switch(colId) {
+                case "selectedFilter":
+                    $('input:checkbox.isSelected:not(:checked)').closest('.trMainData').hide();
+                    break;
+                case "selectedFilterUnchecked":
+                    $('input:checkbox.isSelected:checked').closest('.trMainData').hide();
+                    break;
+                case "checkedInFilter":
+                    $('input:checkbox.isCheckedIn:not(:checked)').closest('.trMainData').hide();
+                    break;
+                case "checkedInFilterUnchecked":
+                    $('input:checkbox.isCheckedIn:checked').closest('.trMainData').hide();
+                    break;
+                case "outForDeliveryFilter":
+                    $('input:checkbox.isOutForDelivery:not(:checked)').closest('.trMainData').hide();
+                    break;
+                case "outForDeliveryFilterUnchecked":
+                    $('input:checkbox.isOutForDelivery:checked').closest('.trMainData').hide();
+                    break;
+            }
+        } else if (state === false) {
+            $('table tr.trMainData:hidden').show();
+        }
+
+
 
     },
 });
