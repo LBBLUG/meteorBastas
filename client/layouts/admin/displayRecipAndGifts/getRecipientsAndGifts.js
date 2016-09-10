@@ -76,21 +76,27 @@ Template.displayRecipAndGifts.events({
             switch(colId) {
                 case "selectedFilter":
                     $('input:checkbox.isSelected:not(:checked)').closest('.trMainData').hide();
+                    $('input:checkbox.isSelected:checked:hidden').closest('.trMainData').show();
                     break;
                 case "selectedFilterUnchecked":
                     $('input:checkbox.isSelected:checked').closest('.trMainData').hide();
+                    $('input:checkbox.isSelected:not(:checked):hidden').closest('.trMainData').show();
                     break;
                 case "checkedInFilter":
                     $('input:checkbox.isCheckedIn:not(:checked)').closest('.trMainData').hide();
+                    $('input:checkbox.isCheckedIn:checked:hidden').closest('.trMainData').show();
                     break;
                 case "checkedInFilterUnchecked":
                     $('input:checkbox.isCheckedIn:checked').closest('.trMainData').hide();
+                    $('input:checkbox.isCheckedIn:not(:checked):hidden').closest('.trMainData').show();
                     break;
                 case "outForDeliveryFilter":
                     $('input:checkbox.isOutForDelivery:not(:checked)').closest('.trMainData').hide();
+                    $('input:checkbox.isOutForDelivery:checked:hidden').closest('.trMainData').show();
                     break;
                 case "outForDeliveryFilterUnchecked":
                     $('input:checkbox.isOutForDelivery:checked').closest('.trMainData').hide();
+                    $('input:checkbox.isOutForDelivery:not(:checked):hidden').closest('.trMainData').show();
                     break;
             }
         } else if (state === false) {
