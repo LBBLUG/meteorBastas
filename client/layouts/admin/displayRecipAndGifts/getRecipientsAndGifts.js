@@ -26,6 +26,8 @@ Template.displayRecipAndGifts.events({
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         console.log("Details clicked: " + this._id);
-        FlowRouter.go('recipientDetail');
+        var recipientDetailModal = document.getElementById("detailsFormView");
+        myGiftsModal.style.display = "block";
+        // FlowRouter.go('recipientDetail');
     },
 });
