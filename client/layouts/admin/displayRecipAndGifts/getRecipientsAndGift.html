@@ -1,6 +1,6 @@
 <template name="getRecipientsAndGift">
-            <tr class="trMain">
-                <td>
+            <tr class="trMainData">
+                <td class="col1">
                     {{bastasId}}
                 </td>
                 <td>
@@ -12,7 +12,7 @@
                 <td>
                     {{address.streetAddress}}
                     {{address.complexName}} {{address.aptNo}}
-                    {{address.zip}}
+                    {{address.city}}, {{address.state}} {{address.zip}}
                 </td>
                 <td width="40%">
                     {{#each gifts}}
