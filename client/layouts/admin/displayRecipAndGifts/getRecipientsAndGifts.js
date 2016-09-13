@@ -113,7 +113,7 @@ Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         console.log("Details clicked: " + this._id);
         var recipientDetailModal = document.getElementById("detailsFormView");
-        myGiftsModal.style.display = "block";
+        recipientDetailModal.style.display = "block";
         // FlowRouter.go('recipientDetail');
     },
 });
