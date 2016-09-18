@@ -111,9 +111,9 @@ Template.displayRecipAndGifts.events({
 // getDetails when button clicked for a row
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
+        Session.set( "recipientId", this._id );
         console.log("Details clicked: " + this._id);
         var recipientDetailModal = document.getElementById("detailsFormView");
         recipientDetailModal.style.display = "block";
-        // FlowRouter.go('recipientDetail');
     },
 });

@@ -12,7 +12,7 @@ Template.selectedCB.helpers({
 
 Template.checkedInCB.helpers({
     isCheckedIn: function() {
-        if (this.checkedIn == true) {
+        if (this.checkedIn === true) {
             return "checked";
         } else {
             return false;
@@ -22,7 +22,7 @@ Template.checkedInCB.helpers({
 
 Template.outForDeliveryCB.helpers({
     isOutForDelivery: function() {
-        if (this.outForDelivery == true) {
+        if (this.outForDelivery === true) {
             return "checked";
         } else {
             return false;
@@ -32,7 +32,7 @@ Template.outForDeliveryCB.helpers({
 
 Template.deliveredCB.helpers({
     isDelivered: function() {
-        if (this.delivered == true) {
+        if (this.delivered === true) {
             return "checked";
         } else {
             return false;
