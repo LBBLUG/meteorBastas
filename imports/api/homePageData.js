@@ -12,34 +12,21 @@ HomePageData.allow({
 });
 
 Meteor.methods({
-    'homePageData.insert' (infoText, imageFileName, imageFileLocation, isCurrent) {
+    'homePageData.insert' (infoText, imageEncoded, isCurrent) {
+        console.log('Made it to home setup Method.');
+        console.log('Info on method is: ' + infoText + ', ' + isCurrent);
 
         // make sure user is logged in
         if (!this.userId) {
             throw new Meteor.Error('User is not authorized to add home page information.');
+        } else {
+            console.log('User is logged in');
         }
 
-        homePageData.insert ({
+        return HomePageData.insert({
             infoText: infoText,
-            imageFileName: imageFileName,
-            imageFileLocation: imageFileLocation,
+            imageFileEncoded: imageEncoded,
             isCurrent: isCurrent,
         });
-    },
-    'homePageData.update' (infoText, imageFileName, imageFileLocation, isCurrent) {
-
-        // make sure user is logged in
-        if (!this.userId) {
-            throw new Meteor.Error('User is not authorized to add home page information.');
-        }
-
-        homPageData.update ({
-            $set: {
-                infoText: infoText,
-                imageFileName: imageFileName,
-                imageFileLocation: imageFileLocation,
-                isCurrent: isCurrent,
-            }
-        })
     },
 });

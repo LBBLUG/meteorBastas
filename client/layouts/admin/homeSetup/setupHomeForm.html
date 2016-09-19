@@ -1,6 +1,6 @@
 <template name="setupHomeForm">
     <div class="ui container contentInfo">
-        <div id="main">
+        <form id="mainHomeSetup">
             <div id="FormFields" class="row">
                 <div class="col s12">
                     <textarea id="mainHomeInfo" rows="4" class="materialize-textarea" placeholder="Home Page Information"></textarea>
@@ -11,6 +11,7 @@
                     Choose an Image to go on the Page with this Post
                     <br />
                     <input type="file" name="homeImage" id="homeImage" accept="image/*" />
+                    <img src="" height="200" alt="Image preview...">
                 </div>
             </div>
             <div class="row">
@@ -34,6 +35,6 @@
                     <a id="btnSubmitHomeSetup" class="waves-effect waves-light btn right"><i class="material-icons left">done</i>Save</a>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </template>

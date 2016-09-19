@@ -1,12 +1,14 @@
 <template name="homeBody">
+    {{#each getHomeDatas}}
     <div class="container">
         <div class="row">
             <div class="col s4">
-                <!-- insert image here -->
+                {{> imageDisplay}}<!-- insert image here -->
             </div>
             <div class="col s8">
-                <!-- insert information entered here -->
+                {{> textDisplay}}<!-- insert information entered here -->
             </div>
         </div>
     </div>
+    {{/each}}
 </template>

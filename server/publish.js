@@ -6,5 +6,5 @@ Meteor.publish("recipients", function(){
 });
 
 Meteor.publish("homePageData", function() {
-    return homePageData.find({ isCurrent: true })
+    return HomePageData.find({ isCurrent: true })
 });

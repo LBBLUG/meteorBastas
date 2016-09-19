@@ -1,6 +1,4 @@
-import {
-    Recipients
-} from '../../../../imports/api/recipients.js';
+import { Recipients } from '../../../../imports/api/recipients.js';
 
 // get the information from the mongoDB collection Recipients
 Template.displayRecipAndGifts.helpers({

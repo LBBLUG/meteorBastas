@@ -1,5 +1,5 @@
-Template.sideNavAdmin.events({
-    'click  #adminMenu' (event) {
+Template.sideNavUser.events({
+    'click #homeMenu'() {
         event.preventDefault();
         var clickedTarget = event.target.id;
         console.log("User clicked: " + clickedTarget);
@@ -7,6 +7,6 @@ Template.sideNavAdmin.events({
     },
 });
 
-Template.sideNavAdmin.onRendered(function() {
+Template.sideNavUser.onRendered(function() {
     $(".button-collapse").sideNav();
 });
