@@ -13,19 +13,34 @@ I chose Meteor for a few reasons:
 
 So, as described above, to run this project on your local machine simply do the following:
 
-    1. clone the repository.
-    2. change into the directory created.
-    3. type 'meteor' into the terminal window while in that directory.
-    4. use http://localhost:3000 to reach the main page.
+    1. get meteor and install it on your intended server.
+        https://www.meteor.com/
+    2. install git if you don't already have it.  
+        https://git-scm.com/downloads
+    2. clone the repository.
+        git clone https://github.com/LBBLUG/meteorBastas.git
+    3. change into the directory created.
+        cd meteorBastas
+    4. type 'meteor' into the terminal window while in that directory.
+    5. use http://localhost:3000 to reach the main page.
 
 ## Features now working
 
-Recipients List now shows recipients and their selected gifts.  Next, I'll be adding actions to show more detail, and / or edit the recipient and gifts.
+
+- Recipients List now shows recipients and their selected gifts.  
+    - Next, I'll be adding actions to edit the recipient and gifts from the detail view.
+- Detail View (no editing there yet).
+- Recipients Import from .csv file
+- Adding Recipients and Gifts manually
+- Adding content Text and Images for the home page
+- Displaying the Home page
+
+### Uploading a .csv file for bulk import
 
 I have completed the work to upload a csv file in bulk.  There are some rules for uploading a CSV.
 
-    1. there cannot be any commas ',' in the fields withint the CSV.  
-    2. the header rows for the columns must be titled exactly as follows with capitalization as shown.
+    1. there cannot be any commas ',' in the fields within the CSV.  
+    2. the header rows for the columns must be titled exactly as follows with capitalization as shown, the order of the columns is not important as long as the data in the column matches the column header row.
         a. bastasId
         b. route
 
@@ -39,11 +54,15 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
         g. giftSize1
         h. giftType2
         i. giftSize2
+        j. giftType3
+        k. giftSize3
+
+        * Note:  If any person has more than 2 gifts, you must have a full column for giftType3 and giftSize3.   At this time, the system cannot do more than 3 gifts due to parser limitations.  I will look into other options at a later time.
 
     with respect to addresses
         j. streetAddress
-        i. aptNo
-        j. complexName
+        i. aptNo (apartment number)
+        j. complexName (apartment complex name)
         k. zip
 
     with respect to phone numbers
@@ -52,25 +71,18 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 
     the above columns do not have to be in any particular order, but the header row for each must be labeled as described above.
 
-    Additional rows can be added with header labels of
+    Additional columns can be added with header labels of
         a. notes
         b. city
         c. state
 
-    fields with respect to gifts
-        a. selected
-        b. checkedIn
-        c. outForDelivery
-        d. delivered
-        e. deliveryPerson
-        f. deliveryPhone
 
 ## Next up development
-    1. Get the ability to edit recipients and gifts in the grid (checking the selected, checked in, out for delivery, and delivered check boxes).
-    2. Get the ability to move to a detail screen from the grid view.
-    3. Make edits in the detail screen.
-    4. Roles and Permissions for users.
+
+    1. Make edits in the detail screen.
+    2. Roles and Permissions for users.
         a. Make it so the first user created is an admin.
         b. Make screens and methods for setting user permissions.
         c. Make all users after the first user, an 'end user / giver' by default.
-    
+    3. Set the application to give Admin and higher privilege users the ability to easily get to admin screens.
+    4. Add a banner to the home page.

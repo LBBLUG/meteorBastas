@@ -148,57 +148,148 @@ Meteor.methods({
     },
     'Recipients.import' (importData) {
         // check the data if needed
-
+        console.log('--------------------------------------------------');
+        console.dir(importData);
         // ensure the user is logged in and has privileges
         if (!this.userId) {
             throw new Meteor.Error('User is not authorized to import recipient information, or is not logged in.');
         }
 
         // start breaking the importData down into its parts
-        for (i = 0; i < importData.data.length; i++) {;
-            Recipients.insert({
-                bastasId: importData.data[i].bastasId,
-                route: importData.data[i].route,
-                name: {
-                    first: importData.data[i].first,
-                    last: importData.data[i].last,
-                },
-                gender: importData.data[i].gender,
-                address: {
-                    streetAddress: importData.data[i].streetAddress,
-                    complexName: importData.data[i].complexName,
-                    aptNo: importData.data[i].aptNo,
-                    city: importData.data[i].city,
-                    state: importData.data[i].state,
-                    zip: importData.data[i].zip,
-                },
-                phone: {
-                    home: importData.data[i].home,
-                    cell: importData.data[i].cell,
-                },
-                gifts: [{
-                    giftType: importData.data[i].giftType1,
-                    giftSize: importData.data[i].giftSize1,
-                    selected: importData.data[i].isSelected1,
-                    checkedIn: importData.data[i].checkedIn1,
-                    outForDelivery: importData.data[i].outForDelivery1,
-                    delivered: importData.data[i].delivered1,
-                    deliveryPerson: importData.data[i].deliveryPerson1,
-                    deliveryPhone: importData.data[i].deliveryPhone1,
-                }, {
-                    giftType: importData.data[i].giftType2,
-                    giftSize: importData.data[i].giftSize2,
-                    selected: importData.data[i].isSelected2,
-                    checkedIn: importData.data[i].checkedIn2,
-                    outForDelivery: importData.data[i].outForDelivery2,
-                    delivered: importData.data[i].delivered2,
-                    deliveryPerson: importData.data[i].deliveryPerson2,
-                    deliveryPhone: importData.data[i].deliveryPhone2,
-                } ],
-                notes: importData.data[i].notes,
-                enteredBy: Meteor.user().emails[0].address,
-                addedOn: new Date(),
-            });
+        for (i = 0; i < importData.data.length; i++) {
+            if (!importData.data[i].giftType2 && !importData.data[i].giftType3) {
+                Recipients.insert({
+                    bastasId: importData.data[i].bastasId,
+                    route: importData.data[i].route,
+                    name: {
+                        first: importData.data[i].first,
+                        last: importData.data[i].last,
+                    },
+                    gender: importData.data[i].gender,
+                    address: {
+                        streetAddress: importData.data[i].streetAddress,
+                        complexName: importData.data[i].complexName,
+                        aptNo: importData.data[i].aptNo,
+                        city: importData.data[i].city,
+                        state: importData.data[i].state,
+                        zip: importData.data[i].zip,
+                    },
+                    phone: {
+                        home: importData.data[i].home,
+                        cell: importData.data[i].cell,
+                    },
+                    gifts: [{
+                        giftType: importData.data[i].giftType1,
+                        giftSize: importData.data[i].giftSize1,
+                        selected: importData.data[i].isSelected1,
+                        checkedIn: importData.data[i].checkedIn1,
+                        outForDelivery: importData.data[i].outForDelivery1,
+                        delivered: importData.data[i].delivered1,
+                        deliveryPerson: importData.data[i].deliveryPerson1,
+                        deliveryPhone: importData.data[i].deliveryPhone1,
+                    }],
+                    notes: importData.data[i].notes,
+                    enteredBy: Meteor.user().emails[0].address,
+                    addedOn: new Date(),
+                });
+            } else if (importData.data[i].giftType2 && !importData.data[i].giftType3) {
+                Recipients.insert({
+                    bastasId: importData.data[i].bastasId,
+                    route: importData.data[i].route,
+                    name: {
+                        first: importData.data[i].first,
+                        last: importData.data[i].last,
+                    },
+                    gender: importData.data[i].gender,
+                    address: {
+                        streetAddress: importData.data[i].streetAddress,
+                        complexName: importData.data[i].complexName,
+                        aptNo: importData.data[i].aptNo,
+                        city: importData.data[i].city,
+                        state: importData.data[i].state,
+                        zip: importData.data[i].zip,
+                    },
+                    phone: {
+                        home: importData.data[i].home,
+                        cell: importData.data[i].cell,
+                    },
+                    gifts: [{
+                        giftType: importData.data[i].giftType1,
+                        giftSize: importData.data[i].giftSize1,
+                        selected: importData.data[i].isSelected1,
+                        checkedIn: importData.data[i].checkedIn1,
+                        outForDelivery: importData.data[i].outForDelivery1,
+                        delivered: importData.data[i].delivered1,
+                        deliveryPerson: importData.data[i].deliveryPerson1,
+                        deliveryPhone: importData.data[i].deliveryPhone1,
+                    }, {
+                        giftType: importData.data[i].giftType2,
+                        giftSize: importData.data[i].giftSize2,
+                        selected: importData.data[i].isSelected2,
+                        checkedIn: importData.data[i].checkedIn2,
+                        outForDelivery: importData.data[i].outForDelivery2,
+                        delivered: importData.data[i].delivered2,
+                        deliveryPerson: importData.data[i].deliveryPerson2,
+                        deliveryPhone: importData.data[i].deliveryPhone2,
+                    }],
+                    notes: importData.data[i].notes,
+                    enteredBy: Meteor.user().emails[0].address,
+                    addedOn: new Date(),
+                });
+            } else {
+                Recipients.insert({
+                    bastasId: importData.data[i].bastasId,
+                    route: importData.data[i].route,
+                    name: {
+                        first: importData.data[i].first,
+                        last: importData.data[i].last,
+                    },
+                    gender: importData.data[i].gender,
+                    address: {
+                        streetAddress: importData.data[i].streetAddress,
+                        complexName: importData.data[i].complexName,
+                        aptNo: importData.data[i].aptNo,
+                        city: importData.data[i].city,
+                        state: importData.data[i].state,
+                        zip: importData.data[i].zip,
+                    },
+                    phone: {
+                        home: importData.data[i].home,
+                        cell: importData.data[i].cell,
+                    },
+                    gifts: [{
+                        giftType: importData.data[i].giftType1,
+                        giftSize: importData.data[i].giftSize1,
+                        selected: importData.data[i].isSelected1,
+                        checkedIn: importData.data[i].checkedIn1,
+                        outForDelivery: importData.data[i].outForDelivery1,
+                        delivered: importData.data[i].delivered1,
+                        deliveryPerson: importData.data[i].deliveryPerson1,
+                        deliveryPhone: importData.data[i].deliveryPhone1,
+                    }, {
+                        giftType: importData.data[i].giftType2,
+                        giftSize: importData.data[i].giftSize2,
+                        selected: importData.data[i].isSelected2,
+                        checkedIn: importData.data[i].checkedIn2,
+                        outForDelivery: importData.data[i].outForDelivery2,
+                        delivered: importData.data[i].delivered2,
+                        deliveryPerson: importData.data[i].deliveryPerson2,
+                        deliveryPhone: importData.data[i].deliveryPhone2,
+                    }, {
+                        giftType: importData.data[i].giftType3,
+                        giftSize: importData.data[i].giftSize3,
+                        selected: importData.data[i].isSelected3,
+                        checkedIn: importData.data[i].checkedIn3,
+                        outForDelivery: importData.data[i].outForDelivery3,
+                        delivered: importData.data[i].delivered3,
+                        deliveryPerson: importData.data[i].deliveryPerson3,
+                        deliveryPhone: importData.data[i].deliveryPhone3,
+                    } ],
+                    notes: importData.data[i].notes,
+                    enteredBy: Meteor.user().emails[0].address,
+                    addedOn: new Date(),
+                });
+            }
         }
     },
     'Selected.update' (recipientId, selectedState, giftTypeInfo) {
