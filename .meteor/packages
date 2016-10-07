@@ -19,8 +19,13 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 
 insecure                # Allow all DB writes from clients (for prototyping)
-accounts-ui
+accounts-base
 accounts-password
+useraccounts:unstyled
+raix:handlebar-helpers
+aldeed:template-extension
+alanning:roles
+
 momentjs:moment         # get Date / Time in all kinds of great formats
 kadira:flow-router      # Routing for page loading
 kadira:blaze-layout
