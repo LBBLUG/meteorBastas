@@ -21,6 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <template name="homeBody">
+    {{#each getHomeBanners}}
+        {{> displayHomePageBanner}}
+    {{/each}}
     {{#each getHomeDatas}}
     <div class="container">
         <div class="row">

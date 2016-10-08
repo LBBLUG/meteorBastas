@@ -22,3 +22,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Meteor.subscribe('recipients');
 Meteor.subscribe('homePageData');
+Meteor.subscribe('homePageBanner');

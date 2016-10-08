@@ -24,9 +24,9 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const HomePageData = new Mongo.Collection('homePageData');
+export const HomePageBanner = new Mongo.Collection('homePageBanner');
 
-HomePageData.allow({
+HomePageBanner.allow({
     insert: function(userId, doc) {
         // if user id exists, allow insert
         return !!userId;
@@ -34,20 +34,18 @@ HomePageData.allow({
 });
 
 Meteor.methods({
-    'homePageData.insert' (infoText, imageEncoded, isCurrent) {
-        console.log('Made it to home setup Method.');
-        console.log('Info on method is: ' + infoText + ', ' + isCurrent);
+    'homePageBanner.insert' (bannerImage, isCurrent) {
+        console.log('Made it to insert banner image call');
 
-        // make sure user is logged in
+        //make sure user is logged in
         if (!this.userId) {
-            throw new Meteor.Error('User is not authorized to add home page information.');
+            throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
         } else {
-            console.log('User is logged in');
+            console.log('User is logged in and able to add home page banner.');
         }
 
-        return HomePageData.insert({
-            infoText: infoText,
-            imageFileEncoded: imageEncoded,
+        return HomePageBanner.insert({
+            bannerImage: bannerImage,
             isCurrent: isCurrent,
             addedOn: new Date(),
             addedBy: Meteor.user().emails[0].address,

@@ -22,11 +22,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Recipients } from '../imports/api/recipients.js';
 import { HomePageData } from '../imports/api/homePageData.js';
+import { HomePageBanner } from '../imports/api/homePageBanner.js';
 
 Meteor.publish("recipients", function(){
     return Recipients.find({});
 });
 
 Meteor.publish("homePageData", function() {
-    return HomePageData.find({ isCurrent: true })
+    return HomePageData.find({ isCurrent: true });
+});
+
+Meteor.publish("homePageBanner", function() {
+    return HomePageBanner.find({ isCurrent: true });
 });

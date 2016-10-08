@@ -20,61 +20,42 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { HomePageData } from '../../../../imports/api/homePageData.js';
-import { HomePageBanner } from '../../../../imports/api/homePageBanner.js';
-Template.homeBody.helpers({
-    getHomeDatas: function() {
-        return HomePageData.find({ isCurrent: true });
-    },
-    getHomeBanners: function() {
-        return HomePageBanner.find({ isCurrent: true });
-    },
-});
-
-Template.setupHomeForm.events({
-    'click #btnSubmitHomeSetup' (event) {
+Template.setupHomePageBanner.events({
+    'click #btnSubmitBannerSetup' (event) {
         event.preventDefault();
-        console.log('Save button Clicked');
-        homePageText = $("#mainHomeInfo").val();
         if ($(".isCurrent").prop('checked') == true) {
             isCurrent = true;
         } else {
             isCurrent = false;
         }
 
-        image64 = Session.get("encodedImage");
+        bannerImage = Session.get("bannerImage");
 
-        Meteor.call('homePageData.insert', homePageText, image64, isCurrent, function(err, result){
+        Meteor.call('homePageBanner.insert', bannerImage, isCurrent, function(err, result){
             if (err) {
                 console.log('Error: ' + err);
             } else {
                 console.log('Insert Result: ' + result);
-                document.getElementById("mainHomeSetup").reset();
+                // add snackbar notice that save was good.
+                document.getElementById("mainBannerSetup").reset();
             }
         });
     },
-    'click #btnCancelHomeSetup' (event) {
-        document.getElementById("mainHomeSetup").reset();
+    'click #btnCancelBannerSetup' (event) {
+        document.getElementById("mainBannerSetup").reset();
     },
-    'change #homeImage' (event) {
+    'change #bannerImage': () => {
         var preview = document.querySelector('img');
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
 
         reader.addEventListener("load", function () {
             preview.src = reader.result;
-            Session.set("encodedImage", preview.src);
+            Session.set("bannerImage", preview.src);
         }, false);
 
         if (file) {
           reader.readAsDataURL(file);
         }
     },
-});
-
-Template.imageDisplay.helpers({
-    niceImage: function() {
-        reader = new FileReader();
-        return reader.readAsDataURL(imageFileEncoded);
-    }
-});
+})

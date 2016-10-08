@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 
 
-/+ LICENSE */
+/* LICENSE */
 /*
 BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
 gives operators of this program the ability to track gifts selected onlie,
@@ -27,6 +27,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .contentInfo {
     margin-top: 5%;
+}
+
+.banner {
+    width: 100%;
 }
 
 .recipientsForm {
@@ -98,4 +102,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     border-radius: 2px;
     color: #e2e2e2;
     width:auto;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-upload:hover {
+    background: #00f5ff;
 }

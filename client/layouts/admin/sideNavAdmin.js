@@ -25,7 +25,18 @@ Template.sideNavAdmin.events({
         event.preventDefault();
         var clickedTarget = event.target.id;
         console.log("User clicked: " + clickedTarget);
-        FlowRouter.go('/' + clickedTarget);
+        if (clickedTarget === 'home' || clickedTarget === 'giveAGift') {
+            FlowRouter.go('/user/' + clickedTarget);
+        } else if (clickedTarget !== "signIn" && clickedTarget !== "signOut") {
+            FlowRouter.go('/admin/' + clickedTarget);
+        }
+    },
+    'click #signIn': () => {
+        var signInModal = document.getElementById('signInModal');
+        signInModal.style.display = "block";
+    },
+    'click #signOut': () => {
+        Meteor.logout();
     },
 });
 

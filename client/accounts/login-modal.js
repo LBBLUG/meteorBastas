@@ -1,5 +1,5 @@
 Template.loginModal.events({
-    "click .close-login": () => {
+    "click .closeBtn": () => {
         signInModal.style.display = "none";
     },
 });
