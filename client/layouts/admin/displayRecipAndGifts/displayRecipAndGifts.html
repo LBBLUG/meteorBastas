@@ -21,13 +21,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <template name="displayRecipAndGifts">
+    <div class="templateWrapper">
     {{#if isInRole 'Admin, Editor, Adder' 'Admin'}}
+    <div class="container">
         <div class="row">
           <div class="col s12">
               <label>Search</label>
               <input id="search" type="search" class="textSearch" placeholder="Search...">
           </div>
         </div>
+    </div>
         <div>
             <table id="table">
                 <tr class="trMain">
@@ -47,7 +50,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         Gift Info
                     </th>
                     <th>
+                    {{#if isInRole 'Admin, Editor' 'Admin'}}
                         Details
+                    {{/if}}
                     </th>
                 </tr>
                 <tr>
@@ -98,11 +103,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 {{/each}}
             </table>
         </div>
+
         {{> recipientDetail}}
+
     {{else}}
         <h3>Not Authorized</h3>
         <p>
             It would appear you are not authorized to view this page.  If you believe this to be a mistake, please contact the site administrator.
         </p>
     {{/if}}
+    </div>
 </template>

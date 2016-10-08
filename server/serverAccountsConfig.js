@@ -20,15 +20,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-Template.sideNavUser.events({
-    'click #homeMenu'() {
-        event.preventDefault();
-        var clickedTarget = event.target.id;
-        console.log("User clicked: " + clickedTarget);
-        FlowRouter.go('/' + clickedTarget);
-    },
-});
+var postSignUp = function(userId, info) {
+    Roles.addUsersToRoles(userId, 'giver', 'allUsers');
+}
 
-Template.sideNavUser.onRendered(function() {
-    $(".button-collapse").sideNav();
+AccountsTemplates.configure({
+    postSignUpHook: postSignUp,
 });

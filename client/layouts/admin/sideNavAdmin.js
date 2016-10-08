@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 Template.sideNavAdmin.events({
-    'click  #adminMenu' (event) {
+    'click  .adminMenu' (event) {
         event.preventDefault();
         var clickedTarget = event.target.id;
         console.log("User clicked: " + clickedTarget);
@@ -41,5 +41,9 @@ Template.sideNavAdmin.events({
 });
 
 Template.sideNavAdmin.onRendered(function() {
-    $(".button-collapse").sideNav();
+    // Initialize collapse button
+  $(".button-collapse").sideNav({
+     closeOnClick: true,
+  });
+
 });

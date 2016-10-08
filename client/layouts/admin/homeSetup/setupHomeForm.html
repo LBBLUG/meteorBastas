@@ -21,9 +21,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <template name="setupHomeForm">
-    {{> setupNav}}
+    <div class="templateWrapper">
+        {{> setupNav}}
+    </div>
     <div class="ui container contentInfo">
         <form id="mainHomeSetup">
+            <div class="row">
+                <div class="col s12">
+                    <h4>Setup Your Home Page Information</h4>
+                </div>
+            </div>
             <div id="infoField" class="row">
                 <div class="col s12">
                     {{> infoField}}

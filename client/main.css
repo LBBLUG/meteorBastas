@@ -24,6 +24,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+.templateWrapper {
+    margin-top: 80px;
+}
 
 .contentInfo {
     margin-top: 5%;
@@ -77,10 +80,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     width: 80%;
 }
 
-.mainHeader {
-    margin-top: 0;
-    height: 100px;
+#menuButton {
+    position: relative;
+    display: inline;
+    margin-left: 3%;
+}
+
+.headerText {
+    display: inline-block;
+    margin-left: 25%;
+}
+
+.headerRow {
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 100%;
+    height: 80px;
     color: #e2e2e2;
     background: #191970;
 }
@@ -119,4 +135,8 @@ input[type="file"] {
 
 .custom-file-upload:hover {
     background: #00f5ff;
+}
+
+i.icon-white {
+    color: white;
 }

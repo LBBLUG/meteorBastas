@@ -25,7 +25,9 @@ import { HomePageData } from '../imports/api/homePageData.js';
 import { HomePageBanner } from '../imports/api/homePageBanner.js';
 
 Meteor.publish("recipients", function(){
-    return Recipients.find({});
+    if (Roles.userIsInRole(this.userId, ['Admin', 'Editor', 'Adder', 'Viewer'], 'Admin')) {
+        return Recipients.find({});
+    }
 });
 
 Meteor.publish("homePageData", function() {
@@ -34,4 +36,8 @@ Meteor.publish("homePageData", function() {
 
 Meteor.publish("homePageBanner", function() {
     return HomePageBanner.find({ isCurrent: true });
+});
+
+Meteor.publish("recipientsGeneralUser", function() {
+    return Recipients.find({ gifts: { $elemMatch: { selected: true }}}, { "name.first": 1, "gifts.giftType": 1, "gifts.giftSize": 1, "gifts.selected": 1 });
 });
