@@ -1,0 +1,29 @@
+/* This is the css for dashboard widgets */
+
+.darkCounts {
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    background: #2d2d2d;
+    height: 240px;
+    width: 240px;
+}
+
+.darkCountsHigh {
+    color: #3989f8;
+}
+
+.darkCountsLow {
+    color: #b422ff;
+}
+
+.countsShown {
+    margin-top: 20%;
+    color: #e2e2e2;
+    font-size: 48px;
+    text-align: center;
+}
+
+.countsTitle {
+    color: #e2e2e2;
+    font-size: 24px;
+}
