@@ -66,29 +66,63 @@ Template.getRecipientsAndGift.events({
     'click .isSelected' (event, target) {
         const selectedState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
-        console.log("Selected clicked: " + this._id + " is " + selectedState + " with Gift Type " + this.giftType);
         // call the method to update this checkbox
-        Meteor.call('Selected.update', this._id, selectedState, giftTypeInfo);
+        if (selectedState === false) {
+            Meteor.call('Selected.update', this._id, selectedState, giftTypeInfo);
+            Meteor.call('Delivered.update', this._id, selectedState, giftTypeInfo);
+            Meteor.call('OutForDelivery.update', this._id, selectedState, giftTypeInfo);
+            Meteor.call('CheckedIn.update', this._id, selectedState, giftTypeInfo);
+        } else {
+            Meteor.call('Selected.update', this._id, selectedState, giftTypeInfo);
+        }
+
     },
     'click .isCheckedIn' (event, target) {
         const checkedInState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
-        console.log("Checked In clicked: " + this._id);
         // call the method to update the checkbox in database
-        Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+        // if checked in is being set to true, we must also set Selected to true.
+        if (checkedInState === true) {
+            Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+            Meteor.call('Selected.update', this._id, checkedInState, giftTypeInfo);
+        } else if (checkedInState === false) {
+            Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+            Meteor.call('Delivered.update', this._id, checkedInState, giftTypeInfo);
+            Meteor.call('OutForDelivery.update', this._id, checkedInState, giftTypeInfo);
+        } else {
+            Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+        }
     },
     'click .isOutForDelivery' (event, target) {
         const outForDeliveryState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
-
         // call method to set checkbox in db
-        Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+        // if outForDelivery is being set to true, then we must also set Selected and
+        // checkedIn to true.
+        if (outForDeliveryState === true) {
+            Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+            Meteor.call('CheckedIn.update', this._id, outForDeliveryState, giftTypeInfo);
+            Meteor.call('Selected.update', this._id, outForDeliveryState, giftTypeInfo);
+        } else if (outForDeliveryState === false) {
+            Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+            Meteor.call('Delivered.update', this._id, outForDeliveryState, giftTypeInfo);
+        } else {
+            Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+        }
     },
     'click .isDelivered' (event, target) {
         const isDeliveredState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
-
         //call method to set checkbox state in db
-        Meteor.call('Delivered.update', this._id, isDeliveredState, giftTypeInfo);
+        // if isDelivered is being set to true, then we must set Selected, CheckedIn,
+        // and OutForDelivery to true as well.
+        if (isDeliveredState === true) {
+            Meteor.call('Delivered.update', this._id, isDeliveredState, giftTypeInfo);
+            Meteor.call('OutForDelivery.update', this._id, isDeliveredState, giftTypeInfo);
+            Meteor.call('CheckedIn.update', this._id, isDeliveredState, giftTypeInfo);
+            Meteor.call('Selected.update', this._id, isDeliveredState, giftTypeInfo);
+        } else {
+            Meteor.call('Delivered.update', this._id, isDeliveredState, giftTypeInfo);
+        }
     },
 });

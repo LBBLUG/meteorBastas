@@ -131,9 +131,17 @@ Template.displayRecipAndGifts.events({
 // getDetails when button clicked for a row
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
-        Session.set( "recipientId", this._id );
-        console.log("Details clicked: " + this._id);
-        var recipientDetailModal = document.getElementById("detailsFormView");
-        recipientDetailModal.style.display = "block";
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'], 'Admin')) {
+            Session.set( "recipientId", this._id );
+            console.log("Details clicked: " + this._id);
+            var recipientDetailModal = document.getElementById("detailsFormView");
+            recipientDetailModal.style.display = "block";
+        } else {
+            myModalTitle = "Not Authorized";
+            myModalText = "It appears you are not authorized to view detailed information about recipients.  If you believe this to be in error, please contact your system administrator.";
+            myModal.style.display = "block";
+            $("#myModalTitleHeader").html(myModalTitle);
+            $("#myModalTextSection").html(myModalText);
+        }
     },
 });

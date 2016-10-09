@@ -334,4 +334,6 @@ Meteor.methods({
             $set: { 'gifts.$.delivered': selectedState, } },
         );
     },
+    // get numbers for gift counts
+
 });

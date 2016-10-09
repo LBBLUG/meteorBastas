@@ -32,3 +32,4 @@ kadira:blaze-layout
 meteortoys:allthings    # use CTRL+M to show some nice helpers on Chrome
 materialize:materialize@=0.97.6 # A nice user interface css library
 harrison:papa-parse     # parsing package to get csv to json
+meteorhacks:aggregate
