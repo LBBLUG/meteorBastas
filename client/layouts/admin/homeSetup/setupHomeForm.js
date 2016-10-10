@@ -22,12 +22,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { HomePageData } from '../../../../imports/api/homePageData.js';
 import { HomePageBanner } from '../../../../imports/api/homePageBanner.js';
+
 Template.homeBody.helpers({
     getHomeDatas: function() {
         return HomePageData.find({ isCurrent: true });
     },
     getHomeBanners: function() {
         return HomePageBanner.find({ isCurrent: true });
+    },
+    even: function (value) {
+        console.log("Value = " + value);
+    if ((value % 2) === 0) {
+        var isEven = true;
+    } else {
+        isEven = false;
+    }
+        console.log("Even: " + isEven);
+        return isEven;
     },
 });
 

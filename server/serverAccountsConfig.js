@@ -22,8 +22,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 var postSignUp = function(userId, info) {
     Roles.addUsersToRoles(userId, 'giver', 'allUsers');
-}
+};
+
+var onLogOut = function() {
+    FlowRouter.go('/user/home');
+};
 
 AccountsTemplates.configure({
     postSignUpHook: postSignUp,
+    onLogoutHook: onLogOut
 });

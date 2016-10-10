@@ -36,7 +36,8 @@ Template.sideNavAdmin.events({
         signInModal.style.display = "block";
     },
     'click #signOut': () => {
-        Meteor.logout();
+        AccountsTemplates.logout();
+        FlowRouter.go('/user/home');
     },
 });
 

@@ -34,42 +34,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     <a href="#" id="signOut">Sign Out</a>
                 </li>
                 <li>
-                    <a href="#" id="home"><i class="material-icons" id="home">home</i></a>
+                    <a href="#" id="home"><i class="material-icons" id="home">home</i>&nbsp; Home</a>
                 </li>
                 <li>
-                    <a href="#" id="giveAGift"><i class="material-icons" id="giveAGift">card_giftcard</i></a>
+                    <a href="#" id="giveAGift"><i class="material-icons" id="giveAGift">card_giftcard</i>&nbsp; Give a Gift</a>
                 </li>
 
                 {{#if isInRole 'Admin' 'Admin'}}
                     <li>
-                        <a href="#" id="dashboard"><i class="material-icons" id="dashboard">dashboard</i></a>
+                        <a href="#" id="dashboard"><i class="material-icons" id="dashboard">dashboard</i>&nbsp; Dashboard</a>
                     </li>
                 {{/if}}
 
                 {{#if isInRole 'Admin, Editor, Viewer, Adder' 'Admin'}}
                     <li>
-                        <a href="#" id="recipientsList"><i class="material-icons" id="recipientsList">group</i></a>
+                        <a href="#" id="recipientsList"><i class="material-icons" id="recipientsList">group</i>&nbsp; Recipients List</a>
                     </li>
                 {{/if}}
 
                 {{#if isInRole 'Admin, Editor, Adder' 'Admin'}}
                     <li>
-                        <a href="#" id="addRecipients"><i class="material-icons" id="addRecipients">groupadd</i></a>
+                        <a href="#" id="addRecipients"><i class="material-icons" id="addRecipients">groupadd</i>&nbsp; Add Recipients</a>
                     </li>
                     <li>
-                        <a href="#" id="importRecipients"><i class="material-icons" id="importRecipients">system_update_alt</i></a>
+                        <a href="#" id="importRecipients"><i class="material-icons" id="importRecipients">system_update_alt</i>&nbsp; Import Recipients</a>
                     </li>
                 {{/if}}
 
                 {{#if isInRole 'Admin' 'Admin'}}
                     <li>
-                        <a href="#" id="sendReminder"><i class="material-icons" id="sendReminder">email</i></a>
+                        <a href="#" id="sendReminder"><i class="material-icons" id="sendReminder">email</i>&nbsp; Send Reminder</a>
                     </li>
                 {{/if}}
 
                 {{#if isInRole 'Admin, Editor' 'Admin'}}
                     <li>
-                        <a href="#" id="settings"><i class="material-icons" id="settings">settings</i></a>
+                        <a href="#" id="settings"><i class="material-icons" id="settings">settings</i>&nbsp; Setup</a>
                     </li>
                 {{/if}}
             {{/if}}

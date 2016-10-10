@@ -6,3 +6,8 @@
     margin-left: 50px;
     cursor: pointer;
 }
+
+.modal {
+    z-index: 10;
+    margin-top: 20%;
+}
