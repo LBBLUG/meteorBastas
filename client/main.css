@@ -140,3 +140,7 @@ input[type="file"] {
 i.icon-white {
     color: white;
 }
+
+.bufferZone {
+    margin: 20px;
+}

@@ -1,0 +1,29 @@
+<template name="manageUsers">
+    {{#if isInRole 'Admin' 'Admin'}}
+    <div class="templateWrapper">
+        <h3>Manage Users</h3>
+        <table class="bufferZone">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+            </tr>
+            {{#each users}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{profile.firstName}} {{profile.lastName}}</td>
+                <td>{{userEmail}}</td>
+                <td>{{profile.cellPhone}}</td>
+                <td>{{isAdmin}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    {{else}}
+    <div class="templateWrapper" id="notAuthorized">
+        {{> notAuthorized}}
+    </div>
+    {{/if}}
+</template>

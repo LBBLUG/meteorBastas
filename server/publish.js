@@ -41,3 +41,9 @@ Meteor.publish("homePageBanner", function() {
 Meteor.publish("recipientsGeneralUser", function() {
     return Recipients.find({ gifts: { $elemMatch: { selected: true }}}, { "name.first": 1, "gifts.giftType": 1, "gifts.giftSize": 1, "gifts.selected": 1 });
 });
+
+Meteor.publish("allUsers", function() {
+    if (Roles.userIsInRole(this.userId, 'Admin', 'Admin')) {
+        return Meteor.users.find({});
+    }
+});
