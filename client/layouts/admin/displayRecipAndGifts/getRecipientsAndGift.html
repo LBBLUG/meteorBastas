@@ -19,52 +19,60 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
 <template name="getRecipientsAndGift">
-            <tr class="trMainData">
-                <td class="col1">
-                    {{bastasId}}
-                </td>
-                <td>
-                    {{route}}
-                </td>
-                <td>
-                    {{name.first}} {{name.last}}
-                </td>
-                <td>
-                    {{address.streetAddress}}
-                    {{address.complexName}} {{address.aptNo}}
-                    {{address.city}}, {{address.state}} {{address.zip}}
-                </td>
-                <td width="40%">
-                    {{#each gifts}}
-                    <tr class="trInner">
-                        <td>
-                            {{giftType}}
-                        </td>
-                        <td>
-                            {{giftSize}}
-                        </td>
-                        <td>
-                            {{> selectedCB _id=../_id giftType=giftType selected=selected}}
-                        </td>
-                        <td>
-                            {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
-                        </td>
-                        <td>
-                            {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
-                        </td>
-                        <td>
-                            {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
-                        </td>
-                    </tr>
-                    {{/each}}
-                </td>
-
-                <td>
-                {{#if isInRole 'Admin, Editor' 'Admin'}}
-                    <a id="getRecipDetail" class="waves-effect waves-light btn details">Details</a>
-                {{/if}}
-                </td>
-            </tr>
+    <h3>Recipient Info</h3>
+    <div class="row">
+        <div class="col s2">
+            <label>Bastas ID</label><br />
+            {{bastasId}}
+        </div>
+        <div class="col s2">
+            <label>Route</label><br />
+            {{route}}
+        </div>
+        <div class="col s3">
+            <label>Name</label><br />
+            {{name.first}} {{name.last}}
+        </div>
+        <div class="col s3">
+            <label>Address</label><br />
+            {{address.streetAddress}}
+            {{address.complexName}} {{address.aptNo}}
+            {{address.city}}, {{address.state}} {{address.zip}}
+        </div>
+        <div class="col s2">
+            {{#if isInRole 'Admin, Editor' 'Admin'}}
+                <a id="getRecipDetail" class="waves-effect waves-light btn details">Details</a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Gifts</h4>
+            {{#each gifts}}
+            <div class="row">
+                <div class="col s2">
+                    <label>Gift</label><br />
+                    {{giftType}}
+                </div>
+                <div class="col s2">
+                    <label>Size</label><br />
+                    {{giftSize}}
+                </div>
+                <div class="col s2">
+                    {{> selectedCB _id=../_id giftType=giftType selected=selected}}
+                </div>
+                <div class="col s2">
+                    {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
+                </div>
+                <div class="col s2">
+                    {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
+                </div>
+                <div class="col s2">
+                    {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 </template>

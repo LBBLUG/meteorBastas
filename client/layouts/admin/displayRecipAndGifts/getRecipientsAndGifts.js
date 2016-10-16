@@ -23,66 +23,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Recipients } from '../../../../imports/api/recipients.js';
 
 // get the information from the mongoDB collection Recipients
+
 Template.displayRecipAndGifts.helpers({
     getRecipientsAndGifts() {
-        return Recipients.find({});
+        var searchType = Session.get("searchType");
+        if (searchType === "bastasId") {
+            var bastasID = Session.get("bastasIDEntered");
+            return Recipients.find({ bastasId: bastasID });
+        } else if (searchType === "routeNo") {
+            var routeEntered = Session.get("routeEntered");
+            return Recipients.find({ route: routeEntered });
+        }
     },
 });
 
 // use the textBox at the top to search for items in the grid as use types
 Template.displayRecipAndGifts.events({
-    'input .textSearch' (event, target) {
-        var $rows = $('#table tr.trMainData');
-        $('#search').keyup(function() {
-            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-            $rows.show().filter(function() {
-                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-                return !~text.indexOf(val);
-            }).hide();
-        });
+    'submit .searchID' (event) {
+        event.preventDefault();
+        const target = event.target;
+        const bastasID = target.searchId.value;
+        Session.set("bastasIDEntered", bastasID);
+        Session.set("searchType", "bastasId");
     },
-    'input .searchCol' (event) {
-        // determine which search column is being used
-        var colId = event.currentTarget.id;
-
-        // set the column number i for the column to look in
-        switch(colId) {
-            case "searchCol1":
-                i = 0;
-                break;
-            case "searchCol2":
-                i = 1;
-                break;
-            case "searchCol3":
-                i = 2;
-                console.log("Col 3 used");
-                break;
-            case "searchCol4":
-                i = 3;
-                break;
-            case "searchCol5":
-                i = 4;
-                break;
-            case "searchCol6":
-                i = 5;
-                break;
-        }
-
-        // Check the value entered into the column search field and filter.
-        // currently only matches from beginning to end - no middle matching yet.
-        $('table tr.trMainData').each(function() {
-            var colData = $.trim($(this).find('td').eq(i).text()).replace(/\s+/g, ' ').toLowerCase();
-            var typed = $('#' + colId).val().replace(/ +/g, ' ').toLowerCase();
-            if (colData.indexOf(typed) < 0) {
-                $(this).hide();
-            }
-
-            // if the field is being emptied, then show all rows again.
-            if ($('#' + colId).val() == null || $('#' + colId).val() == '') {
-                $('table tr.trMainData:hidden').show();
-            }
-        });
+    'submit .searchRoute' (event) {
+        event.preventDefault();
+        const target = event.target;
+        const routeInfo = target.searchroute.value;
+        Session.set("routeEntered", routeInfo);
+        Session.set("searchType", "routeNo");
+    },
+    'submit .searchName' (event) {
+        event.preventDefault();
+        const target = event.target;
+        const bastasID = target.searchname.value;
+        Session.set("nameEntered", nameInfo);
     },
     'click .checkFilter' (event) {
         // console.log('checked or unchecked');

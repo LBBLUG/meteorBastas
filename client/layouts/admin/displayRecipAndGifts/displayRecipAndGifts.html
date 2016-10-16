@@ -25,92 +25,53 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     {{#if isInRole 'Admin, Editor, Adder' 'Admin'}}
     <div class="container">
         <div class="row">
-          <div class="col s12">
-              <label>Search</label>
-              <input id="search" type="search" class="textSearch" placeholder="Search...">
-          </div>
+            <div class="col s4">
+                <form class="searchID">
+                    <label>Search BastasID</label>
+                    <input type="text" id="searchId" class="searchCol" placeholder="Search ..." />
+                </form>
+            </div>
+            <div class="col s4">
+                <form class="searchRoute">
+                    <label>Search Route</label>
+                    <input type="text" id="searchroute" class="searchCol" />
+                </form>
+            </div>
+            <div class="col s4">
+                <label>Search Name</label>
+                <input type="text" id="searchCol3" class="searchCol" />
+            </div>
         </div>
+        <div class="row">
+            <div class="col s3">
+                <input type="checkbox" id="selectedFilter" class="checkFilter" />
+                <label for="selectedFilter">Selected</label><br />
+                <input type="checkbox" id="selectedFilterUnchecked" class="checkFilter" />
+                <label for="selectedFilterUnchecked">Not Selected</label>
+            </div>
+            <div class="col s3">
+                <input type="checkbox" id="checkedInFilter" class="checkFilter" />
+                <label for="checkedInFilter">Checked In</label><br />
+                <input type="checkbox" id="checkedInFilterUnchecked" class="checkFilter" />
+                <label for="checkedInFilterUnchecked">Not Checked In</label>
+            </div>
+            <div class="col s3">
+                <input type="checkbox" id="outForDeliveryFilter" class="checkFilter" />
+                <label for="outForDeliveryFilter">Out For Delivery</label><br />
+                <input type="checkbox" id="outForDeliveryFilterUnchecked" class="checkFilter" />
+                <label for="outForDeliveryFilterUnchecked">Not Out For Delivery</label>
+            </div>
+        </div>
+            {{#each getRecipientsAndGifts}}
+                {{> getRecipientsAndGift}}
+            {{/each}}
     </div>
-        <div>
-            <table id="table">
-                <tr class="trMain">
-                    <th>
-                        Bastas ID
-                    </th>
-                    <th>
-                        Route
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Address
-                    </th>
-                    <th width="60%">
-                        Gift Info
-                    </th>
-                    <th>
-                    {{#if isInRole 'Admin, Editor' 'Admin'}}
-                        Details
-                    {{/if}}
-                    </th>
-                </tr>
-                <tr>
-                    <td id="col1Search">
-                        <input type="text" id="searchCol1" class="searchCol" placeholder="Search ..." />
-                    </td>
-                    <td id="col2Search">
-                        <input type="text" id="searchCol2" class="searchCol" />
-                    </td>
-                    <td id="col3Search">
-                        <input type="text" id="searchCol3" class="searchCol" />
-                    </td>
-                    <td id="col4Search">
-                        <input type="text" id="searchCol4" class="searchCol" />
-                    </td>
-                    <td id="col5Search">
-                        <tr>
-                            <td>
-                                <input type="text" id="searchCol5" class="searchCol" />
-                            </td>
-                            <td>
-                                <input type="checkbox" id="selectedFilter" class="checkFilter" />
-                                <label for="selectedFilter">Selected</label><br />
-                                <input type="checkbox" id="selectedFilterUnchecked" class="checkFilter" />
-                                <label for="selectedFilterUnchecked">Not Selected</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" id="checkedInFilter" class="checkFilter" />
-                                <label for="checkedInFilter">Checked In</label><br />
-                                <input type="checkbox" id="checkedInFilterUnchecked" class="checkFilter" />
-                                <label for="checkedInFilterUnchecked">Not Checked In</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" id="outForDeliveryFilter" class="checkFilter" />
-                                <label for="outForDeliveryFilter">Out For Delivery</label><br />
-                                <input type="checkbox" id="outForDeliveryFilterUnchecked" class="checkFilter" />
-                                <label for="outForDeliveryFilterUnchecked">Not Out For Delivery</label>
-                            </td>
-                        </tr>
-
-                    </td>
-                    <td id="col6Search">
-
-                    </td>
-                </tr>
-                {{#each getRecipientsAndGifts}}
-                    {{> getRecipientsAndGift}}
-                {{/each}}
-            </table>
-        </div>
-
         {{> recipientDetail}}
-
-    {{else}}
-        <h3>Not Authorized</h3>
-        <p>
-            It would appear you are not authorized to view this page.  If you believe this to be a mistake, please contact the site administrator.
-        </p>
-    {{/if}}
+        {{else}}
+            <h3>Not Authorized</h3>
+            <p>
+                It would appear you are not authorized to view this page.  If you believe this to be a mistake, please contact the site administrator.
+            </p>
+        {{/if}}
     </div>
 </template>
