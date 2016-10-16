@@ -1,0 +1,116 @@
+<!--
+BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
+gives operators of this program the ability to track gifts selected onlie,
+gifts checked in by volunteers giving to a Senior, and delivery of the gifts
+to the recipients each season.
+
+Copyright (C) 2016  Brian McGonagill - On Behalf of the Lubbock Linux Users Group
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<template name="displayAllRecipients">
+    <div class="templateWrapper">
+        <div class="container">
+            <div class="row">
+                 <div class="col s12">
+                     <label>Search</label>
+                     <input id="search" type="search" class="textSearch" placeholder="Search...">
+                 </div>
+            </div>
+        </div>
+        <div>
+            {{#if isInRole 'Admin, Editor' 'Admin'}}
+            <table id="table">
+                <tr class="trMain">
+                    <th>
+                        Bastas ID
+                    </th>
+                    <th>
+                        Route
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th width="60%">
+                        Gift Info
+                    </th>
+                    <th>
+                    {{#if isInRole 'Admin, Editor' 'Admin'}}
+                        Details
+                    {{/if}}
+                    </th>
+                </tr>
+                <tr>
+                    <td id="col1Search">
+
+                    </td>
+                    <td id="col2Search">
+
+                    </td>
+                    <td id="col3Search">
+
+                    </td>
+                    <td id="col4Search">
+
+                    </td>
+                    <td id="col5Search">
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <input type="checkbox" id="selectedFilter" class="checkFilter" />
+                                <label for="selectedFilter">Selected</label><br />
+                                <input type="checkbox" id="selectedFilterUnchecked" class="checkFilter" />
+                                <label for="selectedFilterUnchecked">Not Selected</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="checkedInFilter" class="checkFilter" />
+                                <label for="checkedInFilter">Checked In</label><br />
+                                <input type="checkbox" id="checkedInFilterUnchecked" class="checkFilter" />
+                                <label for="checkedInFilterUnchecked">Not Checked In</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="outForDeliveryFilter" class="checkFilter" />
+                                <label for="outForDeliveryFilter">Out For Delivery</label><br />
+                                <input type="checkbox" id="outForDeliveryFilterUnchecked" class="checkFilter" />
+                                <label for="outForDeliveryFilterUnchecked">Not Out For Delivery</label>
+                            </td>
+                        </tr>
+
+                    </td>
+                    <td id="col6Search">
+
+                    </td>
+                </tr>
+                {{#each findAllRecipients}}
+                    {{> displayAllGifts}}
+                {{/each}}
+            </table>
+
+                {{> recipientDetail}}
+
+            {{else}}
+                <h3>Not Authorized</h3>
+                <p>
+                    It would appear you are not authorized to view this page.  If you believe this to be a mistake, please contact the site administrator.
+                </p>
+            {{/if}}
+        </div>
+    </div>
+</template>

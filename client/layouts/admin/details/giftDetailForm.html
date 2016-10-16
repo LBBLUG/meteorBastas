@@ -35,20 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s3">
-                        {{> detailSelected _id=../_id selected=selected}}
-                    </div>
-                    <div class="col s3">
-                        {{> detailCheckedIn _id=../_id checkedIn=checkedIn}}
-                    </div>
-                    <div class="col s3">
-                        {{> detailOutForDelivery _id=../_id outForDelivery=outForDelivery}}
-                    </div>
-                    <div class="col s3">
-                        {{> detailDelivered _id=../_id delivered=delivered}}
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col s6">
                         <label>Delivery Person</label>
                         <input type="text" id="deliveryPerson" placeholder="Delivery Person" value={{deliveryPerson}} />
