@@ -168,6 +168,58 @@ Meteor.methods({
             }
         });
     },
+    'details.update' (irecipientsId, ibastasId, iroute, ifirstName, ilastName, igender, istreetAddress, icomplexName, iaptNo, icity, istate, izip, ihomePhone, icellPhone, inotes, igiftType, igiftSize, iselected, icheckedIn, ioutForDelivery, idelivered, ideliveryPerson, ideliveryPhone) {
+
+        // check that the info being sent is what's expected
+            check(recipientsId, String);
+            check(ibastasId, String);
+            check(iroute, String);
+            check(ifirstName, String);
+            check(ilastName, String);
+            check(igender, String);
+            check(istreetAddress, String);
+            check(icomplexName, String);
+            check(iaptNo, String);
+            check(icity, String);
+            check(istate, String);
+            check(izip, String);
+            check(ihomePhone, String);
+            check(icellPhone, String);
+            check(inotes, String);
+
+            // make sure a user is logged in before posting the recipient info
+            if (!this.userId) {
+                throw new Meteor.Error('User is not authorized to update recipient information.');
+            }
+
+        // add the gift info to the recipient
+        Recipients.update(irecipientsId, {
+            $set: {
+                bastasId: ibastasId,
+                route: iroute,
+                name: {
+                    first: ifirstName,
+                    last: ilastName,
+                },
+                gender: igender,
+                address: {
+                    streetAddress: istreetAddress,
+                    complexName: icomplexName,
+                    aptNo: iaptNo,
+                    city: icity,
+                    state: istate,
+                    zip: izip,
+                },
+                phone: {
+                    home: ihomePhone,
+                    cell: icellPhone,
+                },
+                notes: inotes,
+                editedBy: Meteor.users.fineOne(this.userId).username,
+                lastEditedOn: new Date(),
+            }
+        });
+    },
     'Recipients.import' (importData) {
         // check the data if needed
         console.log('--------------------------------------------------');
@@ -315,9 +367,9 @@ Meteor.methods({
         }
     },
     'Selected.update' (recipientId, selectedState, giftTypeInfo) {
-    Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
-         $set: { 'gifts.$.selected': selectedState, } },
-    );
+        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+             $set: { 'gifts.$.selected': selectedState, } },
+        );
     },
     'CheckedIn.update' (recipientId, selectedState, giftTypeInfo) {
         Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {

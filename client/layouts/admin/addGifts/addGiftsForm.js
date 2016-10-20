@@ -80,7 +80,9 @@ Template.addGiftsForm.events({
                 } else {
                     // clear the fields for the next entry
                     document.getElementById("addGiftsFormTop").reset();
-                }
+                    Session.set("snackbarText", "Save Successful!")
+                    showSnackbar();
+                    }
             });
         }
     },

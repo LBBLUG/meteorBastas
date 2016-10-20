@@ -34,7 +34,40 @@ Template.recipientDetail.events({
         detailModal.style.display = "none";
     },
     // add the Save / Update here.  Update all items even if they aren't changed.
+    'click .saveDetail' (event) {
+        event.preventDefault();
+        console.log('Save Clicked.');
 
+        var bastasId = $("#bastasId").val();
+        var route = $("#route").val();
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var gender = $("#gender").val();
+        var streetAddress = $("#streetAddress").val();
+        var complexName = $("#complexName").val();
+        var aptNo = $("#aptNo").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var zip = $("#zip").val();
+        var homePhone = $("#homePhone").val();
+        var cellPhone = $("#cellPhone").val();
+        var notes = $("#notes").val();
+
+
+        if (gender !== 'M' || gender !== 'F' || gender !== '') {
+
+        } else {
+            Meteor.call('detail.update', bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
+                if (err) {
+                    console.log('Error: Unable to update details - ' + err);
+                } else {
+                    console.log('Detail updated successfully.');
+                }
+            });
+        }
+
+
+    },
 });
 
 Template.recipientDetail.helpers({
