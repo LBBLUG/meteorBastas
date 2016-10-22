@@ -40,6 +40,13 @@ Template.homeBody.helpers({
         console.log("Even: " + isEven);
         return isEven;
     },
+    homeBannersExist: function() {
+        if (HomePageBanner.find({ isCurrent: true }).count() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    },
 });
 
 Template.setupHomeForm.events({

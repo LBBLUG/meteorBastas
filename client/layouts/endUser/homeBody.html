@@ -22,17 +22,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <template name="homeBody">
     {{#each getHomeBanners}}
-        <div class="{{#if getHomeBanners}}templateWarpper{{/if}}">
-            {{> displayHomePageBanner}}
-        </div>
-    {{/each}}
-    {{#each getHomeDatas}}
-    <div class="container {{#if $not getHomeBanners}}templateWrapper{{/if}}">
-        {{#if even @index}}
-            {{> postImageLeft}}
-        {{else}}
-            {{> postImageRight}}
+        {{#if homeBannersExist}}
+            <div class="templateWrapper">
+                {{> displayHomePageBanner}}
+            </div>
         {{/if}}
-    </div>
     {{/each}}
+
+    <div class="{{#if $not homeBannersExist}}noHomeBanner{{/if}}">
+        {{#each getHomeDatas}}
+        <div class="container">
+            {{#if even @index}}
+                {{> postImageLeft}}
+            {{else}}
+                {{> postImageRight}}
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+
+
 </template>

@@ -36,6 +36,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     width: 100%;
 }
 
+.noHomeBanner {
+    margin-top: 100px;
+}
+
 .recipientsForm {
     margin-top: 2%;
     margin-bottom: 2%;
