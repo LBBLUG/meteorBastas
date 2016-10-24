@@ -25,6 +25,9 @@ Template.addGiftsForm.events({
         event.preventDefault();
 
         // get the values from the gifts form
+        var giftNo = Session.get("giftCount");
+        giftNo++;
+        Session.set("giftCount", giftNo);
         var giftType = $("#giftType").val();
         var giftSize = $("#giftSize").val();
 
@@ -74,7 +77,7 @@ Template.addGiftsForm.events({
         } else {
 
             // update the recipient record with the gift information
-            Meteor.call('gifts.add', recipientsId, giftType, giftSize, selected, checkedIn, outForDelivery, delivered, deliveryPerson, deliveryPhone, function(error, result){
+            Meteor.call('gifts.add', recipientsId, giftNo, giftType, giftSize, selected, checkedIn, outForDelivery, delivered, deliveryPerson, deliveryPhone, function(error, result){
                 if (error) {
                     console.log('Error: ' + error);
                 } else {

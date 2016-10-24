@@ -1,0 +1,62 @@
+<!--
+BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
+gives operators of this program the ability to track gifts selected onlie,
+gifts checked in by volunteers giving to a Senior, and delivery of the gifts
+to the recipients each season.
+
+Copyright (C) 2016  Brian McGonagill - On Behalf of the Lubbock Linux Users Group
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<template name="giftDetailUpdateForm">
+    <div class="ui myModal" id="detailsUpdateGiftView">
+        <div class="myModal-header">
+            <i class="material-icons right closeUpdateNoSave" id="closeGiftDetailModal">done</i>
+            <h2>Edit Gift Details</h2>
+        </div>
+        <div class="myModal-content">
+            {{#each getGiftDetails}}
+            {{#each gifts}}
+            <div class="giftDetail" id="giftDetailFormUpdateView">
+                <form id="giftDetailFormTop">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Gift</label>
+                                <input type="text" id="giftType" class="detail" placeholder="Gift" value={{giftType}} />
+                            </div>
+                            <div class="col s6">
+                                <label>Size</label>
+                                <input type="text" id="giftSize" class="detail" placeholder="Size" value={{giftSize}} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Delivery Person</label>
+                                <input type="text" id="deliveryPerson" class="detail" placeholder="Delivery Person" value={{deliveryPerson}} />
+                            </div>
+                            <div class="col s6">
+                                <label>Delivery Phone</label>
+                                <input type="text" id="deliveryPhone" class="detail" placeholder="000-111-2345" value={{deliveryPhone}} />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {{/each}}
+            {{/each}}
+        </div>
+    </div>
+</template>

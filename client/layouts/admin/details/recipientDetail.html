@@ -29,112 +29,103 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <div class="myModal-content">
             <div class="container">
                 <form id="addRecipientsForm">
-                    <div class="row">
-                        <div class="col s12">
-                            <h3>Recipient Information</h3>
-                        </div>
-                    </div>
 
-                    {{#if getRecipDetails.count}}
-                          {{#each getRecipDetails}}
-                          {{/each}}
-                        {{else}}
-                          There are no Recipient Details.
-                        {{/if}}
 
                     {{#each getRecipDetails}}
                     <form class="details">
                         <div class="row">
-                            <div class="col s4">
-                                <label>Bastas ID*</label>
-                                <input type="text" id="bastasId" class="detail" placeholder="Bastas ID" value={{bastasId}} />
+                            <div class="col s8">
+                                <h4>Recipient Information</h4>
                             </div>
                             <div class="col s4">
-                                <label>Route*</label>
-                                <input type="text" id="route" class="detail" placeholder="Route" value={{route}} />
+                                <a class="btn-floating btn-large waves-effect waves-light blue editRecipient"><i class="material-icons editRecipient">edit</i></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4">
+                                <label>Bastas ID*</label><br  />
+                                {{bastasId}}
+                            </div>
+                            <div class="col s4">
+                                <label>Route*</label><br  />
+                                {{route}}
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col s4">
-                                <label>First Name*</label>
-                                <input type="text" id="firstName" class="detail" placeholder="First Name" value={{name.first}} />
+                                <label>First Name*</label><br  />
+                                {{name.first}}
                             </div>
                             <div class="col s4">
-                                <label>Last Name</label>
-                                <input type="text" id="lastName" class="detail" placeholder="Last Name" value={{name.last}} />
+                                <label>Last Name</label><br  />
+                                {{name.last}}
                             </div>
                             <div class="col s4">
-                                <label>Gender</label>
-                                <input type="text" class="textfield detail" id="gender" value={{gender}} />
+                                <label>Gender</label><br  />
+                                {{gender}}
                             </div>
                         </div>
-                        <h4>Recipient Address</h4>
+                        <h5>Recipient Address</h5>
                         <div class="row">
-                            <div class="column s12">
-                                <label>Street Address*</label>
-                                <input type="text" id="streetAddress" class="detail" placeholder="123 Sesame St." value={{address.streetAddress}}/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s4">
-                                <label>Complex Name</label>
-                                <input type="text" id="complexName" class="detail" placeholder="Middlebrook Apartments" value={{address.complexName}} />
-                            </div>
-                            <div class="col s4">
-                                <label>Apt. Number</label>
-                                <input type="text" id="aptNo" class="detail" placeholder="# A123" value={{address.aptNo}} />
+                            <div class="col s12">
+                                <label>Street Address*</label><br  />
+                                {{address.streetAddress}}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s4">
-                                <label>City*</label>
-                                <input type="text" class="textField detail" id="city" placeholder="My City" value={{address.city}} />
+                                <label>Complex Name</label><br  />
+                                {{address.complexName}}
                             </div>
                             <div class="col s4">
-                                <label>State</label>
-                                <input type="text" class="textField detail" id="state"  placeholder="State" value={{address.state}} />
-                            </div>
-                            <div class="col s4">
-                                <label>Zip Code</label>
-                                <input type="text" id="zip" class="detail" placeholder="12345" value={{address.zip}} />
+                                <label>Apt. Number</label><br  />
+                                {{address.aptNo}}
                             </div>
                         </div>
-                        <h4>Recipient Other Information</h4>
                         <div class="row">
                             <div class="col s4">
-                                <label>Home Phone</label>
-                                <input type="text" id="homePhone" class="detail" placeholder="000-111-2345" value={{phone.home}} />
+                                <label>City*</label><br  />
+                                {{address.city}}
                             </div>
                             <div class="col s4">
-                                <label>Cell Phone</label>
-                                <input type="text" id="cellPhone" class="detail" placeholder="111-222-3456" value={{phone.cell}} />
+                                <label>State</label><br  />
+                                {{address.state}}
+                            </div>
+                            <div class="col s4">
+                                <label>Zip Code</label><br  />
+                                {{address.zip}}
+                            </div>
+                        </div>
+                        <h5>Recipient Other Information</h5>
+                        <div class="row">
+                            <div class="col s4">
+                                <label>Home Phone</label><br  />
+                                {{phone.home}}
+                            </div>
+                            <div class="col s4">
+                                <label>Cell Phone</label><br  />
+                                {{phone.cell}}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label>Notes</label>
-                                <textarea rows="4" class="materialize-textarea detail" id="notes" placeholder="Notes"  value={{notes}} ></textarea>
+                                <label>Notes</label><br  />
+                                {{notes}}
                             </div>
                         </div>
                         {{#each gifts}}
-                        <h4>Gift Information</h4>
-                        <div id="giftInfoDetail">
-                            {{> giftDetailForm}}
-                        </div>
+                            <div id="giftInfoDetail">
+                                {{> giftDetailForm}}
+                            </div>
                         {{/each}}
-                        <div class="row">
-                            <div class="col s10">
-                                <a id="cancelEditRecipient" class="waves-effect waves-light btn orange closeNoSave">Cancel</a>
-                            </div>
-                            <div class="col s2">
-                                <a id="submitEditRecipient" class="waves-effect waves-light btn blue saveDetail">Save Edit</a>
-                            </div>
-                        </div>
                     </form>
                     {{/each}}
                 </form>
             </div>
         </div>
+        {{> snackbar}}
+        {{> recipientDetailUpdate}}
+        {{> giftDetailUpdateForm}}
     </div>
 </template>

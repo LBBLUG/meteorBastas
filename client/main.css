@@ -113,6 +113,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     border: 1px solid #e2e2e2;
 }
 
+.tableIn {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
 .mobile-fab-tip {
     position: fixed;
     right: 85px;
@@ -147,4 +152,12 @@ i.icon-white {
 
 .bufferZone {
     margin: 20px;
+}
+
+#closeDetailModal {
+    cursor: pointer;
+}
+
+.closeUpdateNoSave {
+    cursor: pointer;
 }

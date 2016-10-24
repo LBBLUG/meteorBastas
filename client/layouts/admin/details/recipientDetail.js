@@ -23,21 +23,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Recipients } from '../../../../imports/api/recipients.js';
 
 
-Template.recipientDetail.onRendered(function() {
-    $('select').material_select();
-});
-
-Template.recipientDetail.events({
-    'click .closeNoSave' (event) {
+Template.recipientDetailUpdate.events({
+    'click .closeUpdateNoSave' (event) {
         event.preventDefault();
-        var detailModal = document.getElementById("detailsFormView");
-        detailModal.style.display = "none";
+        var detailUpdateModal = document.getElementById("detailsUpdateFormView");
+        detailUpdateModal.style.display = "none";
     },
     // add the Save / Update here.  Update all items even if they aren't changed.
     'click .saveDetail' (event) {
         event.preventDefault();
         console.log('Save Clicked.');
 
+        var recipId = Session.get("recipientId");
         var bastasId = $("#bastasId").val();
         var route = $("#route").val();
         var firstName = $("#firstName").val();
@@ -53,26 +50,88 @@ Template.recipientDetail.events({
         var cellPhone = $("#cellPhone").val();
         var notes = $("#notes").val();
 
-
-        if (gender !== 'M' || gender !== 'F' || gender !== '') {
-
+        if (gender !== 'F' && gender !== 'M' && gender !== '') {
+            Session.set("snackbarText", "You must use a proper Gender.");
+            Session.set("snackbarColor", "red");
         } else {
-            Meteor.call('detail.update', bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
+            Meteor.call('details.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
                 if (err) {
                     console.log('Error: Unable to update details - ' + err);
                 } else {
                     console.log('Detail updated successfully.');
+                    // TODO Add Snackbar notification of success
+
                 }
             });
         }
+    },
+});
 
+Template.giftDetailUpdateForm.events({
+    'click .closeUpdateNoSave' (event) {
+        event.preventDefault();
+        var detailUpdateGiftModal = document.getElementById("detailsUpdateGiftView");
+        detailUpdateGiftModal.style.display = "none";
+    },
 
+});
+
+Template.giftDetailUpdateForm.helpers({
+    getGiftDetails: function() {
+        recipientId = Session.get( "recipientId" );
+        setGiftNo = Session.get("giftNo");
+        console.log("Gift No: " + setGiftNo);
+        return Recipients.find({ _id: recipientId, "gifts.giftNo": setGiftNo  }, { "gifts.$": 1 });
     },
 });
 
 Template.recipientDetail.helpers({
     getRecipDetails: function() {
         recipientId = Session.get( "recipientId" );
+        return Recipients.find({ _id: recipientId, giftNo: this.giftNo });
+    },
+});
+
+Template.recipientDetailUpdate.helpers({
+    getRecipDetails: function() {
+        recipientId = Session.get( "recipientId" );
         return Recipients.find({ _id: recipientId});
     },
 });
+
+Template.recipientDetail.events({
+    'click .closeNoSave' (event) {
+        event.preventDefault();
+        var detailModal = document.getElementById("detailsFormView");
+        detailModal.style.display = "none";
+    },
+    'click .editRecipient' (event) {
+        event.preventDefault();
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'], 'Admin')) {
+            console.log("Edit Details clicked: " + recipientId);
+            var recipientDetailUpdateModal = document.getElementById("detailsUpdateFormView");
+            recipientDetailUpdateModal.style.display = "block";
+        } else {
+            myModalTitle = "Not Authorized";
+            myModalText = "It appears you are not authorized to view detailed information about recipients.  If you believe this to be in error, please contact your system administrator.";
+            myModal.style.display = "block";
+            $("#myModalTitleHeader").html(myModalTitle);
+            $("#myModalTextSection").html(myModalText);
+        }
+    },
+    'click .editGift' (event) {
+        event.preventDefault();
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'], 'Admin')) {
+            Session.set("giftNo", event.currentTarget.id);
+            console.log("Edit Gift Details clicked: " + recipientId);
+            var giftDetailUpdateModal = document.getElementById("detailsUpdateGiftView");
+            giftDetailUpdateModal.style.display = "block";
+        } else {
+            myModalTitle = "Not Authorized";
+            myModalText = "It appears you are not authorized to view detailed information about recipients.  If you believe this to be in error, please contact your system administrator.";
+            myModal.style.display = "block";
+            $("#myModalTitleHeader").html(myModalTitle);
+            $("#myModalTextSection").html(myModalText);
+        }
+    },
+})

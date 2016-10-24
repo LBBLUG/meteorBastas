@@ -25,23 +25,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <form id="giftDetailFormTop">
             <div class="content">
                 <div class="row">
-                    <div class="col s6">
-                        <label>Gift</label>
-                        <input type="text" id="giftType" class="detail" placeholder="Gift" value={{giftType}} />
+                    <div class="col s8">
+                        <h4>Gift Information</h4>
                     </div>
-                    <div class="col s6">
-                        <label>Size</label>
-                        <input type="text" id="giftSize" class="detail" placeholder="Size" value={{giftSize}} />
+                    <div class="col s4">
+                        <a class="btn-floating btn-large waves-effect waves-light blue editGift" id="{{giftNo}}"><i class="material-icons editGift {{_id}} {{giftNo}}">edit</i></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <label>Delivery Person</label>
-                        <input type="text" id="deliveryPerson" class="detail" placeholder="Delivery Person" value={{deliveryPerson}} />
+                        <label>Gift</label><br  />
+                        {{giftType}}
                     </div>
                     <div class="col s6">
-                        <label>Delivery Phone</label>
-                        <input type="text" id="deliveryPhone" class="detail" placeholder="000-111-2345" value={{deliveryPhone}} />
+                        <label>Size</label><br  />
+                        {{giftSize}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <label>Delivery Person</label><br  />
+                        {{deliveryPerson}}
+                    </div>
+                    <div class="col s6">
+                        <label>Delivery Phone</label><br  />
+                        {{deliveryPhone}}
                     </div>
                 </div>
             </div>

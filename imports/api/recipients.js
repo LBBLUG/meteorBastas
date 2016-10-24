@@ -134,12 +134,12 @@ Meteor.methods({
                 },
                 gifts: [],
                 notes: inotes,
-                editedBy: Meteor.users.fineOne(this.userId).username,
+                editedBy: Meteor.user().emails[0].address,
                 lastEditedOn: new Date(),
             }
         });
     },
-    'gifts.add' (irecipientsId, igiftType, igiftSize, iselected, icheckedIn, ioutForDelivery, idelivered, ideliveryPerson, ideliveryPhone) {
+    'gifts.add' (irecipientsId, igiftNo, igiftType, igiftSize, iselected, icheckedIn, ioutForDelivery, idelivered, ideliveryPerson, ideliveryPhone) {
         // check that the info being sent is what's expected
 
 
@@ -152,6 +152,7 @@ Meteor.methods({
         Recipients.update(irecipientsId, {
             $addToSet: {
                 gifts: {
+                    giftNo: igiftNo,
                     giftType: igiftType,
                     giftSize: igiftSize,
                     selected: iselected,
@@ -168,57 +169,25 @@ Meteor.methods({
             }
         });
     },
-    'details.update' (irecipientsId, ibastasId, iroute, ifirstName, ilastName, igender, istreetAddress, icomplexName, iaptNo, icity, istate, izip, ihomePhone, icellPhone, inotes, igiftType, igiftSize, iselected, icheckedIn, ioutForDelivery, idelivered, ideliveryPerson, ideliveryPhone) {
+    'gifts.update' (irecipientsId, igiftNo, igiftType, igiftSize, ideliveryPerson, ideliveryPhone) {
 
         // check that the info being sent is what's expected
-            check(recipientsId, String);
-            check(ibastasId, String);
-            check(iroute, String);
-            check(ifirstName, String);
-            check(ilastName, String);
-            check(igender, String);
-            check(istreetAddress, String);
-            check(icomplexName, String);
-            check(iaptNo, String);
-            check(icity, String);
-            check(istate, String);
-            check(izip, String);
-            check(ihomePhone, String);
-            check(icellPhone, String);
-            check(inotes, String);
-
-            // make sure a user is logged in before posting the recipient info
-            if (!this.userId) {
-                throw new Meteor.Error('User is not authorized to update recipient information.');
-            }
-
-        // add the gift info to the recipient
         Recipients.update(irecipientsId, {
             $set: {
-                bastasId: ibastasId,
-                route: iroute,
-                name: {
-                    first: ifirstName,
-                    last: ilastName,
-                },
-                gender: igender,
-                address: {
-                    streetAddress: istreetAddress,
-                    complexName: icomplexName,
-                    aptNo: iaptNo,
-                    city: icity,
-                    state: istate,
-                    zip: izip,
-                },
-                phone: {
-                    home: ihomePhone,
-                    cell: icellPhone,
-                },
-                notes: inotes,
-                editedBy: Meteor.users.fineOne(this.userId).username,
+                gifts: {
+                    giftNo: igiftNo,
+                    giftType: igiftType,
+                    giftSize: igiftSize,
+                    deliveryPerson: ideliveryPerson,
+                    deliveryPhone: ideliveryPhone,
+                }
+            },
+            $set: {
+                editedBy: Meteor.user().emails[0].address,
                 lastEditedOn: new Date(),
             }
         });
+
     },
     'Recipients.import' (importData) {
         // check the data if needed
@@ -253,6 +222,7 @@ Meteor.methods({
                         cell: importData.data[i].cell,
                     },
                     gifts: [{
+                        giftNo: 1,
                         giftType: importData.data[i].giftType1,
                         giftSize: importData.data[i].giftSize1,
                         selected: importData.data[i].isSelected1,
@@ -288,6 +258,7 @@ Meteor.methods({
                         cell: importData.data[i].cell,
                     },
                     gifts: [{
+                        giftNo: 1,
                         giftType: importData.data[i].giftType1,
                         giftSize: importData.data[i].giftSize1,
                         selected: importData.data[i].isSelected1,
@@ -297,6 +268,7 @@ Meteor.methods({
                         deliveryPerson: importData.data[i].deliveryPerson1,
                         deliveryPhone: importData.data[i].deliveryPhone1,
                     }, {
+                        giftNo: 2,
                         giftType: importData.data[i].giftType2,
                         giftSize: importData.data[i].giftSize2,
                         selected: importData.data[i].isSelected2,
@@ -332,6 +304,7 @@ Meteor.methods({
                         cell: importData.data[i].cell,
                     },
                     gifts: [{
+                        giftNo: 1,
                         giftType: importData.data[i].giftType1,
                         giftSize: importData.data[i].giftSize1,
                         selected: importData.data[i].isSelected1,
@@ -341,6 +314,7 @@ Meteor.methods({
                         deliveryPerson: importData.data[i].deliveryPerson1,
                         deliveryPhone: importData.data[i].deliveryPhone1,
                     }, {
+                        giftNo: 2,
                         giftType: importData.data[i].giftType2,
                         giftSize: importData.data[i].giftSize2,
                         selected: importData.data[i].isSelected2,
@@ -350,6 +324,7 @@ Meteor.methods({
                         deliveryPerson: importData.data[i].deliveryPerson2,
                         deliveryPhone: importData.data[i].deliveryPhone2,
                     }, {
+                        giftNo: 3,
                         giftType: importData.data[i].giftType3,
                         giftSize: importData.data[i].giftSize3,
                         selected: importData.data[i].isSelected3,
@@ -368,24 +343,29 @@ Meteor.methods({
     },
     'Selected.update' (recipientId, selectedState, giftTypeInfo) {
         Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
-             $set: { 'gifts.$.selected': selectedState, } },
+             $set: { 'gifts.$.selected': selectedState, editedBy: Meteor.user().emails[0].address,
+             lastEditedOn: new Date(), } },
         );
     },
     'CheckedIn.update' (recipientId, selectedState, giftTypeInfo) {
         Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
-            $set: { 'gifts.$.checkedIn': selectedState, } },
+            $set: { 'gifts.$.checkedIn': selectedState, editedBy: Meteor.user().emails[0].address,
+            lastEditedOn: new Date(), } },
         );
     },
     'OutForDelivery.update' (recipientId, selectedState, giftTypeInfo) {
         Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
-            $set: { 'gifts.$.outForDelivery': selectedState, } },
+            $set: { 'gifts.$.outForDelivery': selectedState, editedBy: Meteor.user().emails[0].address,
+            lastEditedOn: new Date(), } },
         );
     },
     'Delivered.update' (recipientId, selectedState, giftTypeInfo) {
         Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
-            $set: { 'gifts.$.delivered': selectedState, } },
+            $set: { 'gifts.$.delivered': selectedState, editedBy: Meteor.user().emails[0].address,
+            lastEditedOn: new Date(), } },
         );
     },
+
     // get numbers for gift counts
 
 });

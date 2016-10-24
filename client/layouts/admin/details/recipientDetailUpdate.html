@@ -1,0 +1,128 @@
+<!--
+BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
+gives operators of this program the ability to track gifts selected onlie,
+gifts checked in by volunteers giving to a Senior, and delivery of the gifts
+to the recipients each season.
+
+Copyright (C) 2016  Brian McGonagill - On Behalf of the Lubbock Linux Users Group
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<template name="recipientDetailUpdate">
+    <div class="ui myModal" id="detailsUpdateFormView">
+        <div class="myModal-header">
+            <i class="material-icons right closeUpdateNoSave" id="closeDetailModal">done</i>
+            <h2>Edit Recipient Details</h2>
+        </div>
+        <div class="myModal-content">
+            <div class="container">
+                <form id="addRecipientsForm">
+                    <div class="row">
+                        <div class="col s12">
+                            <h3>Recipient Information</h3>
+                        </div>
+                    </div>
+
+                    {{#each getRecipDetails}}
+                    <form class="details">
+                        <div class="row">
+                            <div class="col s4">
+                                <label>Bastas ID*</label>
+                                <input type="text" id="bastasId" class="detail" placeholder="Bastas ID" value={{bastasId}} />
+                            </div>
+                            <div class="col s4">
+                                <label>Route*</label>
+                                <input type="text" id="route" class="detail" placeholder="Route" value={{route}} />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s4">
+                                <label>First Name*</label>
+                                <input type="text" id="firstName" class="detail" placeholder="First Name" value={{name.first}} />
+                            </div>
+                            <div class="col s4">
+                                <label>Last Name</label>
+                                <input type="text" id="lastName" class="detail" placeholder="Last Name" value={{name.last}} />
+                            </div>
+                            <div class="col s4">
+                                <label>Gender</label>
+                                <input type="text" class="textfield detail" id="gender" value={{gender}} />
+                            </div>
+                        </div>
+                        <h4>Recipient Address</h4>
+                        <div class="row">
+                            <div class="column s12">
+                                <label>Street Address*</label>
+                                <input type="text" id="streetAddress" class="detail" placeholder="123 Sesame St." value={{address.streetAddress}}/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4">
+                                <label>Complex Name</label>
+                                <input type="text" id="complexName" class="detail" placeholder="Middlebrook Apartments" value={{address.complexName}} />
+                            </div>
+                            <div class="col s4">
+                                <label>Apt. Number</label>
+                                <input type="text" id="aptNo" class="detail" placeholder="# A123" value={{address.aptNo}} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4">
+                                <label>City*</label>
+                                <input type="text" class="textField detail" id="city" placeholder="My City" value={{address.city}} />
+                            </div>
+                            <div class="col s4">
+                                <label>State</label>
+                                <input type="text" class="textField detail" id="state"  placeholder="State" value={{address.state}} />
+                            </div>
+                            <div class="col s4">
+                                <label>Zip Code</label>
+                                <input type="text" id="zip" class="detail" placeholder="12345" value={{address.zip}} />
+                            </div>
+                        </div>
+                        <h4>Recipient Other Information</h4>
+                        <div class="row">
+                            <div class="col s4">
+                                <label>Home Phone</label>
+                                <input type="text" id="homePhone" class="detail" placeholder="000-111-2345" value={{phone.home}} />
+                            </div>
+                            <div class="col s4">
+                                <label>Cell Phone</label>
+                                <input type="text" id="cellPhone" class="detail" placeholder="111-222-3456" value={{phone.cell}} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <label>Notes</label>
+                                <textarea rows="4" class="materialize-textarea detail" id="notes"  placeholder="Notes"  value={{notes}} ></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s10">
+                                <a id="cancelEditRecipient" class="waves-effect waves-light btn orange closeNoSave">Cancel</a>
+                            </div>
+                            <div class="col s2">
+                                <a id="submitEditRecipient" class="waves-effect waves-light btn blue saveDetail">Save Edit</a>
+                            </div>
+                        </div>
+                    </form>
+                    {{/each}}
+                </form>
+            </div>
+        </div>
+        {{> snackbar}}
+    </div>
+</template>
