@@ -11,3 +11,7 @@
     z-index: 10;
     margin-top: 20%;
 }
+
+.closeUpdateNoSave, .closeChangeRole, #closeDetailModal, #closeModalCheckmark {
+    cursor: pointer;
+}

@@ -22,7 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Recipients } from '../../../../imports/api/recipients.js';
 
-
 Template.recipientDetailUpdate.events({
     'click .closeUpdateNoSave' (event) {
         event.preventDefault();
@@ -76,28 +75,31 @@ Template.giftDetailUpdateForm.events({
 
 });
 
-Template.giftDetailUpdateForm.helpers({
-    getGiftDetails: function() {
-        recipientId = Session.get( "recipientId" );
-        setGiftNo = Session.get("giftNo");
-        console.log("Gift No: " + setGiftNo);
-        return Recipients.find({ _id: recipientId, "gifts.giftNo": setGiftNo  }, { "gifts.$": 1 });
-    },
+Template.registerHelper( 'getDetails', () => {
+    recipientId = Session.get( "recipientId" );
+    return Recipients.find({ _id: recipientId });
 });
 
-Template.recipientDetail.helpers({
-    getRecipDetails: function() {
-        recipientId = Session.get( "recipientId" );
-        return Recipients.find({ _id: recipientId, giftNo: this.giftNo });
-    },
-});
-
-Template.recipientDetailUpdate.helpers({
-    getRecipDetails: function() {
-        recipientId = Session.get( "recipientId" );
-        return Recipients.find({ _id: recipientId});
-    },
-});
+// Template.giftDetailUpdateForm.helpers({
+//     getGiftDetails: function() {
+//         recipientId = Session.get( "recipientId" );
+//         return Recipients.find({ _id: recipientId });
+//     },
+// });
+//
+// Template.recipientDetail.helpers({
+//     getRecipDetails: function() {
+//         recipientId = Session.get( "recipientId" );
+//         return Recipients.find({ _id: recipientId });
+//     },
+// });
+//
+// Template.recipientDetailUpdate.helpers({
+//     getRecipDetails: function() {
+//         recipientId = Session.get( "recipientId" );
+//         return Recipients.find({ _id: recipientId});
+//     },
+// });
 
 Template.recipientDetail.events({
     'click .closeNoSave' (event) {
@@ -107,7 +109,7 @@ Template.recipientDetail.events({
     },
     'click .editRecipient' (event) {
         event.preventDefault();
-        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'], 'Admin')) {
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
             console.log("Edit Details clicked: " + recipientId);
             var recipientDetailUpdateModal = document.getElementById("detailsUpdateFormView");
             recipientDetailUpdateModal.style.display = "block";
@@ -121,8 +123,7 @@ Template.recipientDetail.events({
     },
     'click .editGift' (event) {
         event.preventDefault();
-        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'], 'Admin')) {
-            Session.set("giftNo", event.currentTarget.id);
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
             console.log("Edit Gift Details clicked: " + recipientId);
             var giftDetailUpdateModal = document.getElementById("detailsUpdateGiftView");
             giftDetailUpdateModal.style.display = "block";
@@ -134,4 +135,4 @@ Template.recipientDetail.events({
             $("#myModalTextSection").html(myModalText);
         }
     },
-})
+});

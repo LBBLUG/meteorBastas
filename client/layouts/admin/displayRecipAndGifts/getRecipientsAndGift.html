@@ -41,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             {{address.city}}, {{address.state}} {{address.zip}}
         </div>
         <div class="col s2">
-            {{#if isInRole 'Admin, Editor' 'Admin'}}
+            {{#if isInRole 'Admin, Editor'}}
                 <a id="getRecipDetail" class="waves-effect waves-light btn details">Details</a>
             {{/if}}
         </div>

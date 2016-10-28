@@ -20,30 +20,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { Recipients } from '../imports/api/recipients.js';
-import { HomePageData } from '../imports/api/homePageData.js';
-import { HomePageBanner } from '../imports/api/homePageBanner.js';
+import { Meteor } from 'meteor/meteor';
 
-Meteor.publish("recipients", function(){
-    if (Roles.userIsInRole(this.userId, ['Admin', 'Editor', 'Adder', 'Viewer'])) {
-        return Recipients.find({});
-    }
-});
-
-Meteor.publish("homePageData", function() {
-    return HomePageData.find({ isCurrent: true });
-});
-
-Meteor.publish("homePageBanner", function() {
-    return HomePageBanner.find({ isCurrent: true });
-});
-
-Meteor.publish("recipientsGeneralUser", function() {
-    return Recipients.find({ gifts: { $elemMatch: { selected: true }}}, { "name.first": 1, "gifts.giftType": 1, "gifts.giftSize": 1, "gifts.selected": 1 });
-});
-
-Meteor.publish("allUsers", function() {
-    if (Roles.userIsInRole(this.userId, 'Admin')) {
-        return Meteor.users.find({});
-    }
+Meteor.methods({
+    newRole(id, newUserRole, currRole) {
+        console.log("Made it to change Roles.");
+        console.log("Should remove: " + currRole);
+        console.log("Should add: " + newUserRole);
+        console.log("---- ---- ---- ---- ---- ---- ---- ----");
+        Roles.removeUsersFromRoles(id, currRole);
+        Roles.addUsersToRoles(id, newUserRole);
+    },
 });

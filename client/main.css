@@ -118,6 +118,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     margin-right: 2%;
 }
 
+tr:hover {
+    background: #e5e5e5;
+}
+
 .mobile-fab-tip {
     position: fixed;
     right: 85px;
@@ -152,12 +156,4 @@ i.icon-white {
 
 .bufferZone {
     margin: 20px;
-}
-
-#closeDetailModal {
-    cursor: pointer;
-}
-
-.closeUpdateNoSave {
-    cursor: pointer;
 }

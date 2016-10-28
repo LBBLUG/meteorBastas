@@ -106,7 +106,7 @@ Template.displayRecipAndGifts.events({
 // getDetails when button clicked for a row
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
-        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'], 'Admin')) {
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
             Session.set( "recipientId", this._id );
             console.log("Details clicked: " + this._id);
             var recipientDetailModal = document.getElementById("detailsFormView");

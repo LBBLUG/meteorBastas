@@ -1,0 +1,47 @@
+<template name="changeUserRole">
+    <div class="ui myModal" id="changeUserRole">
+        <div class="myModal-header">
+            <i class="material-icons right closeChangeRole" id="closeChangeRole">done</i>
+            <h2>Change User Role</h2>
+        </div>
+        <div class="myModal-content">
+            <div class="container">
+                <div id="userInfoRoles">
+                    {{#each getUserInfo}}
+                        <div class="row">
+                            <div class="col s4">
+                                <label>Name</label><br  />
+                                {{profile.firstName}} {{profile.lastName}}
+                            </div>
+                            <div class="col s4">
+                                <label>Email</label><br  />
+                                {{userEmail}}
+                            </div>
+                            <div class="col s4">
+                                <label>Accounted Created On</label><br  />
+                                {{createdAt}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Current Roles</label><br  />
+                                    {{userRoles}}
+                            </div>
+                            <div class="col s6">
+                                <label for="newUserRole">Change Role</label>
+                                <select class="browser-default changeRole" id="newUserRole">
+                                    <option value="" disabled selected>Choose a role...</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Editor">Editor</option>
+                                    <option value="Adder">Adder</option>
+                                    <option value="Viewer">Viewer</option>
+                                    <option value="Giver">Giver</option>
+                                </select>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

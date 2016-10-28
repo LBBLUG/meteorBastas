@@ -1,5 +1,5 @@
 <template name="manageUsers">
-    {{#if isInRole 'Admin' 'Admin'}}
+    {{#if isInRole 'Admin'}}
     <div class="templateWrapper">
         <h3>Manage Users</h3>
         <table class="bufferZone">
@@ -12,7 +12,7 @@
             </tr>
             {{#each users}}
             <tr>
-                <td>{{_id}}</td>
+                <td><a href="#" class="userIdLink">{{_id}}</a></td>
                 <td>{{profile.firstName}} {{profile.lastName}}</td>
                 <td>{{userEmail}}</td>
                 <td>{{profile.cellPhone}}</td>
@@ -26,4 +26,6 @@
         {{> notAuthorized}}
     </div>
     {{/if}}
+    {{> changeUserRole}}
+    {{> genModal}}
 </template>
