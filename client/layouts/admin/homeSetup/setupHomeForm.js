@@ -23,6 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { HomePageData } from '../../../../imports/api/homePageData.js';
 import { HomePageBanner } from '../../../../imports/api/homePageBanner.js';
 
+Meteor.subscribe('homePageData');
+Meteor.subscribe('homePageBanner');
+
 Template.homeBody.helpers({
     getHomeDatas: function() {
         return HomePageData.find({ isCurrent: true });

@@ -53,13 +53,17 @@ Template.recipientDetailUpdate.events({
             Session.set("snackbarText", "You must use a proper Gender.");
             Session.set("snackbarColor", "red");
         } else {
-            Meteor.call('details.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
+            Meteor.call('recipients.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
                 if (err) {
                     console.log('Error: Unable to update details - ' + err);
                 } else {
                     console.log('Detail updated successfully.');
-                    // TODO Add Snackbar notification of success
-
+                    Session.set("snackbarText", "Recipient Detail updated successfully!");
+                    Session.set("snackbarColor", "green");
+                    showSnackbar();
+                    // Now close the modal
+                    var detailUpdateModal = document.getElementById("detailsUpdateFormView");
+                    detailUpdateModal.style.display = "none";
                 }
             });
         }
@@ -67,12 +71,34 @@ Template.recipientDetailUpdate.events({
 });
 
 Template.giftDetailUpdateForm.events({
-    'click .closeUpdateNoSave' (event) {
+    'click .closeUpdateNoSave, click .closeEditGifts, click .doneEditGifts' (event) {
         event.preventDefault();
         var detailUpdateGiftModal = document.getElementById("detailsUpdateGiftView");
         detailUpdateGiftModal.style.display = "none";
     },
-
+    'change .detail' (event) {
+        event.preventDefault();
+        var targetId = event.currentTarget.id;
+        var giftNo = Number(targetId.substr(targetId.length - 1)) + 1;
+        var giftType = targetId.slice(0, -1);
+        console.log("Gift type key is: " + giftType);
+        console.log("field id changed is: " + targetId);
+        console.log("Gift No is " + giftNo)
+        var newGiftValue = $("#" + targetId).val();
+        console.log("new value is: " + newGiftValue);
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
+            Meteor.call('gifts.update', Session.get("recipientId"), giftNo, newGiftValue, giftType, function(err, result) {
+                if (err) {
+                    console.log("Error occurred updating giftInfo: " + err);
+                } else {
+                    console.log("Gift updated successfully!");
+                    Session.set("snackbarText", "Gift updated successfully!");
+                    Session.set("snackbarColor", "green");
+                    showSnackbar();
+                }
+            });
+        }
+    },
 });
 
 Template.registerHelper( 'getDetails', () => {
@@ -80,29 +106,8 @@ Template.registerHelper( 'getDetails', () => {
     return Recipients.find({ _id: recipientId });
 });
 
-// Template.giftDetailUpdateForm.helpers({
-//     getGiftDetails: function() {
-//         recipientId = Session.get( "recipientId" );
-//         return Recipients.find({ _id: recipientId });
-//     },
-// });
-//
-// Template.recipientDetail.helpers({
-//     getRecipDetails: function() {
-//         recipientId = Session.get( "recipientId" );
-//         return Recipients.find({ _id: recipientId });
-//     },
-// });
-//
-// Template.recipientDetailUpdate.helpers({
-//     getRecipDetails: function() {
-//         recipientId = Session.get( "recipientId" );
-//         return Recipients.find({ _id: recipientId});
-//     },
-// });
-
 Template.recipientDetail.events({
-    'click .closeNoSave' (event) {
+    'click .closeNoSave, click .closeShowDetail, click .doneShowDetail' (event) {
         event.preventDefault();
         var detailModal = document.getElementById("detailsFormView");
         detailModal.style.display = "none";
@@ -110,7 +115,6 @@ Template.recipientDetail.events({
     'click .editRecipient' (event) {
         event.preventDefault();
         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
-            console.log("Edit Details clicked: " + recipientId);
             var recipientDetailUpdateModal = document.getElementById("detailsUpdateFormView");
             recipientDetailUpdateModal.style.display = "block";
         } else {
@@ -124,7 +128,6 @@ Template.recipientDetail.events({
     'click .editGift' (event) {
         event.preventDefault();
         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
-            console.log("Edit Gift Details clicked: " + recipientId);
             var giftDetailUpdateModal = document.getElementById("detailsUpdateGiftView");
             giftDetailUpdateModal.style.display = "block";
         } else {

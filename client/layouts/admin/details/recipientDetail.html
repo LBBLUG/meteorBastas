@@ -29,8 +29,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <div class="myModal-content">
             <div class="container">
                 <form id="addRecipientsForm">
-
-
                     {{#each getDetails}}
                     <form class="details">
                         <div class="row">
@@ -131,6 +129,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     </form>
                     {{/each}}
                 </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col s6">
+                    <a id="cancelShowDetail" class="waves-effect waves-light btn orange closeShowDetail">Finished</a>
+                </div>
+                <div class="col s6">
+                    <a id="submitAddGifts" class="waves-effect waves-light btn right doneShowDetail">
+                        Done
+                        <i class="material-icons">done</i>
+                    </a>
+                </div>
             </div>
         </div>
         {{> snackbar}}

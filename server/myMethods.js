@@ -21,13 +21,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { Meteor } from 'meteor/meteor';
+import { Recipients } from '../imports/api/recipients.js';
 
 Meteor.methods({
     newRole(id, newUserRole, currRole) {
-        console.log("Made it to change Roles.");
-        console.log("Should remove: " + currRole);
-        console.log("Should add: " + newUserRole);
-        console.log("---- ---- ---- ---- ---- ---- ---- ----");
         Roles.removeUsersFromRoles(id, currRole);
         Roles.addUsersToRoles(id, newUserRole);
     },
