@@ -1,3 +1,26 @@
+/* LICENSE */
+/*
+BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
+gives operators of this program the ability to track gifts selected onlie,
+gifts checked in by volunteers giving to a Senior, and delivery of the gifts
+to the recipients each season.
+
+Copyright (C) 2016  Brian McGonagill - On Behalf of the Lubbock Linux Users Group
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 .closeBtn {
     position: absolute;
     top: 0;
@@ -14,4 +37,38 @@
 
 .closeUpdateNoSave, .closeChangeRole, #closeDetailModal, #closeModalCheckmark {
     cursor: pointer;
+}
+
+/* Modal setup */
+.myModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 15%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Header */
+.myModal-header, .myModal-footer, .modal-header, .modal-footer {
+    background-color: #4A708B;
+    color: #ffffff;
+    margin: auto;
+    width: 80%;
+    padding: 2%;
+    border: 1px solid #888;
+}
+
+/* Modal Content */
+.myModal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2%;
+    border: 1px solid #888;
+    width: 80%;
 }

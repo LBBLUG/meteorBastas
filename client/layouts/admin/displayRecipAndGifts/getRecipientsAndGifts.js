@@ -24,6 +24,8 @@ import { Recipients } from '../../../../imports/api/recipients.js';
 
 // get the information from the mongoDB collection Recipients
 
+Meteor.subscribe('recipients');
+
 Template.displayRecipAndGifts.helpers({
     getRecipientsAndGifts() {
         var searchType = Session.get("searchType");

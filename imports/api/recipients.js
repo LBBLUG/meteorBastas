@@ -86,7 +86,7 @@ Meteor.methods({
         });
     },
     // edit a recipient
-    'recipients.update' (irecipientsId, ibastasId, iroute, ifirstName, ilastName, igender, istreetAddress, icomplexName, iaptNo, icity, istate, izip, ihomePhone, icellPhone, inotes) {
+    'recipients.update' (recipientsId, ibastasId, iroute, ifirstName, ilastName, igender, istreetAddress, icomplexName, iaptNo, icity, istate, izip, ihomePhone, icellPhone, inotes) {
         //check that the info being passed in is of the correct type
         check(recipientsId, String);
         check(ibastasId, String);
@@ -132,7 +132,6 @@ Meteor.methods({
                     home: ihomePhone,
                     cell: icellPhone,
                 },
-                gifts: [],
                 notes: inotes,
                 editedBy: Meteor.user().emails[0].address,
                 lastEditedOn: new Date(),
@@ -169,24 +168,54 @@ Meteor.methods({
             }
         });
     },
-    'gifts.update' (irecipientsId, igiftNo, igiftType, igiftSize, ideliveryPerson, ideliveryPhone) {
-
+    'gifts.update' (irecipientsId, igiftNo, giftInfo, giftType) {
+        console.log("made it to the update for gifts.");
         // check that the info being sent is what's expected
-        Recipients.update(irecipientsId, {
-            $set: {
-                gifts: {
-                    giftNo: igiftNo,
-                    giftType: igiftType,
-                    giftSize: igiftSize,
-                    deliveryPerson: ideliveryPerson,
-                    deliveryPhone: ideliveryPhone,
-                }
-            },
-            $set: {
-                editedBy: Meteor.user().emails[0].address,
-                lastEditedOn: new Date(),
-            }
-        });
+        check(igiftNo, Number);
+        check(giftInfo, String);
+        check(giftType, String);
+
+        var giftNumber = igiftNo.toString();
+
+        switch(giftType) {
+            case "giftType":
+                Recipients.update({ _id: irecipientsId, "gifts.giftNo": giftNumber }, {
+                    $set: {
+                        "gifts.$.giftType": giftInfo,
+                        editedBy: Meteor.user().emails[0].address,
+                        lastEditedOn: new Date(),
+                    }
+                });
+                break;
+            case "giftSize":
+                Recipients.update({ _id: irecipientsId, "gifts.giftNo": giftNumber }, {
+                    $set: {
+                        "gifts.$.giftSize": giftInfo,
+                        editedBy: Meteor.user().emails[0].address,
+                        lastEditedOn: new Date(),
+                    }
+                });
+                break;
+            case "deliveryPerson":
+                Recipients.update({ _id: irecipientsId, "gifts.giftNo": giftNumber }, {
+                    $set: {
+                        "gifts.$.deliveryPerson": giftInfo,
+                        editedBy: Meteor.user().emails[0].address,
+                        lastEditedOn: new Date(),
+                    }
+                });
+                break;
+            case "deliveryPhone":
+                Recipients.update({ _id: irecipientsId, "gifts.giftNo": giftNumber }, {
+                    $set: {
+                        "gifts.$.deliveryPhone": giftInfo,
+                        editedBy: Meteor.user().emails[0].address,
+                        lastEditedOn: new Date(),
+                    }
+                });
+                break;
+        }
+
 
     },
     'Recipients.import' (importData) {
@@ -364,6 +393,11 @@ Meteor.methods({
             $set: { 'gifts.$.delivered': selectedState, editedBy: Meteor.user().emails[0].address,
             lastEditedOn: new Date(), } },
         );
+    },
+    getGift(id, giftNo) {
+        var giftsFor = Recipients.find({ _id: id, "gifts.giftNo": giftNo  }, { "gifts.$": 1 });
+        console.log(giftsFor);
+        return giftsFor;
     },
 
     // get numbers for gift counts

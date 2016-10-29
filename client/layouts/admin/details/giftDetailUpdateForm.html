@@ -54,9 +54,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         </div>
                     </div>
                     {{/each}}
+                    <div class="row">
+                        <div class="col s10">
+                            <a id="cancelEditRecipient" class="waves-effect waves-light btn orange closeEditGifts">Cancel</a>
+                        </div>
+                        <div class="col s2">
+                            <a id="submitEditRecipient" class="waves-effect waves-light btn blue doneEditGifts">Done</a>
+                        </div>
+                    </div>
                 </form>
             </div>
             {{/each}}
         </div>
     </div>
+    {{> snackbar}}
 </template>
