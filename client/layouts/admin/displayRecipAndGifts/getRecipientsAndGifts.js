@@ -24,7 +24,9 @@ import { Recipients } from '../../../../imports/api/recipients.js';
 
 // get the information from the mongoDB collection Recipients
 
-Meteor.subscribe('recipients');
+Template.displayRecipAndGifts.onCreated(function() {
+    this.subscribe("recipients");
+});
 
 Template.displayRecipAndGifts.helpers({
     getRecipientsAndGifts() {
@@ -43,15 +45,13 @@ Template.displayRecipAndGifts.helpers({
 Template.displayRecipAndGifts.events({
     'submit .searchID' (event) {
         event.preventDefault();
-        const target = event.target;
-        const bastasID = target.searchId.value;
+        var bastasID = $("#searchId").val();
         Session.set("bastasIDEntered", bastasID);
         Session.set("searchType", "bastasId");
     },
     'submit .searchRoute' (event) {
         event.preventDefault();
-        const target = event.target;
-        const routeInfo = target.searchroute.value;
+        var routeInfo = $("#searchroute").val();
         Session.set("routeEntered", routeInfo);
         Session.set("searchType", "routeNo");
     },
@@ -99,9 +99,6 @@ Template.displayRecipAndGifts.events({
         } else if (state === false) {
             $('table tr.trMainData:hidden').show();
         }
-
-
-
     },
 });
 

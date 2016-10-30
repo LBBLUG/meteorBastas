@@ -45,9 +45,7 @@ Template.manageUsers.helpers({
 Template.manageUsers.events({
     'click .userIdLink' (event) {
         event.preventDefault();
-        console.log("ID Clicked: " + this._id);
         Session.set("userIdClicked", this._id);
-        console.log("My Id is: " + Meteor.userId());
         if (Roles.userIsInRole(Meteor.userId(), 'Admin')) {
             var changeUserRoleModal = document.getElementById("changeUserRole");
             changeUserRoleModal.style.display = "block";
@@ -65,7 +63,6 @@ Template.manageUsers.events({
 Template.changeUserRole.helpers({
     getUserInfo: function() {
         var userIdClicked = Session.get("userIdClicked");
-        console.log('got clicked user ID: ' + userIdClicked);
         return Meteor.users.find({ _id: userIdClicked });
     },
     userEmail: function() {
@@ -86,8 +83,6 @@ Template.changeUserRole.events({
         event.preventDefault();
         var currRole = Roles.getRolesForUser( this._id );
         var newRole = $("#newUserRole").val();
-        console.log("Curr Role = " + currRole);
-        console.log("New Role  = " + newRole);
         if (newRole != currRole) {
             Meteor.call("newRole", this._id, newRole, currRole);
         } else {

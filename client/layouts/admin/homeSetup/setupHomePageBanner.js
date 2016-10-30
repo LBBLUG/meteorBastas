@@ -33,11 +33,17 @@ Template.setupHomePageBanner.events({
 
         Meteor.call('homePageBanner.insert', bannerImage, isCurrent, function(err, result){
             if (err) {
-                console.log('Error: ' + err);
+                Session.set("snackbarText", "Error adding banner!");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
             } else {
-                console.log('Insert Result: ' + result);
                 // add snackbar notice that save was good.
+                Session.set("snackbarText", "Banner added successfully!");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
                 document.getElementById("mainBannerSetup").reset();
+                var preview = document.querySelector('img');
+                preview.src = "";
             }
         });
     },

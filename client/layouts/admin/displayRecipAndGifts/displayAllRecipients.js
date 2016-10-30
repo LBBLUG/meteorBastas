@@ -24,8 +24,12 @@ import { Recipients } from '../../../../imports/api/recipients.js';
 
 // get the information from the mongoDB collection Recipients
 
+Template.displayAllRecipients.onCreated(function() {
+    this.subscribe("recipients");
+});
+
 Template.displayAllRecipients.helpers({
-    findAllRecipients() {
+    findAllRecipients: function() {
         return Recipients.find({});
     },
 });

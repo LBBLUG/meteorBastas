@@ -42,9 +42,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 <input type="text" id="searchCol3" class="searchCol" />
             </div>
         </div>
+        {{#if Template.subscriptionsReady}}
             {{#each getRecipientsAndGifts}}
                 {{> getRecipientsAndGift}}
             {{/each}}
+        {{/if}}
     </div>
         {{> recipientDetail}}
         {{else}}

@@ -1,4 +1,4 @@
-<!--
+/*
 BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
 gives operators of this program the ability to track gifts selected onlie,
 gifts checked in by volunteers giving to a Senior, and delivery of the gifts
@@ -18,14 +18,29 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
+*/
 
-<template name="headerLayout">
-
-    <header>
-        <div class="header">
-
-        </div>
-    </header>
-
-</template>
+Template.sideNavAdmin.events({
+    'click  .navBtn' (event) {
+        event.preventDefault();
+        var clickedTarget = event.target.id;
+        console.log("User clicked: " + clickedTarget);
+        if (clickedTarget === 'home' || clickedTarget === 'giveAGift') {
+            FlowRouter.go('/user/' + clickedTarget);
+        } else if (clickedTarget !== "signIn" && clickedTarget !== "signOut") {
+            FlowRouter.go('/admin/' + clickedTarget);
+        }
+        document.getElementById("adminMenu").style.width = "0";
+    },
+    'click #signIn': () => {
+        var signInModal = document.getElementById('signInModal');
+        signInModal.style.display = "block";
+    },
+    'click #signOut': () => {
+        AccountsTemplates.logout();
+        FlowRouter.go('/user/home');
+    },
+    'click .closebtn': () => {
+        document.getElementById("adminMenu").style.width = "0";
+    },
+});

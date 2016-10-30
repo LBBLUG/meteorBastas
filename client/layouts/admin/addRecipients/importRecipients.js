@@ -45,7 +45,21 @@ Template.importRecipients.events({
                     complete: function(results) {
                         data = results;
                         console.dir(data);
-                        Meteor.call('Recipients.import', data);
+                        Meteor.call('Recipients.import', data, function(err, results){
+                            if (err) {
+                                console.log('Error: ' + err);
+                                Session.set("snackbarText", "Error adding banner!");
+                                Session.set("snackbarColor", "red");
+                                showSnackbar();
+                            } else {
+                                console.log('Insert Result: ' + results);
+                                // add snackbar notice that save was good.
+                                Session.set("snackbarText", "Banner added successfully!");
+                                Session.set("snackbarColor", "green");
+                                showSnackbar();
+                                document.getElementById("mainBannerSetup").reset();
+                            }
+                        });
                     },
                 });
             }

@@ -62,12 +62,10 @@ Template.addGiftsForm.events({
 
         var deliveryPerson = $("#deliveryPerson").val();
         var deliveryPhone = $("#deliveryPhone").val();
-        // console.log("Recipients ID: " + recipientsId);
 
         // check that the information is filled in for gift
         // type and size before save, and warn the user if not.
         if (giftType === null || giftType === "" || giftSize === null || giftSize === "") {
-            // console.log("Missing Data! Fix it.");
             myModalTitle = "Missing Required Data";
             myModalText = "You have not filled in some required fields.  Please go back to the form, and fill in all required fields, then try to re-submit the form. <br />Required fields are notated with an asterisk (*) next to the field name.";
             var myModal = document.getElementById("missingDataModalView");
@@ -75,17 +73,19 @@ Template.addGiftsForm.events({
             $("#myModalTitleHeader").html(myModalTitle);
             $("#myModalTextSection").html(myModalText);
         } else {
-
             // update the recipient record with the gift information
-            Meteor.call('gifts.add', recipientsId, giftNo, giftType, giftSize, selected, checkedIn, outForDelivery, delivered, deliveryPerson, deliveryPhone, function(error, result){
-                if (error) {
-                    console.log('Error: ' + error);
-                } else {
-                    // clear the fields for the next entry
-                    document.getElementById("addGiftsFormTop").reset();
-                    Session.set("snackbarText", "Save Successful!")
+            Meteor.call('gifts.add', recipientsId, giftNo, giftType, giftSize, selected, checkedIn, outForDelivery, delivered, deliveryPerson, deliveryPhone, function(err, result){
+                if (err) {
+                    Session.set("snackbarText", "Error Adding Gift Information!");
+                    Session.set("snackbarColor", "red");
                     showSnackbar();
-                    }
+                } else {
+                    // add snackbar notice that save was good.
+                    Session.set("snackbarText", "Gift Added Successfully!");
+                    Session.set("snackbarColor", "green");
+                    showSnackbar();
+                    document.getElementById("addGiftsFormTop").reset();
+                }
             });
         }
     },

@@ -23,6 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
-Template.body.onCreated(function bodyOnCreated() {
-    Meteor.subscribe('recipients');
+Meteor.startup(() => {
+
 });

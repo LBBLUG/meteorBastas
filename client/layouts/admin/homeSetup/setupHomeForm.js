@@ -34,13 +34,11 @@ Template.homeBody.helpers({
         return HomePageBanner.find({ isCurrent: true });
     },
     even: function (value) {
-        console.log("Value = " + value);
     if ((value % 2) === 0) {
         var isEven = true;
     } else {
         isEven = false;
     }
-        console.log("Even: " + isEven);
         return isEven;
     },
     homeBannersExist: function() {
@@ -55,7 +53,6 @@ Template.homeBody.helpers({
 Template.setupHomeForm.events({
     'click #btnSubmitHomeSetup' (event) {
         event.preventDefault();
-        console.log('Save button Clicked');
         homePageText = $("#mainHomeInfo").val();
         if ($(".isCurrent").prop('checked') == true) {
             isCurrent = true;
@@ -67,10 +64,16 @@ Template.setupHomeForm.events({
 
         Meteor.call('homePageData.insert', homePageText, image64, isCurrent, function(err, result){
             if (err) {
-                console.log('Error: ' + err);
+                Session.set("snackbarText", "Error adding Homepage Info!");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
             } else {
-                console.log('Insert Result: ' + result);
+                Session.set("snackbarText", "Homepage info added successfully!");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
                 document.getElementById("mainHomeSetup").reset();
+                var preview = document.querySelector('img');
+                preview.src = "";
             }
         });
     },
