@@ -27,13 +27,16 @@ So, as described above, to run this project on your local machine simply do the 
 ## Features now working
 
 
-- Recipients List now shows recipients and their selected gifts.  
-    - Next, I'll be adding actions to edit the recipient and gifts from the detail view.
-- Detail View (no editing there yet).
+- Recipients List now shows recipients and their selected gifts.
+- Find Recipients is a quick find of Recipient / gift info.  
+    - Gift status can be easily updated in this view.
+- Detail View (reached from Recipients List or Find Recipients).
 - Recipients Import from .csv file
 - Adding Recipients and Gifts manually
 - Adding content Text and Images for the home page
+- Adding a banner image for the home page.
 - Displaying the Home page
+- User account administration for changing user role / permissions
 
 ### Uploading a .csv file for bulk import
 
@@ -79,10 +82,7 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 
 ## Next up development
 
-    1. Make edits in the detail screen.
-    2. Roles and Permissions for users.
-        a. Make it so the first user created is an admin.
-        b. Make screens and methods for setting user permissions.
-        c. Make all users after the first user, an 'end user / giver' by default.
-    3. Set the application to give Admin and higher privilege users the ability to easily get to admin screens.
-    4. Add a banner to the home page.
+    1. Fix bugs, start adding features for givers.
+    2. Add ability to delete from Find Recipients or Recipients list
+        a. Add a double check before delete.
+    3. Backup Database with button click.
