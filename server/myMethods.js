@@ -27,5 +27,6 @@ Meteor.methods({
     newRole(id, newUserRole, currRole) {
         Roles.removeUsersFromRoles(id, currRole);
         Roles.addUsersToRoles(id, newUserRole);
+        return;
     },
 });

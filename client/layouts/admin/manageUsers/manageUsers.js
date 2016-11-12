@@ -84,7 +84,12 @@ Template.changeUserRole.events({
         var currRole = Roles.getRolesForUser( this._id );
         var newRole = $("#newUserRole").val();
         if (newRole != currRole) {
-            Meteor.call("newRole", this._id, newRole, currRole);
+            Meteor.call("newRole", this._id, newRole, currRole, function() {
+                console.log("Done!");
+                Session.set("snackbarText", "User Role updated successfully!");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
+            });
         } else {
             var myModal = document.getElementById("myModal");
             myModalTitle = "User Already In Role";
