@@ -21,7 +21,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 var postSignUp = function(userId, info) {
-    Roles.addUsersToRoles(userId, 'Giver');
+    if (Meteor.users.find().count() > 1) {
+        Roles.addUsersToRoles(userId, 'Giver');
+    } else if (Meteor.users.find().count() === 1){
+        Roles.addUsersToRoles(userId, 'Admin');
+    }
 };
 
 var onLogOut = function() {
