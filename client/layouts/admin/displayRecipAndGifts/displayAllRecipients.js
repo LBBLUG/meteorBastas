@@ -28,46 +28,6 @@ Template.displayAllRecipients.onCreated(function() {
     this.subscribe("recipients");
 });
 
-Template.selectedCB.helpers({
-    isSelected: function() {
-        if (this.selected === true) {
-            return "checked";
-        } else {
-            return false;
-        }
-    },
-});
-
-Template.checkedInCB.helpers({
-    isCheckedIn: function() {
-        if (this.checkedIn === true) {
-            return "checked";
-        } else {
-            return false;
-        }
-    },
-});
-
-Template.outForDeliveryCB.helpers({
-    isOutForDelivery: function() {
-        if (this.outForDelivery === true) {
-            return "checked";
-        } else {
-            return false;
-        }
-    },
-});
-
-Template.deliveredCB.helpers({
-    isDelivered: function() {
-        if (this.delivered === true) {
-            return "checked";
-        } else {
-            return false;
-        }
-    },
-});
-
 Template.displayAllRecipients.helpers({
     findAllRecipients: function() {
         return Recipients.find({});
