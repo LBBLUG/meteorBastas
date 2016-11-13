@@ -21,7 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <template name="displayAllRecipients">
-    <div class="templateWrapper">
+    {{> snackbar}}
+    <div class="templateWrapper indented">
         <div class="container">
             <div class="row">
                  <div class="col s12">
@@ -98,15 +99,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                     </td>
                 </tr>
-                {{#if Template.subscriptionsReady}}
-                    {{#each findAllRecipients}}
-                        {{> displayAllGifts}}
-                    {{/each}}
-                {{else}}
-                    <h2>Loading List...please wait...</h2>
-                {{/if}}
-
             </table>
+            {{#if Template.subscriptionsReady}}
+                {{#each findAllRecipients}}
+                    {{> displayAllGifts}}
+                {{/each}}
+            {{else}}
+                <h2>Loading List...please wait...</h2>
+            {{/if}}
 
                 {{> recipientDetail}}
 
@@ -118,4 +118,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             {{/if}}
         </div>
     </div>
+    {{> genModal}}
 </template>

@@ -66,6 +66,7 @@ Template.getRecipientsAndGift.events({
     'click .isSelected' (event, target) {
         const selectedState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
+        console.log("Is selected should be called");
         // call the method to update this checkbox
         if (selectedState === false) {
             Meteor.call('Selected.update', this._id, selectedState, giftTypeInfo);
@@ -80,6 +81,7 @@ Template.getRecipientsAndGift.events({
     'click .isCheckedIn' (event, target) {
         const checkedInState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
+        console.log("Is checked in should be called");
         // call the method to update the checkbox in database
         // if checked in is being set to true, we must also set Selected to true.
         if (checkedInState === true) {
@@ -96,6 +98,7 @@ Template.getRecipientsAndGift.events({
     'click .isOutForDelivery' (event, target) {
         const outForDeliveryState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
+        console.log("Is Out for Delivery should be called");
         // call method to set checkbox in db
         // if outForDelivery is being set to true, then we must also set Selected and
         // checkedIn to true.
@@ -113,6 +116,7 @@ Template.getRecipientsAndGift.events({
     'click .isDelivered' (event, target) {
         const isDeliveredState = event.currentTarget.checked;
         const giftTypeInfo = this.giftType;
+        console.log("Is delivered method should be called.");
         //call method to set checkbox state in db
         // if isDelivered is being set to true, then we must set Selected, CheckedIn,
         // and OutForDelivery to true as well.

@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 15%; /* Location of the box */
+    padding-top: 10%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -56,7 +56,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Modal Header */
 .myModal-header, .myModal-footer, .modal-header, .modal-footer {
-    background-color: #4A708B;
+    background: #4A708B;
     color: #ffffff;
     margin: auto;
     width: 80%;

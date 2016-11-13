@@ -371,25 +371,25 @@ Meteor.methods({
         }
     },
     'Selected.update' (recipientId, selectedState, giftTypeInfo) {
-        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+        return Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
              $set: { 'gifts.$.selected': selectedState, editedBy: Meteor.user().emails[0].address,
              lastEditedOn: new Date(), } },
         );
     },
     'CheckedIn.update' (recipientId, selectedState, giftTypeInfo) {
-        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+        return Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
             $set: { 'gifts.$.checkedIn': selectedState, editedBy: Meteor.user().emails[0].address,
             lastEditedOn: new Date(), } },
         );
     },
     'OutForDelivery.update' (recipientId, selectedState, giftTypeInfo) {
-        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+        return Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
             $set: { 'gifts.$.outForDelivery': selectedState, editedBy: Meteor.user().emails[0].address,
             lastEditedOn: new Date(), } },
         );
     },
     'Delivered.update' (recipientId, selectedState, giftTypeInfo) {
-        Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+        return Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
             $set: { 'gifts.$.delivered': selectedState, editedBy: Meteor.user().emails[0].address,
             lastEditedOn: new Date(), } },
         );
@@ -399,6 +399,13 @@ Meteor.methods({
         console.log(giftsFor);
         return giftsFor;
     },
+    'deleteRecipient' (recipientId) {
+        check(recipientId, String);
+        console.log("--------------------------------");
+        console.log(" User Deleted ");
+
+        return Recipients.remove({ _id: recipientId });
+    }
 
     // get numbers for gift counts
 

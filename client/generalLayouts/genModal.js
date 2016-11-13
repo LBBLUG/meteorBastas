@@ -24,7 +24,31 @@ Template.genModal.events({
     'click #OKMissingData' (event) {
         event.preventDefault();
         var myModal = document.getElementById("myModal");
-        myModal.style.display = "none";
+        var action = Session.get("actionToTake");
+        if (action = "deleteUser") {
+            var recipientId = Session.get("recipientId");
+            Meteor.call('deleteRecipient', recipientId, function(err, result) {
+                if (err) {
+                    console.log('Something happened');
+                    Session.set("snackbarText", "An error occurred deleting the recipient.");
+                    Session.set("snackbarColor", "red");
+                    showSnackbar();
+                } else {
+                    // hide the modal
+                    var myModal = document.getElementById("myModal");
+                    myModal.style.display = "none";
+                    console.log("Should have a green notification");
+
+                    // show the notification bar
+                    Session.set("snackbarText", "Recipient and gifts deleted!");
+                    Session.set("snackbarColor", "green");
+                    showSnackbar();
+                }
+            });
+        } else {
+            var myModal = document.getElementById("myModal");
+            myModal.style.display = "none";
+        }
     },
     'click #closeModalCheckmark' (event) {
         event.preventDefault();

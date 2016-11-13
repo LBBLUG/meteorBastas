@@ -25,6 +25,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     margin-top: 80px;
 }
 
+.indented {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
 .contentInfo {
     margin-top: 5%;
 }

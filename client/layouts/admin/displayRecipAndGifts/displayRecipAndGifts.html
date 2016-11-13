@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <template name="displayRecipAndGifts">
+    {{> snackbar}}
     <div class="templateWrapper">
     {{#if isInRole 'Admin, Editor, Adder'}}
     <div class="container">
@@ -56,4 +57,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             </p>
         {{/if}}
     </div>
+    {{> genModal}}
 </template>

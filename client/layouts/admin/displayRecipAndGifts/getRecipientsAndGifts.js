@@ -118,4 +118,16 @@ Template.getRecipientsAndGift.events({
             $("#myModalTextSection").html(myModalText);
         }
     },
+    'click .delete' (event) {
+        if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
+            Session.set( "recipientId", this._id);
+            Session.set( "actionToTake", "deleteUser" );
+            var myModal = document.getElementById("myModal");
+            myModalTitle = "Delete Recipient and Gifts";
+            myModalText = "You are about to delete this recipient. If you meant to do this click Ok.  If not close this warning with the 'checkmark' in the upper right.";
+            myModal.style.display = "block";
+            $("#myModalTitleHeader").html(myModalTitle);
+            $("#myModalTextSection").html(myModalText);
+        }
+    },
 });

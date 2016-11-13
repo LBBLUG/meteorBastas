@@ -28,6 +28,46 @@ Template.displayAllRecipients.onCreated(function() {
     this.subscribe("recipients");
 });
 
+Template.selectedCB.helpers({
+    isSelected: function() {
+        if (this.selected === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
+});
+
+Template.checkedInCB.helpers({
+    isCheckedIn: function() {
+        if (this.checkedIn === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
+});
+
+Template.outForDeliveryCB.helpers({
+    isOutForDelivery: function() {
+        if (this.outForDelivery === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
+});
+
+Template.deliveredCB.helpers({
+    isDelivered: function() {
+        if (this.delivered === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
+});
+
 Template.displayAllRecipients.helpers({
     findAllRecipients: function() {
         return Recipients.find({});
@@ -82,7 +122,7 @@ Template.displayAllRecipients.events({
                      break;
              }
          } else if (state === false) {
-             $('table tr.trMainData:hidden').show();
+             $('.trMainData:hidden').show();
          }
      },
 });
@@ -100,6 +140,84 @@ Template.displayAllGifts.events({
              myModal.style.display = "block";
              $("#myModalTitleHeader").html(myModalTitle);
              $("#myModalTextSection").html(myModalText);
+         }
+     },
+     'click .delete' (event) {
+         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
+             Session.set( "recipientId", this._id);
+             Session.set( "actionToTake", "deleteUser" );
+             var myModal = document.getElementById("myModal");
+             myModalTitle = "Delete Recipient and Gifts";
+             myModalText = "You are about to delete this recipient. If you meant to do this click Ok.  If not close this warning with the 'checkmark' in the upper right.";
+             myModal.style.display = "block";
+             $("#myModalTitleHeader").html(myModalTitle);
+             $("#myModalTextSection").html(myModalText);
+         }
+     },
+     'click .isSelected' (event, target) {
+         const selectedState = event.currentTarget.checked;
+         const giftTypeInfo = this.giftType;
+         console.log("Is selected should be called");
+         // call the method to update this checkbox
+         if (selectedState === false) {
+             Meteor.call('Selected.update', this._id, selectedState, giftTypeInfo);
+             Meteor.call('Delivered.update', this._id, selectedState, giftTypeInfo);
+             Meteor.call('OutForDelivery.update', this._id, selectedState, giftTypeInfo);
+             Meteor.call('CheckedIn.update', this._id, selectedState, giftTypeInfo);
+         } else {
+             Meteor.call('Selected.update', this._id, selectedState, giftTypeInfo);
+         }
+
+     },
+     'click .isCheckedIn' (event, target) {
+         const checkedInState = event.currentTarget.checked;
+         const giftTypeInfo = this.giftType;
+         console.log("Is checked in should be called");
+         // call the method to update the checkbox in database
+         // if checked in is being set to true, we must also set Selected to true.
+         if (checkedInState === true) {
+             Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+             Meteor.call('Selected.update', this._id, checkedInState, giftTypeInfo);
+         } else if (checkedInState === false) {
+             Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+             Meteor.call('Delivered.update', this._id, checkedInState, giftTypeInfo);
+             Meteor.call('OutForDelivery.update', this._id, checkedInState, giftTypeInfo);
+         } else {
+             Meteor.call('CheckedIn.update', this._id, checkedInState, giftTypeInfo);
+         }
+     },
+     'click .isOutForDelivery' (event, target) {
+         const outForDeliveryState = event.currentTarget.checked;
+         const giftTypeInfo = this.giftType;
+         console.log("Is Out for Delivery should be called");
+         // call method to set checkbox in db
+         // if outForDelivery is being set to true, then we must also set Selected and
+         // checkedIn to true.
+         if (outForDeliveryState === true) {
+             Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+             Meteor.call('CheckedIn.update', this._id, outForDeliveryState, giftTypeInfo);
+             Meteor.call('Selected.update', this._id, outForDeliveryState, giftTypeInfo);
+         } else if (outForDeliveryState === false) {
+             Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+             Meteor.call('Delivered.update', this._id, outForDeliveryState, giftTypeInfo);
+         } else {
+             Meteor.call('OutForDelivery.update', this._id, outForDeliveryState, giftTypeInfo);
+         }
+     },
+     'click .isDelivered' (event, target) {
+         const isDeliveredState = event.currentTarget.checked;
+         const giftTypeInfo = this.giftType;
+         console.log("Is delivered method should be called.");
+         //call method to set checkbox state in db
+         // if isDelivered is being set to true, then we must set Selected, CheckedIn,
+         // and OutForDelivery to true as well.
+         if (isDeliveredState === true) {
+             Meteor.call('Delivered.update', this._id, isDeliveredState, giftTypeInfo);
+             Meteor.call('OutForDelivery.update', this._id, isDeliveredState, giftTypeInfo);
+             Meteor.call('CheckedIn.update', this._id, isDeliveredState, giftTypeInfo);
+             Meteor.call('Selected.update', this._id, isDeliveredState, giftTypeInfo);
+         } else {
+             Meteor.call('Delivered.update', this._id, isDeliveredState, giftTypeInfo);
          }
      },
 });
