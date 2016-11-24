@@ -23,12 +23,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Recipients } from '../../../../imports/api/recipients.js';
 
 Template.importRecipients.events({
+    'change #recipientFile' (event) {
+        var filename = $("#recipientFile").val();
+        console.log("Filename is: " + filename);
+        document.getElementById('customFileUpload').innerHTML = filename;
+        document.getElementById("customFileUpload").className = "custom-file-selected";
+    },
     'click #addImportFile' (event) {
             event.preventDefault();
 
             var data = [];
             // first check to see if the user has selected a file
             var recipientFile = document.getElementById("recipientFile").files[0];
+            // console.dir(recipientFile);
             if (recipientFile == "" || recipientFile == null) {
                 myModalTitle = "No File Selected";
                 myModalText = "You must select a file to be uploaded and imported.";
@@ -38,6 +45,9 @@ Template.importRecipients.events({
                 $("#myModalTextSection").html(myModalText);
             } else {
                 // handle the file selected, and import the Data
+                document.getElementById('customFileUpload').innerHTML = 'selected file will show here';
+                document.getElementById("customFileUpload").className = "custom-file-waiting";
+
                 Papa.parse(recipientFile, {
                     delimiter: ",",
                 	header: true,
@@ -48,16 +58,15 @@ Template.importRecipients.events({
                         Meteor.call('Recipients.import', data, function(err, results){
                             if (err) {
                                 console.log('Error: ' + err);
-                                Session.set("snackbarText", "Error adding banner!");
+                                Session.set("snackbarText", "Error Importing File!");
                                 Session.set("snackbarColor", "red");
                                 showSnackbar();
                             } else {
                                 console.log('Insert Result: ' + results);
                                 // add snackbar notice that save was good.
-                                Session.set("snackbarText", "Banner added successfully!");
+                                Session.set("snackbarText", "File imported successfully!");
                                 Session.set("snackbarColor", "green");
                                 showSnackbar();
-                                document.getElementById("mainBannerSetup").reset();
                             }
                         });
                     },

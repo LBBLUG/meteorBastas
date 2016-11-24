@@ -41,9 +41,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             {{address.city}}, {{address.state}} {{address.zip}}
         </div>
         <div class="col s2">
-            {{#if isInRole 'Admin, Editor'}}
+            {{#if isInRole 'Admin, Editor, Viewer'}}
                 <a id="getRecipDetail" class="waves-effect waves-light btn details">Details</a>
                 <br  /><br  />
+            {{/if}}
+            {{#if isInRole 'Admin, Editor'}}
                 <a id="deleteRecip" class="waves-effect waves-light btn delete red">Delete</a>
             {{/if}}
         </div>
@@ -51,6 +53,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <div class="row">
         <div class="col s12">
             <h4>Gifts</h4>
+            <!-- if Admin or Editor allow use the see / change status of gifts -->
+            {{#if isInRole 'Admin, Editor'}}
             {{#each gifts}}
             <div class="row">
                 <div class="col s2">
@@ -75,6 +79,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 </div>
             </div>
             {{/each}}
+            {{else}}
+            {{#each gifts}}
+            <div class="row">
+                <div class="col s6">
+                    <label>Gift</label><br />
+                    {{giftType}}
+                </div>
+                <div class="col s6">
+                    <label>Size</label><br />
+                    {{giftSize}}
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
         </div>
     </div>
 </template>

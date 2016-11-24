@@ -220,13 +220,22 @@ Meteor.methods({
     },
     'Recipients.import' (importData) {
         // check the data if needed
-        console.log('--------------------------------------------------');
-        console.dir(importData);
+
+        // uncomment the 2 (two) lines below to see the data being imported in the server console.
+        // console.log('--------------------------------------------------');
+        // console.dir(importData);
+
         // ensure the user is logged in and has privileges
         if (!this.userId) {
             throw new Meteor.Error('User is not authorized to import recipient information, or is not logged in.');
         }
 
+        // NOTE I've done the import in a bit of an ugly way...the papa-parse engine is awesome, but
+        // it doesn't support having mulitple columns with the same name, so I currently am limiting
+        // the gifts to 3, and having to do some fun stuff here in case there's only 1 or 2 gifts,
+        // and not three on a recipient... I'm still thinking on how to improve this and simplify it in
+        // the future.
+        
         // start breaking the importData down into its parts
         for (i = 0; i < importData.data.length; i++) {
             if (!importData.data[i].giftType2 && !importData.data[i].giftType3) {

@@ -89,7 +89,7 @@ Template.displayAllRecipients.events({
 
 Template.displayAllGifts.events({
     'click .details' (event, target) {
-         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
+         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor', 'Viewer'])) {
              Session.set( "recipientId", this._id );
              console.log("Details clicked: " + this._id);
              var recipientDetailModal = document.getElementById("detailsFormView");

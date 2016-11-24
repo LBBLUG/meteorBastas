@@ -25,11 +25,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <form class="importForm">
             <div class="ui grid">
                 <div class="row">
-                    <div class="col s12 contentInfo">
+                    <div class="col s6 contentInfo">
                         <label class="custom-file-upload">
                         <input type="file" name="recipientFiles" id="recipientFile" accept=".csv" />
-                        Select a .csv file to import
+                        Click here to Select a .csv file to import
                     </label>
+                    </div>
+                    <div class="col s6 contentInfo">
+                        <lable id="customFileUpload" class="custom-file-waiting">
+                            selected file will show here
+                        </lable>
                     </div>
                 </div>
                 <div class="row">

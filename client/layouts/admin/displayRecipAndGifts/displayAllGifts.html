@@ -23,26 +23,43 @@
                 <td>
                     {{giftSize}}
                 </td>
-                <td>
-                    {{> selectedCB _id=../_id giftType=giftType selected=selected}}
-                </td>
-                <td>
-                    {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
-                </td>
-                <td>
-                    {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
-                </td>
-                <td>
-                    {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
-                </td>
+                {{#if isInRole 'Admin, Editor'}}
+                    <td>
+                        {{> selectedCB _id=../_id giftType=giftType selected=selected}}
+                    </td>
+                    <td>
+                        {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
+                    </td>
+                    <td>
+                        {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
+                    </td>
+                    <td>
+                        {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
+                    </td>
+                {{else}}
+                    <td>
+                        <label>Selected:</label> {{selected}}
+                    </td>
+                    <td>
+                        <label>Checked In:</label> {{checkedIn}}
+                    </td>
+                    <td>
+                        <label>Out for Delivery:</label> {{outForDelivery}}
+                    </td>
+                    <td>
+                        <label>Delivered:</label> {{delivered}}
+                    </td>
+                {{/if}}
             </tr>
             {{/each}}
         </td>
 
         <td>
-        {{#if isInRole 'Admin, Editor' 'Admin'}}
+        {{#if isInRole 'Admin, Editor, Viewer'}}
             <a id="getRecipDetail" class="waves-effect waves-light btn details">Details</a>
             <br  /><br  />
+        {{/if}}
+        {{#if isInRole 'Admin, Editor'}}
             <a id="deleteRecip" class="waves-effect waves-light btn delete red">Delete</a>
         {{/if}}
         </td>

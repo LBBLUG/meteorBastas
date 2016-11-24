@@ -36,7 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                 <h4>Recipient Information</h4>
                             </div>
                             <div class="col s4">
+                                {{#if isInRole 'Admin, Editor'}}
                                 <a class="btn-floating btn-large waves-effect waves-light blue editRecipient"><i class="material-icons editRecipient">edit</i></a>
+                                {{/if}}
                             </div>
                         </div>
                         <div class="row">
@@ -118,7 +120,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                 <h4>Gift Information</h4>
                             </div>
                             <div class="col s4">
+                                {{#if isInRole 'Admin, Editor'}}
                                 <a class="btn-floating btn-large waves-effect waves-light blue editGift" id="{{giftNo}}"><i class="material-icons editGift {{_id}} {{giftNo}}">edit</i></a>
+                                {{/if}}
                             </div>
                         </div>
                         {{#each gifts}}
