@@ -1,9 +1,13 @@
 import { BastasDB } from '../../../../imports/api/bastasDb.js';
 import shelljs from 'shelljs';
 
+Template.backupUI.onCreated(function() {
+    this.subscribe("backups");
+})
+
 Template.backupUI.helpers({
     lastBackup: function() {
-
+        return BastasDB.findOne({}, {sort: { backupDateTime: -1, limi: 1 }});
     },
 });
 
@@ -29,6 +33,7 @@ Template.backupUI.events({
                     Session.set("snackbarText", "Backup Successful!");
                     Session.set("snackbarColor", "green");
                     showSnackbar();
+                    Meteor.call('backup.complete', savePath);
                 }
             });
         }

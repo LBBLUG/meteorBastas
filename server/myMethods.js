@@ -38,15 +38,12 @@ Meteor.methods({
             throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
         }
 
-        // check if mongo is installed outside of meteor
-        // if (!which mongo) {
-        //     throw new Meteor.Error('Mongo not installed.');
-        // }
+        var backupdt = new Date();
 
         shelljs.exec('mongodump -h 127.0.0.1 --port 3001 --out ' + outputPath + ' -d meteor', function(code, out, err) {
             console.log("Exit code: " + code);
-            console.log("Std Out: "+ out);
-            console.log("Std Err: " + err);
+            console.log("Std Out: " + out);
+            console.log("Std Err:" + err)
         });
     },
 });

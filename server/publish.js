@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Recipients } from '../imports/api/recipients.js';
 import { HomePageData } from '../imports/api/homePageData.js';
 import { HomePageBanner } from '../imports/api/homePageBanner.js';
+import { BastasDB } from '../imports/api/bastasDb.js';
 
 Meteor.publish("recipients", function(){
     if (Roles.userIsInRole(this.userId, ['Admin', 'Editor', 'Adder', 'Viewer'])) {
@@ -46,4 +47,8 @@ Meteor.publish("allUsers", function() {
     if (Roles.userIsInRole(this.userId, 'Admin')) {
         return Meteor.users.find({});
     }
+});
+
+Meteor.publish("backups", function() {
+    return BastasDB.find({});
 });
