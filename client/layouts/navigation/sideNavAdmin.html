@@ -60,17 +60,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 {{/if}}
 
                 {{#if isInRole 'Admin'}}
-
                         <a href="#" id="sendReminder" class="navBtn"><i class="material-icons navBtn" id="sendReminder">email</i>&nbsp; Send Reminder</a>
-
                         <a href="#" id="manageUsers" class="navBtn"><i class="material-icons navBtn" id="manageUsers">supervisor_account</i>&nbsp; Manage Users</a>
-
                 {{/if}}
 
                 {{#if isInRole 'Admin, Editor'}}
-
                         <a href="#" id="settings" class="navBtn"><i class="material-icons navBtn" id="settings">settings</i>&nbsp; Setup</a>
-
+                        <a href="#" id="backup-ui" class="navBtn"><i class="material-icons navBtn" id="backup-ui">dns</i>&nbsp; Backup Database</a>
                 {{/if}}
             {{/if}}
         </div>

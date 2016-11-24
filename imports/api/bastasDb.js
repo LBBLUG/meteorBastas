@@ -21,32 +21,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { Meteor } from 'meteor/meteor';
-import { Recipients } from '../imports/api/recipients.js';
-import { BastasDB } from '../imports/api/bastasDb.js';
+import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
 import shelljs from 'shelljs';
 
-Meteor.methods({
-    newRole(id, newUserRole, currRole) {
-        Roles.removeUsersFromRoles(id, currRole);
-        Roles.addUsersToRoles(id, newUserRole);
-        return;
-    },
-    'backup.bastasDB' (outputPath) {
-        console.log("Got in the backup method");
-        // check if user is logged in before continuing
-        if (!this.userId) {
-            throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
-        }
+export const BastasDB = new Mongo.Collection('bastasDB');
 
-        // check if mongo is installed outside of meteor
-        // if (!which mongo) {
-        //     throw new Meteor.Error('Mongo not installed.');
-        // }
-
-        shelljs.exec('mongodump -h 127.0.0.1 --port 3001 --out ' + outputPath + ' -d meteor', function(code, out, err) {
-            console.log("Exit code: " + code);
-            console.log("Std Out: "+ out);
-            console.log("Std Err: " + err);
-        });
-    },
+BastasDB.allow({
+    insert: function(userId, doc) {
+        // if user id exists, allow insert
+        return !!userId;
+    }
 });
