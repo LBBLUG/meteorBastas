@@ -33,7 +33,7 @@ The only reason you need Mongo outside of the Mongo instance installed with mete
     1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
     2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
     
-If you get prompted after the mpn install of ShellJS to run another npm command to install stubs dependencies, go ahead and run that.
+If you get prompted, after the npm install of ShellJS, to run another npm command to install stubs dependencies, go ahead and run that.
 
 Now kill and re-run the meteor command, and everything should work.
 
@@ -44,12 +44,16 @@ Now kill and re-run the meteor command, and everything should work.
 - Find Recipients is a quick find of Recipient / gift info.  
     - Gift status can be easily updated in this view.
 - Detail View (reached from Recipients List or Find Recipients).
+- Editing of recipient and gift information through the detail view.
 - Recipients Import from .csv file
+    - depending on the server you are running on, you may need to break a large file into smaller pieces. 
 - Adding Recipients and Gifts manually
 - Adding content Text and Images for the home page
 - Adding a banner image for the home page.
 - Displaying the Home page
 - User account administration for changing user role / permissions
+- Backup of the database through the user interface
+- Deleting of Recipients and gifts (prompted before delete)
 
 ### Uploading a .csv file for bulk import
 
@@ -57,8 +61,8 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 
     1. there cannot be any commas ',' in the fields within the CSV.  
     2. the header rows for the columns must be titled exactly as follows with capitalization as shown, the order of the columns is not important as long as the data in the column matches the column header row.
-        a. bastasId
-        b. route
+        a. bastasId  // normally an incrementing unique number
+        b. route  // number assigned and used for delivery of gifts
 
     with respect to recipients name
         c. first
@@ -96,6 +100,3 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 ## Next up development
 
     1. Fix bugs, start adding features for givers.
-    2. Add ability to delete from Find Recipients or Recipients list
-        a. Add a double check before delete.
-    3. Backup Database with button click.
