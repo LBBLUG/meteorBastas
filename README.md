@@ -23,6 +23,19 @@ So, as described above, to run this project on your local machine simply do the 
         cd meteorBastas
     4. type 'meteor' into the terminal window while in that directory.
     5. use http://localhost:3000 to reach the main page.
+    
+## Install packages for Backup through UI
+
+If you want to use the backup feature, you'll also need to install ShellJS from NPM, as well as make sure that Mongo is installed from mongodb.com.
+
+The only reason you need Mongo outside of the Mongo instance installed with meteor is so teh mongodump backup command will work.
+
+    1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
+    2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
+    
+If you get prompated after the mpn install of ShellJS to run another npm command to install stubs dependencies, go ahead and run that.
+
+Now kill and re-run the meteor command, and everything should work.
 
 ## Features now working
 
