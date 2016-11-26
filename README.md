@@ -33,7 +33,7 @@ The only reason you need Mongo outside of the Mongo instance installed with mete
     1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
     2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
     
-If you get prompated after the mpn install of ShellJS to run another npm command to install stubs dependencies, go ahead and run that.
+If you get prompted after the mpn install of ShellJS to run another npm command to install stubs dependencies, go ahead and run that.
 
 Now kill and re-run the meteor command, and everything should work.
 
