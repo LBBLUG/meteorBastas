@@ -1,0 +1,86 @@
+<!--
+BASTAS created in Meteor.  The BASTAS (Be A Santa To A Senior) application
+gives operators of this program the ability to track gifts selected onlie,
+gifts checked in by volunteers giving to a Senior, and delivery of the gifts
+to the recipients each season.
+
+Copyright (C) 2016  Brian McGonagill - On Behalf of the Lubbock Linux Users Group
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<template name="editHomePageData">
+    <div class="myModal" id="editHomePageModal">
+        <form>
+            <div class="myModal-header">
+                <h4>Edit Home Page Information</h4>
+            </div>
+            <div class="myModal-content">
+                <table id="homePageDataTable" class="dataTable stripe hover order-column compact">
+                    <thead>
+                        <tr>
+                            <th>
+                                Active?
+                            </th>
+                            <th>
+                                Information
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each showHomeData}}
+                        <tr>
+                            <td id="current{{@index}}" class="homPageCurrentCell">
+                                <div class="switch">
+                                    <label>
+                                      No
+                                      <input type="checkbox" id="currentInfo{{@index}}" class="currentInfo" checked="{{currentInfo}}">
+                                      <span class="lever"></span>
+                                      Yes
+                                    </label>
+                                </div>
+                            </td>
+                            <td id="infoTextCell{{@index}}" class="homePageTextCell">
+                                {{infoText}}
+                            </td>
+                            <td>
+                                <img src='{{imageFileEncoded}}' height="50" />
+                            </td>
+                            <td>
+                                <i id="editHomePageInfo{{@index}}" class="material-icons editHomePageInfo">edit</i>
+                                <i id="deleteHomePageInfo{{@index}}" class="material-icons deleteHomePageInfo">delete</i>
+                                <i id="cancelHomePageInfoTable{{@index}}" class="material-icons cancelHomePageInfoTable">not_interested</i>
+                                <i id="saveHomePageInfoTable{{@index}}" class="material-icons saveHomePageInfoTable">done</i>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="myModal-footer">
+                <div class="row">
+                    <div class="col s12">
+                        <a id="submitEditRecipient" class="waves-effect waves-light btn blue doneEditHomeInfo">Done</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>

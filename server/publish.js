@@ -32,7 +32,7 @@ Meteor.publish("recipients", function(){
 });
 
 Meteor.publish("homePageData", function() {
-    return HomePageData.find({ isCurrent: true });
+    return HomePageData.find({});
 });
 
 Meteor.publish("homePageBanner", function() {

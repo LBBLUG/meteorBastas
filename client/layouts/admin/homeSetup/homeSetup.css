@@ -1,0 +1,7 @@
+.cancelHomePageInfoTable, .saveHomePageInfoTable {
+    visibility: hidden;
+}
+
+.cancelHomePageInfoTable, .saveHomePageInfoTable, .editHomePageInfo, .deleteHomePageInfo {
+    cursor: pointer;
+}

@@ -94,6 +94,12 @@ Template.setupHomeForm.events({
           reader.readAsDataURL(file);
         }
     },
+    'click .editHomePageShow' (event) {
+        event.preventDefault();
+        console.log("clicked to edit.");
+        var editHomePageModal = document.getElementById('editHomePageModal');
+        editHomePageModal.style.display = "block";
+    },
 });
 
 Template.imageDisplay.helpers({
@@ -101,4 +107,98 @@ Template.imageDisplay.helpers({
         reader = new FileReader();
         return reader.readAsDataURL(imageFileEncoded);
     }
+});
+
+Template.editHomePageData.helpers({
+    showHomeData: function() {
+        return HomePageData.find({});
+    },
+    currentInfo: function() {
+        if (this.isCurrent === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
+});
+
+Template.editHomePageData.events({
+    'click .editHomePageInfo' (event) {
+        event.preventDefault();
+        var clickedId = event.currentTarget.id;
+        indexNo = clickedId.slice(-1);
+
+        $(".editHomePageInfo").closest('tr').prop('contenteditable', true);
+        $(".editHomePageInfo").hide();
+        $(".deleteHomePageInfo").hide();
+        $(".saveHomePageInfoTable").css('visibility', 'visible');
+        $(".cancelHomePageInfoTable").css('visibility', 'visible');
+    },
+    'click .deleteHomePageInfo' (event) {
+        event.preventDefault();
+        var infoId = this._id;
+        console.log("i would delete: " + infoId);
+        Meteor.call('homePageData.delete', this._id);
+    },
+    'click .cancelHomePageInfoTable' (event) {
+        event.preventDefault();
+        $(".cancelHomePageInfoTable").closest('tr').prop('contenteditable', false);
+        $(".editHomePageInfo").show();
+        $(".deleteHomePageInfo").show();
+        $(".saveHomePageInfoTable").css('visibility', 'hidden');
+        $(".cancelHomePageInfoTable").css('visibility', 'hidden');
+    },
+    'click .saveHomePageInfoTable' (event) {
+        event.preventDefault();
+        var clickedId = event.currentTarget.id;
+        var indexNo = clickedId.slice(-1);
+        var infoId = this._id;
+
+        $(".saveHomePageInfoTable").closest('tr').prop('contenteditable', false);
+        $(".editHomePageInfo").show();
+        $(".deleteHomePageInfo").show();
+        $(".saveHomePageInfoTable").css('visibility', 'hidden');
+        $(".cancelHomePageInfoTable").css('visibility', 'hidden');
+
+        // and save some stuff.
+        var newInfo = $("#infoTextCell" + indexNo).text();
+        console.log("new info from save: " + newInfo);
+        $("#infoTextCell" + indexNo).text('');
+
+        Meteor.call('homePageData.update', infoId, newInfo, function(err, result){
+            if (err) {
+                Session.set("snackbarText", "Error: Info not Updated!");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
+            } else {
+
+                Session.set("snackbarText", "Info Updated Successfully!");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
+            }
+        });
+    },
+    'click .currentInfo' (event) {
+        event.preventDefault();
+        const setCurrent = event.currentTarget.checked;
+        itemId = this._id;
+
+        Meteor.call('update.setCurrent', itemId, setCurrent, function(err, result) {
+            if (err) {
+                Session.set("snackbarText", "An error occurred updating Current Status");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
+            } else {
+                Session.set("snackbarText", "Updated Successfully!");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
+            }
+        });
+    },
+    'click .doneEditHomeInfo' (event) {
+        event.preventDefault();
+
+        var editHomePageModal = document.getElementById('editHomePageModal');
+        editHomePageModal.style.display = "none";
+    },
 });

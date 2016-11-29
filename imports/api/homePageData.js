@@ -41,8 +41,6 @@ Meteor.methods({
         // make sure user is logged in
         if (!this.userId) {
             throw new Meteor.Error('User is not authorized to add home page information.');
-        } else {
-            console.log('User is logged in');
         }
 
         return HomePageData.insert({
@@ -51,6 +49,45 @@ Meteor.methods({
             isCurrent: isCurrent,
             addedOn: new Date(),
             addedBy: Meteor.user().emails[0].address,
+            updatedOn: "na",
+            updatedBy: "na",
         });
+    },
+    'homePageData.update' (infoId, infoTextSent) {
+
+        check(infoTextSent, String);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to add home page information.');
+        }
+
+        return HomePageData.update({ _id: infoId }, {
+            $set: {
+                infoText: infoTextSent,
+                updatedOn: new Date(),
+                updatedBy: Meteor.user().emails[0].address,
+        }});
+    },
+    'homePageData.delete' (infoId) {
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to add home page information.');
+        }
+
+        HomePageData.remove({ _id: infoId});
+    },
+    'update.setCurrent' (itemId, setCurrent) {
+        check(setCurrent, Boolean);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to add home page information.');
+        }
+
+        return HomePageData.update({ _id: itemId} , {
+            $set: {
+                isCurrent: setCurrent,
+                updatedOn: new Date(),
+                updatedBy: Meteor.user().emails[0].address,
+            }});
     },
 });
