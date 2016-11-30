@@ -1,8 +1,23 @@
 <template name="countsWidget">
     <div id="countsSquare" class="darkCounts">
-        <div id="title" class="countsTitle">
-            Gifts Checked In
-        </div>
+        <div>
+            <div id="title" class="countsTitle">
+                Gifts Checked In
+                <div class="countNumber countsShown">
+                    {{CheckedInCount}}
+                </div>
+            </div>
 
+        </div>
+        <div>
+            <div id="title" class="countsTitle">
+                Total Gifts
+                <div class="totalNumber countsShown">
+                    {{TotalGifts}}
+                </div>
+            </div>
+
+
+        </div>
     </div>
 </template>

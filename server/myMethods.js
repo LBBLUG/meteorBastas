@@ -20,9 +20,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { Meteor } from 'meteor/meteor';
-import { Recipients } from '../imports/api/recipients.js';
-import { BastasDB } from '../imports/api/bastasDb.js';
+import {
+    Meteor
+} from 'meteor/meteor';
+import {
+    Recipients
+} from '../imports/api/recipients.js';
+import {
+    BastasDB
+} from '../imports/api/bastasDb.js';
 import shelljs from 'shelljs';
 
 Meteor.methods({
@@ -45,5 +51,61 @@ Meteor.methods({
             console.log("Std Out: " + out);
             console.log("Std Err:" + err)
         });
+    },
+    'get.CheckedInCount' () {
+        console.log("getting checked in gifts:");
+
+        var keepGifts = {
+            $project: {
+                "gifts.checkedIn": 1,
+                _id: 1
+            }
+        }
+
+        var expandGifts = {
+            $unwind: "$gifts"
+        }
+
+        var filterByCheckedIn = {
+            $match: {
+                "gifts.checkedIn": true,
+            }
+        }
+
+        var count = {
+            $group: {
+                _id: "checkedIn",
+                count: {
+                    $sum: 1
+                }
+            }
+        }
+
+        var checkedInGifts = Recipients.aggregate([
+            keepGifts,
+            expandGifts,
+            filterByCheckedIn,
+            count
+        ]);
+        console.dir(checkedInGifts);
+        return checkedInGifts;
+
+    },
+    'get.totalGifts' () {
+        console.log("getting total gifts:");
+
+        var totalGifts = Recipients.aggregate({
+            $unwind: "$gifts"
+        }, {
+            $group: {
+                _id: '',
+                count: {
+                    $sum: 1
+                }
+            }
+        });
+        console.dir(totalGifts);
+        return totalGifts;
+
     },
 });

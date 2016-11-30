@@ -31,22 +31,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     width: 240px;
 }
 
-.darkCountsHigh {
+.countNumber {
     color: #3989f8;
 }
 
-.darkCountsLow {
+.totalNumber {
     color: #b422ff;
 }
 
 .countsShown {
-    margin-top: 20%;
+    margin-top: 2%;
+    margin-bottom: 3%;
     color: #e2e2e2;
-    font-size: 48px;
+    font-size: 38px;
     text-align: center;
 }
 
 .countsTitle {
     color: #e2e2e2;
     font-size: 24px;
+    text-align: center;
 }
