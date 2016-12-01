@@ -26,9 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .darkCounts {
     border-radius: 8px;
     border: 1px solid #e7e7e7;
-    background: #2d2d2d;
-    height: 240px;
-    width: 240px;
+    background: #2a2a2a;
+    height: 300px;
+    width: 800px;
 }
 
 .countNumber {
@@ -51,4 +51,70 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     color: #e2e2e2;
     font-size: 24px;
     text-align: center;
+}
+
+.gauges {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  overflow: hidden;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.gauge-a {
+  z-index: 1;
+  position: absolute;
+  background-color: rgba(255,255,255,.2);
+  width: 400px;
+  height: 200px;
+  top: 0%;
+  border-radius: 250px 250px 0px 0px;
+}
+
+.gauge-b {
+  z-index: 3;
+  position: absolute;
+  background-color: #2a2a2a;
+  width: 250px;
+  height: 125px;
+  top: 75px;
+  margin-left: 75px;
+  margin-right: auto;
+  border-radius: 250px 250px 0px 0px;
+}
+
+.gauge-c {
+  z-index: 2;
+  position: absolute;
+  background-color: #5664F9;
+  width: 400px;
+  height: 200px;
+  top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0px 0px 200px 200px;
+  transform-origin: center top;
+  transition: all 1.3s ease-in-out;
+}
+
+.gauge-c {
+    transform:rotate(.5turn);
+}
+
+.gauge-data { color: #5664F9 }
+
+.gauge-data {
+  z-index: 4;
+  font-size: 1.5em;
+  line-height: 25px;
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  top: 90px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 1s ease-out;
 }

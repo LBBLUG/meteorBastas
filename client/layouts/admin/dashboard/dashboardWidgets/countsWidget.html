@@ -1,23 +1,33 @@
 <template name="countsWidget">
     <div id="countsSquare" class="darkCounts">
-        <div>
-            <div id="title" class="countsTitle">
-                Gifts Checked In
-                <div class="countNumber countsShown">
-                    {{CheckedInCount}}
+        <div class="row">
+            <div class="col s66">
+                <div id="title1" class="countsTitle">
+                    Gifts Checked In
+                    <div class="countNumber countsShown">
+                        {{CheckedInCount}}
+                    </div>
+                </div>
+                <div id="title2" class="countsTitle">
+                    Total Gifts
+                    <div class="totalNumber countsShown">
+                        {{TotalGifts}}
+                    </div>
                 </div>
             </div>
+            <div class="col s8">
+                <div id="barChart" class="barChart">
+                    <div class="gauges">
+                      <div class="gauge-a"></div>
+                      <div class="gauge-b"></div>
+                      <div class="gauge-c"></div>
+                      <div class="gauge-data">
+                        <h1 id="percent"></h1>
+                      </div>
+                    </div>
 
-        </div>
-        <div>
-            <div id="title" class="countsTitle">
-                Total Gifts
-                <div class="totalNumber countsShown">
-                    {{TotalGifts}}
                 </div>
             </div>
-
-
         </div>
     </div>
 </template>

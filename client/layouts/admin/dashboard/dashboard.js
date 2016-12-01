@@ -19,6 +19,14 @@ Template.countsWidget.onCreated(function() {
                 Session.set("checkedInCount", checkedInCount);
             }
         });
+
+            var total = Session.get("totalCount");
+            var checkedIn = Session.get("checkedInCount");
+            var percentage = Math.floor((checkedIn / total) * 100);
+            console.log("Percent complete = " + percentage);
+            gaugeValue = "rotate(" + (percentage / 2) / 100 + "turn)";
+            $("#percent").html(percentage + " %");
+            $('.gauge-c').css('transform', gaugeValue);
     });
 });
 
