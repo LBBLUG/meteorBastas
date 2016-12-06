@@ -1,0 +1,21 @@
+<template name="missingGiftsWidget">
+    <div id="countsSquare" class="redCounts">
+        <div class="row">
+            <div class="col s8">
+                <div id="title1" class="redCountsTitle">
+                    Recipients Missing a gift
+                </div>
+            </div>
+                <div class="col s4 redCountNumber redCountsShown">
+                    {{missingGifts}}
+                </div>
+        </div>
+        <div class="redCounts-footer">
+            <div id="title2" class="redCountsTitle">
+                <div class="totalNumber">
+                    Total Recipients {{totalRecips}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

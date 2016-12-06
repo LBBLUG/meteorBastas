@@ -1,0 +1,21 @@
+<template name="countsRecipWidget">
+    <div id="countsSquare" class="darkCounts">
+        <div class="row">
+            <div class="col s8">
+                <div id="title1" class="countsTitle">
+                    Recipients With at Least 1 Gift
+                </div>
+            </div>
+                <div class="col s4 countNumber countsShown">
+                    {{atLeat1Gift}}
+                </div>
+        </div>
+        <div class="counts-footer">
+            <div id="title2" class="countsTitle">
+                <div class="totalNumber">
+                    Total Recipients {{totalRecips}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -2,7 +2,27 @@
     <div class="templateWrapper">
         <div class="container contentInfo">
             <h3>BASTAS Dashboard</h3>
-            {{> countsWidget}}
+            <div class="row">
+                <div class="col s6">
+                    {{> countsWidget}}
+                </div>
+                <div class="col s6">
+                    {{> countsRecipWidget}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    {{> missingGiftsWidget}}
+                </div>
+                <div class="col s6">
+                    {{> noGiftsWidget}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 offset-s3">
+                    {{> allGiftsWidget}}
+                </div>
+            </div>
         </div>
     </div>
 </template>

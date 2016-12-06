@@ -1,0 +1,21 @@
+<template name="noGiftsWidget">
+    <div id="countsSquare" class="orangeCounts">
+        <div class="row">
+            <div class="col s8">
+                <div id="title1" class="orangeCountsTitle">
+                    Recipients with No Gift At All
+                </div>
+            </div>
+                <div class="col s4 orangeCountNumber orangeCountsShown">
+                    {{noGifts}}
+                </div>
+        </div>
+        <div class="orangeCounts-footer">
+            <div id="title2" class="orangeCountsTitle">
+                <div class="totalNumber">
+                    Total Recipients {{totalRecips}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

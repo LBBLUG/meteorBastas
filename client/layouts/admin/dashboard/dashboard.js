@@ -1,6 +1,7 @@
 import { Recipients } from '../../../../imports/api/recipients.js';
 
 Template.countsWidget.onCreated(function() {
+    this.subscribe('recipients');
     this.giftCount = new ReactiveVar(0); //define state with reactiveVar
     this.autorun(()=>{
         Meteor.call('get.totalGifts', function(err, result){
@@ -39,5 +40,41 @@ Template.countsWidget.helpers({
     TotalGifts: function() {
         let instance = Template.instance();
         return Session.get("totalCount"); //get state
+    },
+});
+
+Template.countsRecipWidget.helpers({
+    atLeat1Gift: function() {
+        return Recipients.find({ "gifts.checkedIn": true }).count();
+    },
+    totalRecips: function() {
+       return Recipients.find({}).count();
+    },
+});
+
+Template.missingGiftsWidget.helpers({
+    missingGifts: function() {
+        return Recipients.find({ $or: [{ "gifts.checkedIn": null }, { "gifts.checkedIn": false }]}).count();
+    },
+    totalRecips: function() {
+       return Recipients.find({}).count();
+    },
+});
+
+Template.noGiftsWidget.helpers({
+    noGifts: function() {
+        return Recipients.find({ "gifts.checkedIn": { $ne: true }}).count();
+    },
+    totalRecips: function() {
+       return Recipients.find({}).count();
+    },
+});
+
+Template.allGiftsWidget.helpers({
+    allGifts: function() {
+        return Recipients.find({ $and: [{ "gifts.checkedIn": { $ne: null }}, { "gifts.checkedIn": { $ne: false }}]}).count();
+    },
+    totalRecips: function() {
+       return Recipients.find({}).count();
     },
 });

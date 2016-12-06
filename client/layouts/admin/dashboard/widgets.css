@@ -26,9 +26,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .darkCounts {
     border-radius: 8px;
     border: 1px solid #e7e7e7;
-    background: #2a2a2a;
-    height: 300px;
-    width: 800px;
+    background: -webkit-linear-gradient(-90deg, #5DFC0A, #93DB70); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #5DFC0A, #93DB70); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #5DFC0A, #93DB70); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #5DFC0A, #93DB70); /* Standard syntax */
 }
 
 .countNumber {
@@ -37,22 +38,187 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .totalNumber {
     color: #b422ff;
+    font-size: 24px;
+    color: #e2e2e2;
+    text-align: center;
 }
 
 .countsShown {
     margin-top: 2%;
     margin-bottom: 3%;
-    color: #e2e2e2;
-    font-size: 38px;
+    font-size: 56px;
     text-align: center;
 }
 
 .countsTitle {
+    color: #4e4ad2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.counts-footer {
+    height: 20%;
+    background: #55AE3A;
+    border-radius: 8px;
+}
+
+.blueCounts {
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    background: -webkit-linear-gradient(-90deg, #5993E5, #3579DC); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #5993E5, #3579DC); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #5993E5, #3579DC); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #5993E5, #3579DC); /* Standard syntax */
+}
+
+.blueCountNumber {
+    color: #e2e2e2;
+}
+
+.blueTotalNumber {
+    color: #b422ff;
+    font-size: 24px;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.blueCountsShown {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 56px;
+    text-align: center;
+}
+
+.blueCountsTitle {
     color: #e2e2e2;
     font-size: 24px;
     text-align: center;
 }
 
+.blueCounts-footer {
+    height: 20%;
+    background: #3300FF;
+    border-radius: 8px;
+}
+
+.redCounts {
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    background: -webkit-linear-gradient(-90deg, #ff3232, #ff1919); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #ff3232, #ff1919); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #ff3232, #ff1919); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #ff3232, #ff1919); /* Standard syntax */
+}
+
+.redCountNumber {
+    color: #e2e2e2;
+}
+
+.redTotalNumber {
+    color: #b422ff;
+    font-size: 24px;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.redCountsShown {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 56px;
+    text-align: center;
+}
+
+.redCountsTitle {
+    color: #e2e2e2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.redCounts-footer {
+    height: 20%;
+    background: #cc0000;
+    border-radius: 8px;
+}
+
+.orangeCounts {
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    background: -webkit-linear-gradient(-90deg, #ffb733, #ffae1a); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #ffb733, #ffae1a); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #ffb733, #ffae1a); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #ffb733, #ffae1a); /* Standard syntax */
+}
+
+.orangeCountNumber {
+    color: #e2e2e2;
+}
+
+.orangeTotalNumber {
+    color: #b422ff;
+    font-size: 24px;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.orangeCountsShown {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 56px;
+    text-align: center;
+}
+
+.orangeCountsTitle {
+    color: #e2e2e2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.orangeCounts-footer {
+    height: 20%;
+    background: #e69500;
+    border-radius: 8px;
+}
+
+.purpleCounts {
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    background: -webkit-linear-gradient(-90deg, #E066FF, #BA55D3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #E066FF, #BA55D3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #E066FF, #BA55D3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #E066FF, #BA55D3); /* Standard syntax */
+}
+
+.purpleCountNumber {
+    color: #e2e2e2;
+}
+
+.purpleTotalNumber {
+    color: #b422ff;
+    font-size: 24px;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.purpleCountsShown {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 56px;
+    text-align: center;
+}
+
+.purpleCountsTitle {
+    color: #e2e2e2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.purpleCounts-footer {
+    height: 20%;
+    background: #7D26CD;
+    border-radius: 8px;
+}
+
+/*
 .gauges {
   width: 400px;
   height: 200px;
@@ -117,4 +283,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   margin-left: auto;
   margin-right: auto;
   transition: all 1s ease-out;
-}
+} */
