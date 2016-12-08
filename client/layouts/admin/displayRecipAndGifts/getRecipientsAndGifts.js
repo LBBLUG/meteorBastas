@@ -37,6 +37,13 @@ Template.displayRecipAndGifts.helpers({
         } else if (searchType === "routeNo") {
             var routeEntered = Session.get("routeEntered");
             return Recipients.find({ route: routeEntered });
+        } else if (searchType === "name") {
+            console.log("Name Search Type");
+            var nameEntered = Session.get("nameEntered");
+            return Recipients.find({ "name.last": { $regex: new RegExp(nameEntered, "i") }});
+        } else if (searchType === "firstName") {
+            var firstNameEntered = Session.get("firstNameEntered");
+            return Recipients.find({ "name.first": { $regex: new RegExp(firstNameEntered, "i") }});
         }
     },
 });
@@ -57,9 +64,16 @@ Template.displayRecipAndGifts.events({
     },
     'submit .searchName' (event) {
         event.preventDefault();
-        const target = event.target;
-        const bastasID = target.searchname.value;
+        const nameInfo = $("#searchName").val();
+        console.log(nameInfo);
         Session.set("nameEntered", nameInfo);
+        Session.set("searchType", "name");
+    },
+    'submit .searchFirstName' (event) {
+        event.preventDefault();
+        const firstName = $("#searchFirstName").val();
+        Session.set("firstNameEntered", firstName);
+        Session.set("searchType", "firstName");
     },
     'click .checkFilter' (event) {
         // console.log('checked or unchecked');

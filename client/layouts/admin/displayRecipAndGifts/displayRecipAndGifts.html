@@ -26,21 +26,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     {{#if isInRole 'Admin, Editor, Adder, Viewer'}}
     <div class="container">
         <div class="row">
-            <div class="col s4">
+            <div class="col s3">
                 <form class="searchID">
                     <label>Search BastasID</label>
                     <input type="text" id="searchId" class="searchCol" placeholder="Search ..." />
                 </form>
             </div>
-            <div class="col s4">
+            <div class="col s3">
                 <form class="searchRoute">
                     <label>Search Route</label>
                     <input type="text" id="searchroute" class="searchCol" />
                 </form>
             </div>
-            <div class="col s4">
-                <label>Search Name</label>
-                <input type="text" id="searchCol3" class="searchCol" />
+            <div class="col s3">
+                <form class="searchName">
+                    <label>Search Last Name</label>
+                    <input type="text" id="searchName" class="searchCol" />
+                </form>
+            </div>
+            <div class="col s3">
+                <form class="searchFirstName">
+                    <label>Search First Name</label>
+                    <input type="text" id="searchFirstName" class="searchCol"  />
+                </form>
             </div>
         </div>
         {{#if Template.subscriptionsReady}}
