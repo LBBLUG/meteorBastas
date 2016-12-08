@@ -52,6 +52,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </div>
     <div class="row">
         <div class="col s12">
+            <label>Notes:</label>
+                {{notes}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
             <h4>Gifts</h4>
             <!-- if Admin or Editor allow use the see / change status of gifts -->
             {{#if isInRole 'Admin, Editor'}}
