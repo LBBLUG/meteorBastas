@@ -32,6 +32,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     background: linear-gradient(-90deg, #5DFC0A, #93DB70); /* Standard syntax */
 }
 
+.percentCount {
+    display: none;
+}
+
 .countNumber {
     color: #3989f8;
 }

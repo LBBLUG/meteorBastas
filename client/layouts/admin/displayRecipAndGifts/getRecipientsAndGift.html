@@ -72,16 +72,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     {{giftSize}}
                 </div>
                 <div class="col s2">
-                    {{> selectedCB _id=../_id giftType=giftType selected=selected}}
+                    {{> selectedCB _id=../_id giftType=giftType selected=selected index=@index}}
                 </div>
                 <div class="col s2">
-                    {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
+                    {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn index=@index}}
                 </div>
                 <div class="col s2">
-                    {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
+                    {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery index=@index}}
                 </div>
                 <div class="col s2">
-                    {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
+                    {{> deliveredCB _id=../_id giftType=giftType delivered=delivered index=@index}}
                 </div>
             </div>
             {{/each}}

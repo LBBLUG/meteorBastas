@@ -235,7 +235,7 @@ Meteor.methods({
         // the gifts to 3, and having to do some fun stuff here in case there's only 1 or 2 gifts,
         // and not three on a recipient... I'm still thinking on how to improve this and simplify it in
         // the future.
-        
+
         // start breaking the importData down into its parts
         for (i = 0; i < importData.data.length; i++) {
             if (!importData.data[i].giftType2 && !importData.data[i].giftType3) {
@@ -379,14 +379,14 @@ Meteor.methods({
             }
         }
     },
-    'Selected.update' (recipientId, selectedState, giftTypeInfo) {
-        return Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+    'Selected.update' (recipientId, selectedState, indexNo) {
+        return Recipients.update({ _id: recipientId, "gifts.giftNo": indexNo }, {
              $set: { 'gifts.$.selected': selectedState, editedBy: Meteor.user().emails[0].address,
              lastEditedOn: new Date(), } },
         );
     },
-    'CheckedIn.update' (recipientId, selectedState, giftTypeInfo) {
-        return Recipients.update({ _id: recipientId, "gifts.giftType": giftTypeInfo }, {
+    'CheckedIn.update' (recipientId, selectedState, indexNo) {
+        return Recipients.update({ _id: recipientId, "gifts.giftNo": indexNo }, {
             $set: { 'gifts.$.checkedIn': selectedState, editedBy: Meteor.user().emails[0].address,
             lastEditedOn: new Date(), } },
         );

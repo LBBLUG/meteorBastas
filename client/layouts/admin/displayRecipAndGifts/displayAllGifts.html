@@ -25,16 +25,16 @@
                 </td>
                 {{#if isInRole 'Admin, Editor'}}
                     <td>
-                        {{> selectedCB _id=../_id giftType=giftType selected=selected}}
+                        {{> selectedCB _id=../_id giftType=giftType selected=selected index=@index}}
                     </td>
                     <td>
-                        {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn}}
+                        {{> checkedInCB _id=../_id giftType=giftType checkedIn=checkedIn index=@index}}
                     </td>
                     <td>
-                        {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery}}
+                        {{> outForDeliveryCB _id=../_id giftType=giftType outForDelivery=outForDelivery index=@index}}
                     </td>
                     <td>
-                        {{> deliveredCB _id=../_id giftType=giftType delivered=delivered}}
+                        {{> deliveredCB _id=../_id giftType=giftType delivered=delivered index=@index}}
                     </td>
                 {{else}}
                     <td>

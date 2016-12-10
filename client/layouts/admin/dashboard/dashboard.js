@@ -43,6 +43,7 @@ Template.countsWidget.helpers({
     },
 });
 
+
 Template.countsRecipWidget.helpers({
     atLeat1Gift: function() {
         return Recipients.find({ "gifts.checkedIn": true }).count();

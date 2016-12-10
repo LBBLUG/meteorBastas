@@ -1,12 +1,12 @@
 <template name="countsWidget">
-    <div id="countsSquare" class="blueCounts">
+    <div id="giftCountsSquare" class="blueCounts">
         <div class="row">
             <div class="col s8">
                 <div id="title1" class="blueCountsTitle">
                     Gifts Checked In
                 </div>
             </div>
-            <div class="col s4 blueCountNumber blueCountsShown">
+            <div id="actualCounts" class="col s4 blueCountNumber blueCountsShown">
                     {{CheckedInCount}}
             </div>
         </div>
