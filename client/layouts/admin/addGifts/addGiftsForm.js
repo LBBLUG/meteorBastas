@@ -20,6 +20,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+Template.addGiftsForm.onRendered(function() {
+    var giftNo = 0;
+    Session.set("giftCount", giftNo);
+});
+
 Template.addGiftsForm.events({
     'click #submitAddGifts' (event) {
         event.preventDefault();
