@@ -2,6 +2,6 @@
     visibility: hidden;
 }
 
-.cancelHomePageInfoTable, .saveHomePageInfoTable, .editHomePageInfo, .deleteHomePageInfo {
+.cancelHomePageInfoTable, .saveHomePageInfoTable, .editHomePageInfo, .editHomePageShow, .deleteHomePageInfo {
     cursor: pointer;
 }

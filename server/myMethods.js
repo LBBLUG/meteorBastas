@@ -104,7 +104,7 @@ Meteor.methods({
                 }
             }
         });
-        console.dir(totalGifts);
+        // console.dir(totalGifts);
         return totalGifts;
 
     },
