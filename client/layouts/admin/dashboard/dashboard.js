@@ -1,4 +1,9 @@
 import { Recipients } from '../../../../imports/api/recipients.js';
+import JustGage from 'justgage-meteor';
+
+Template.dashboard.onCreated(function() {
+    this.subscribe('recipients');
+});
 
 Template.countsWidget.onCreated(function() {
     this.subscribe('recipients');
@@ -20,14 +25,38 @@ Template.countsWidget.onCreated(function() {
                 Session.set("checkedInCount", checkedInCount);
             }
         });
+    });
+});
 
-            var total = Session.get("totalCount");
-            var checkedIn = Session.get("checkedInCount");
-            var percentage = Math.floor((checkedIn / total) * 100);
-            console.log("Percent complete = " + percentage);
-            gaugeValue = "rotate(" + (percentage / 2) / 100 + "turn)";
-            $("#percent").html(percentage + " %");
-            $('.gauge-c').css('transform', gaugeValue);
+Template.countsWidget.onRendered(function() {
+    var total = Session.get("totalCount");
+    var checkedIn = Session.get("checkedInCount");
+    var percentage = Math.floor((checkedIn / total) * 100);
+    console.log("Percent complete = " + percentage);
+    var checkedInG = new JustGage({
+        id: "checkedInGage",
+        value: percentage,
+        min: 0,
+        max: 100,
+        symbol: "%",
+        levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+        title: ""
+    });
+});
+
+Template.countsRecipWidget.onRendered(function() {
+    var totalRecipients = Session.get('totalRecipients');
+    var oneGift = Session.get('oneGift');
+    var percent = Math.floor((oneGift / totalRecipients) * 100);
+    console.log("One Gift Percent: " + percent);
+    var oneGiftR = new JustGage({
+        id: "oneGiftRecip",
+        value: percent,
+        min: 0,
+        max: 100,
+        symbol: "%",
+        levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+        title: ""
     });
 });
 
@@ -46,36 +75,97 @@ Template.countsWidget.helpers({
 
 Template.countsRecipWidget.helpers({
     atLeat1Gift: function() {
-        return Recipients.find({ "gifts.checkedIn": true }).count();
+        var oneGift = Recipients.find({ "gifts.checkedIn": true }).count();
+        Session.set('oneGift', oneGift);
+        return oneGift;
     },
     totalRecips: function() {
-       return Recipients.find({}).count();
+       var totalRecipients = Recipients.find({}).count();
+       Session.set('totalRecipients', totalRecipients);
+       return totalRecipients;
     },
+});
+
+Template.missingGiftsWidget.onRendered(function() {
+    var totalRecipients = Session.get('totalRecipients');
+    var missingGiftRecipients = Session.get('missingGiftRecipients');
+    var percentMissing = Math.floor((missingGiftRecipients / totalRecipients) * 100);
+    console.log(missingGiftRecipients + " / " + totalRecipients + " * 100 = " + percentMissing);
+    var missingGiftR = new JustGage({
+        id: "missingAGiftRecip",
+        value: percentMissing,
+        min: 0,
+        max: 100,
+        symbol: "%",
+        levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+        title: ""
+    });
 });
 
 Template.missingGiftsWidget.helpers({
     missingGifts: function() {
-        return Recipients.find({ $or: [{ "gifts.checkedIn": null }, { "gifts.checkedIn": false }]}).count();
+        var missingGiftRecipients = Recipients.find({ $or: [{ "gifts.checkedIn": null }, { "gifts.checkedIn": false }]}).count();
+        Session.set("missingGiftRecipients", missingGiftRecipients);
+        return missingGiftRecipients;
     },
     totalRecips: function() {
-       return Recipients.find({}).count();
+        var totalRecipients = Session.get('totalRecipients');
+        return totalRecipients;
     },
+});
+
+Template.noGiftsWidget.onRendered(function() {
+    var totalRecipients = Session.get('totalRecipients');
+    var noGiftRecipients = Session.get('noGiftRecipients');
+    var percentNone = Math.floor((noGiftRecipients / totalRecipients) * 100);
+    console.log(noGiftRecipients + " / " + totalRecipients + " * 100 = " + percentNone);
+    var noGiftR = new JustGage({
+        id: "noGiftRecip",
+        value: percentNone,
+        min: 0,
+        max: 100,
+        symbol: "%",
+        levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+        title: ""
+    });
 });
 
 Template.noGiftsWidget.helpers({
     noGifts: function() {
-        return Recipients.find({ "gifts.checkedIn": { $ne: true }}).count();
+        var noGiftRecipients = Recipients.find({ "gifts.checkedIn": { $ne: true }}).count();
+        Session.set("noGiftRecipients", noGiftRecipients);
+        return noGiftRecipients;
     },
     totalRecips: function() {
-       return Recipients.find({}).count();
+        var totalRecipients = Session.get('totalRecipients');
+        return totalRecipients;
     },
+});
+
+Template.allGiftsWidget.onRendered(function() {
+    var totalRecipients = Session.get('totalRecipients');
+    var allGiftsRecip = Session.get('allGiftsRecip');
+    var percentAll = Math.floor((allGiftsRecip / totalRecipients) * 100);
+    console.log(allGiftsRecip + " / " + totalRecipients + " * 100 = " + percentAll);
+    var noGiftR = new JustGage({
+        id: "AllGiftRecip",
+        value: percentAll,
+        min: 0,
+        max: 100,
+        symbol: "%",
+        levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+        title: ""
+    });
 });
 
 Template.allGiftsWidget.helpers({
     allGifts: function() {
-        return Recipients.find({ $and: [{ "gifts.checkedIn": { $ne: null }}, { "gifts.checkedIn": { $ne: false }}]}).count();
+        var allGiftsRecip = Recipients.find({ $and: [{ "gifts.checkedIn": { $ne: null }}, { "gifts.checkedIn": { $ne: false }}]}).count();
+        Session.set("allGiftsRecip", allGiftsRecip);
+        return allGiftsRecip;
     },
     totalRecips: function() {
-       return Recipients.find({}).count();
+        var totalRecipients = Session.get('totalRecipients');
+        return totalRecipients;
     },
 });
