@@ -31,6 +31,12 @@ Meteor.publish("recipients", function(){
     }
 });
 
+Meteor.publish("webRecipients", function() {
+    if (Roles.userIsInRole(this.userId, ['Admin'])) {
+        return Recipients.find({ webRecipient: true });
+    }
+});
+
 Meteor.publish("homePageData", function() {
     return HomePageData.find({});
 });

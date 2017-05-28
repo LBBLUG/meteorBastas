@@ -24,9 +24,9 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const HomePageBanner = new Mongo.Collection('homePageBanner');
+export const ErrorLogs = new Mongo.Collection('error-logs');
 
-HomePageBanner.allow({
+ErrorLogs.allow({
     insert: function(userId, doc) {
         // if user id exists, allow insert
         return !!userId;
@@ -34,21 +34,21 @@ HomePageBanner.allow({
 });
 
 Meteor.methods({
-    'homePageBanner.insert' (bannerImage, isCurrent) {
-        // console.log('Made it to insert banner image call');
+    'error.insert' (errorType, errorMsg, templateName, fileName, functionName) {
+        check(errorType, String);
+        check(errorMsg, String);
+        check(templateName, String);
+        check(fileName, String);
+        check(functionName, String);
 
-        //make sure user is logged in
-        if (!this.userId) {
-            throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
-        } else {
-            // console.log('User is logged in and able to add home page banner.');
-        }
-
-        return HomePageBanner.insert({
-            bannerImage: bannerImage,
-            isCurrent: isCurrent,
-            addedOn: new Date(),
-            addedBy: Meteor.user().emails[0].address,
+        ErrorLogs.insert({
+            type: errorType,
+            message: errorMsg,
+            template: templateName,
+            file: fileName,
+            functionName: functionName,
+            user: Meteor.users.findOne(this.userId).username,
+            date: new Date(),
         });
     },
 });

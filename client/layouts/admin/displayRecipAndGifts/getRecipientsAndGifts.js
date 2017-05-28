@@ -38,7 +38,7 @@ Template.displayRecipAndGifts.helpers({
             var routeEntered = Session.get("routeEntered");
             return Recipients.find({ route: routeEntered });
         } else if (searchType === "name") {
-            console.log("Name Search Type");
+            // console.log("Name Search Type");
             var nameEntered = Session.get("nameEntered");
             return Recipients.find({ "name.last": { $regex: new RegExp(nameEntered, "i") }});
         } else if (searchType === "firstName") {
@@ -65,7 +65,7 @@ Template.displayRecipAndGifts.events({
     'submit .searchName' (event) {
         event.preventDefault();
         const nameInfo = $("#searchName").val();
-        console.log(nameInfo);
+        // console.log(nameInfo);
         Session.set("nameEntered", nameInfo);
         Session.set("searchType", "name");
     },
@@ -79,9 +79,9 @@ Template.displayRecipAndGifts.events({
         // console.log('checked or unchecked');
         var colId = event.currentTarget.id;
         var state = event.currentTarget.checked;
-        console.log('State of ' + colId + ' is now ' + state);
-        console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
-        console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
+        // console.log('State of ' + colId + ' is now ' + state);
+        // console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
+        // console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
 
         if (state === true) {
             switch(colId) {
@@ -121,7 +121,7 @@ Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor', 'Viewer'])) {
             Session.set( "recipientId", this._id );
-            console.log("Details clicked: " + this._id);
+            // console.log("Details clicked: " + this._id);
             var recipientDetailModal = document.getElementById("detailsFormView");
             recipientDetailModal.style.display = "block";
         } else {

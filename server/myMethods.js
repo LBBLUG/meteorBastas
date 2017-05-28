@@ -38,7 +38,7 @@ Meteor.methods({
         return;
     },
     'backup.bastasDB' (outputPath) {
-        console.log("Got in the backup method");
+        // console.log("Got in the backup method");
         // check if user is logged in before continuing
         if (!this.userId) {
             throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
@@ -47,13 +47,13 @@ Meteor.methods({
         var backupdt = new Date();
 
         shelljs.exec('mongodump -h 127.0.0.1 --port 3001 --out ' + outputPath + ' -d meteor', function(code, out, err) {
-            console.log("Exit code: " + code);
-            console.log("Std Out: " + out);
-            console.log("Std Err:" + err)
+            // console.log("Exit code: " + code);
+            // console.log("Std Out: " + out);
+            // console.log("Std Err:" + err)
         });
     },
     'get.CheckedInCount' () {
-        console.log("getting checked in gifts:");
+        // console.log("getting checked in gifts:");
 
         var keepGifts = {
             $project: {
@@ -92,7 +92,7 @@ Meteor.methods({
 
     },
     'get.totalGifts' () {
-        console.log("getting total gifts:");
+        // console.log("getting total gifts:");
 
         var totalGifts = Recipients.aggregate({
             $unwind: "$gifts"

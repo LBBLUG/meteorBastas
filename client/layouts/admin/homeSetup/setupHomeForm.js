@@ -96,7 +96,7 @@ Template.setupHomeForm.events({
     },
     'click .editHomePageShow' (event) {
         event.preventDefault();
-        console.log("clicked to edit.");
+        // console.log("clicked to edit.");
         var editHomePageModal = document.getElementById('editHomePageModal');
         editHomePageModal.style.display = "block";
     },
@@ -137,7 +137,7 @@ Template.editHomePageData.events({
     'click .deleteHomePageInfo' (event) {
         event.preventDefault();
         var infoId = this._id;
-        console.log("i would delete: " + infoId);
+        // console.log("i would delete: " + infoId);
         Meteor.call('homePageData.delete', this._id);
     },
     'click .cancelHomePageInfoTable' (event) {
@@ -162,7 +162,7 @@ Template.editHomePageData.events({
 
         // and save some stuff.
         var newInfo = $("#infoTextCell" + indexNo).text();
-        console.log("new info from save: " + newInfo);
+        // console.log("new info from save: " + newInfo);
         $("#infoTextCell" + indexNo).text('');
 
         Meteor.call('homePageData.update', infoId, newInfo, function(err, result){

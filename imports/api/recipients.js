@@ -169,7 +169,7 @@ Meteor.methods({
         });
     },
     'gifts.update' (irecipientsId, igiftNo, giftInfo, giftType) {
-        console.log("made it to the update for gifts.");
+        // console.log("made it to the update for gifts.");
         // check that the info being sent is what's expected
         check(igiftNo, Number);
         check(giftInfo, String);
@@ -220,6 +220,7 @@ Meteor.methods({
     },
     'Recipients.import' (importData) {
         // check the data if needed
+        // check(importData, [String]);
 
         // uncomment the 2 (two) lines below to see the data being imported in the server console.
         // console.log('--------------------------------------------------');
@@ -405,16 +406,25 @@ Meteor.methods({
     },
     getGift(id, giftNo) {
         var giftsFor = Recipients.find({ _id: id, "gifts.giftNo": giftNo  }, { "gifts.$": 1 });
-        console.log(giftsFor);
+        // console.log(giftsFor);
         return giftsFor;
     },
     'deleteRecipient' (recipientId) {
         check(recipientId, String);
-        console.log("--------------------------------");
-        console.log(" User Deleted ");
+        // console.log("--------------------------------");
+        // console.log(" User Deleted ");
 
         return Recipients.remove({ _id: recipientId });
-    }
+    },
+    'webRecip.update' (recipientId, state) {
+        return Recipients.update({ _id: recipientId }, {
+             $set: { 
+                 webRecipient: state, 
+                 editedBy: Meteor.user().emails[0].address,
+                 lastEditedOn: new Date(), 
+                } 
+            });
+    },
 
     // get numbers for gift counts
 

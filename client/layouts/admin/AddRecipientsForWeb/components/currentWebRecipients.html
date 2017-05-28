@@ -1,0 +1,57 @@
+<template name="currentWebRecipients">
+    <table class="bordered striped highlight">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Gift 1 / Size
+                </th>
+                <th>
+                    Gift 2 / Size
+                </th>
+                <th>
+                    Gift 3 / Size
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each webRecipientsCurr}}
+            <tr>
+                <td>
+                    {{name.first}} {{name.last}}
+                </td>
+                <td>
+                    {{gender}}
+                </td>
+                <td>
+                    {{gifts.[0].giftType}} / {{gifts.[0].giftSize}}
+                </td>
+                <td>
+                    {{gifts.[1].giftType}} / {{gifts.[1].giftSize}}
+                </td>
+                <td>
+                    {{gifts.[2].giftType}} / {{gifts.[2].giftSize}}
+                </td>
+                <td>
+                    <div class="switch">
+                        <label>
+                        N
+                        <input type="checkbox" class="isWebRecip" checked="checked">
+                        <span class="lever"></span>
+                        Y
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>

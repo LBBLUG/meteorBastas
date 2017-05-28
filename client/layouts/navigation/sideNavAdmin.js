@@ -24,7 +24,7 @@ Template.sideNavAdmin.events({
     'click  .navBtn' (event) {
         event.preventDefault();
         var clickedTarget = event.target.id;
-        console.log("User clicked: " + clickedTarget);
+        // console.log("User clicked: " + clickedTarget);
         if (clickedTarget === 'home' || clickedTarget === 'giveAGift') {
             FlowRouter.go('/user/' + clickedTarget);
         } else if (clickedTarget !== "signIn" && clickedTarget !== "signOut") {
