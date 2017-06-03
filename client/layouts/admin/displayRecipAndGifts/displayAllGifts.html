@@ -61,6 +61,16 @@
         {{/if}}
         {{#if isInRole 'Admin, Editor'}}
             <a id="deleteRecip" class="waves-effect waves-light btn delete red">Delete</a>
+            <br /><br  />
+            <label>Is Web Recipient</label>
+            <div class="switch">
+                <label>
+                N
+                <input type="checkbox" class="isWebRecip" id="isWebRecip" checked="{{isWeb}}">
+                <span class="lever"></span>
+                Y
+                </label>
+            </div>
         {{/if}}
         </td>
     </tr>

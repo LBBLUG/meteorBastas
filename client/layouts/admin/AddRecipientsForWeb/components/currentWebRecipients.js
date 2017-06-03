@@ -29,9 +29,13 @@ Template.currentWebRecipients.events({
 
         Meteor.call('webRecip.update', this._id, state, function(err, result){
             if (err) {
-
+                Session.set("snackbarText", "Error changing state of Recipient for Web.");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
             } else {
-
+                Session.set("snackbarText", "Recipient Web State Changed Successfully.");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
             }
         });
     },

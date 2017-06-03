@@ -20,15 +20,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import {
-    Meteor
-} from 'meteor/meteor';
-import {
-    Recipients
-} from '../imports/api/recipients.js';
-import {
-    BastasDB
-} from '../imports/api/bastasDb.js';
+import { Meteor } from 'meteor/meteor';
+import { Recipients } from '../imports/api/recipients.js';
+import { BastasDB } from '../imports/api/bastasDb.js';
 import shelljs from 'shelljs';
 
 Meteor.methods({
