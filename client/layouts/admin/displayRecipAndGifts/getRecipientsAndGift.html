@@ -30,11 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <label>Route</label><br />
             {{route}}
         </div>
-        <div class="col s3">
+        <div class="col s2">
             <label>Name</label><br />
             {{name.first}} {{name.last}}
         </div>
-        <div class="col s3">
+        <div class="col s2">
             <label>Address</label><br />
             {{address.streetAddress}}
             {{address.complexName}} {{address.aptNo}}
@@ -47,6 +47,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             {{/if}}
             {{#if isInRole 'Admin, Editor'}}
                 <a id="deleteRecip" class="waves-effect waves-light btn delete red">Delete</a>
+            {{/if}}
+        </div>
+        <div class="col s2">
+            {{#if isInRole 'Admin, Editor'}}
+            <label>Is Web Recipient:</label>
+            <div class="switch">
+                <label>
+                N
+                <input type="checkbox" class="isWebRecip" checked={{isWeb}} />
+                <span class="lever"></span>
+                Y
+                </label>
+            </div>
             {{/if}}
         </div>
     </div>

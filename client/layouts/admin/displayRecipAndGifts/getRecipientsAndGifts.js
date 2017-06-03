@@ -144,4 +144,33 @@ Template.getRecipientsAndGift.events({
             $("#myModalTextSection").html(myModalText);
         }
     },
+    'click .isWebRecip' (event) {
+        event.preventDefault();
+
+        // add code to toggle the webRecipient property for this recipient.
+        const state = event.currentTarget.checked;
+        // const indexNo = this.index + 1
+
+        Meteor.call('webRecip.update', this._id, state, function(err, result){
+            if (err) {
+                Session.set("snackbarText", "Error changing state of Recipient for Web.");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
+            } else {
+                Session.set("snackbarText", "Recipient Web State Changed Successfully.");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
+            }
+        });
+    },
+});
+
+Template.getRecipientsAndGift.helpers({
+    isWeb: function() {
+        if (this.webRecipient === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
 });
