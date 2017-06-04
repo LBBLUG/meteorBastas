@@ -1,7 +1,16 @@
 <template name="adminHeader">
     <header>
-        {{> menuBtn}}
-        <h3 class="headerText">Be A Santa To A Senior</h3>
+        <!-- {{> menuBtn}} -->
+        <!-- <h3 class="headerText">Be A Santa To A Senior</h3> -->
+
+        <nav>
+            <div class="nav-wrapper myHeader">
+              <a href="#" class="center headerText">Be A Santa To A Senior</a>
+              <ul id="nav-mobile" class="left">
+                  <li class="menu"><a href="#" class="menu"><i class="material-icons menu">more_vert</i></a></li>
+              </ul>
+            </div>
+        </nav>
     </header>
     {{> sideNavAdmin}}
 </template>

@@ -417,14 +417,38 @@ Meteor.methods({
         return Recipients.remove({ _id: recipientId });
     },
     'webRecip.update' (recipientId, state) {
+        check(recipientId, String);
+        check(state, Boolean);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to make recipient web enabled, or is not logged in.');
+        }
+
         return Recipients.update({ _id: recipientId }, {
-             $set: { 
-                 webRecipient: state, 
+             $set: {
+                 webRecipient: state,
                  editedBy: Meteor.user().emails[0].address,
-                 lastEditedOn: new Date(), 
-                } 
+                 lastEditedOn: new Date(),
+                }
             });
     },
+    'SelectForWeb.update' (recipientIds) {
+        check(recipientIds, [String]);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to select a web recipient, or is not logged in.');
+        }
+
+        for (i=0; i < recipientIds.length; i++) {
+            Recipients.update({ _id: recipientIds[i] }, {
+                $set: {
+                    webSelected: true,
+                    selectedBy_id: Meteor.userId(),
+                    selectedBy_email: Meteor.user().emails[0].address,
+                }
+            });
+        }
+    }
 
     // get numbers for gift counts
 

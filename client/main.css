@@ -58,9 +58,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     margin-left: 3%;
 }
 
+.myHeader {
+    background: #191970;
+}
+
 .headerText {
-    display: inline-block;
-    margin-left: 25%;
+    font-size: 5vw;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+    .headerText {
+        font-size: 7vw;
+    }
 }
 
 header, .headerRow {

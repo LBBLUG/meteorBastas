@@ -1,0 +1,18 @@
+
+@media screen and (max-width: 480px) {
+    .personInfo{
+        font-size: 5.5vw;
+    }
+
+    .giveLabel {
+        font-size: 8vw;
+    }
+
+    .giftInfo {
+        font-size: 5vw;
+    }
+
+    .indentedSlightly {
+        margin-left: 5vw;
+    }
+}
