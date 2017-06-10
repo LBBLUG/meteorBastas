@@ -39,3 +39,5 @@ ephemer:reactive-datatables     # datatable plugin
 sacha:spin                  # spinner for loading
 shell-server@0.2.3
 dynamic-import
+session                     # handles session variables in production system
+practicalmeteor:mocha       # mocha testing framework for meteor

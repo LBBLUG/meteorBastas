@@ -5,3 +5,8 @@
 .cancelHomePageInfoTable, .saveHomePageInfoTable, .editHomePageInfo, .editHomePageShow, .deleteHomePageInfo {
     cursor: pointer;
 }
+
+.homePageImages {
+    max-width: 100%;
+    height: auto;
+}

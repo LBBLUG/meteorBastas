@@ -62,3 +62,7 @@ Meteor.publish("backups", function() {
 Meteor.publish("giveAGiftSet", function() {
     return Recipients.find({ webRecipient: true, webSelected: false }, { fields: { "name.first": 1, gender: 1, gifts: 1, webRecipient: 1, webSelected: 1 }});
 });
+
+Meteor.publish("getMyRecipients", function() {
+    return Recipients.find({ webRecipient: true, webSelected: true, selectedById: this.userId });
+});

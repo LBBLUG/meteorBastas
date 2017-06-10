@@ -1,0 +1,48 @@
+<template name="myRecipients">
+    <div class="templateWrapper">
+        <div class="container contentInfo">
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large green saveChanges">
+                  <i class="large material-icons">done</i>
+                </a>
+            </div>
+            {{#each areMyRecipients}}
+            <hr />
+
+                <div class="row">
+                    <div class="col s6">
+                        <span class="giveLabel">Recipient</span>
+                    </div>
+                    <div class="col s6">
+                        <input type="checkBox" id="{{_id}}" class="checkbox selectFromWeb"  />
+                        <label for="{{_id}}">Select</label>
+                    </div>
+                </div>
+                <div class="indentedSlightly">
+                    <div class="row">
+                        <div class="col s6">
+                            <label>Name: </label><span class="personInfo">{{name.first}}</span>
+                        </div>
+                        <div class="col s6">
+                            <label>Gender: </label><span class="personInfo">{{gender}}</span>
+                        </div>
+                    </div>
+                </div>
+                <h5>Gifts</h5>
+                {{#each gifts}}
+                <div class="indentedSlightly">
+                    <div class="row">
+                        <div class="col s12">
+                            <label>Gift: </label><span class="giftInfo">{{giftType}}</span>
+                        </div>
+                        <div class="col s12">
+                            <label>Size: </label><span class="giftInfo">{{giftSize}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            {{/each}}
+        </div>
+    </div>
+    {{> snackbar}}
+</template>

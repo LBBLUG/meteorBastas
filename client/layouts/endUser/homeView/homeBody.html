@@ -20,6 +20,22 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<template name="imageDisplay">
-    <img src='{{imageFileEncoded}}' height="200"  />
+<template name="homeBody">
+    {{#each getHomeBanners}}
+        {{#if homeBannersExist}}
+            <div class="templateWrapper">
+                {{> displayHomePageBanner}}
+            </div>
+        {{/if}}
+    {{/each}}
+
+    <div class="{{#if $not homeBannersExist}}noHomeBanner{{/if}}">
+        {{#each getHomeDatas}}
+        <div class="container">
+            {{> postImageAndText}}
+        </div>
+        {{/each}}
+    </div>
+
+
 </template>
