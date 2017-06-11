@@ -16,3 +16,8 @@
         margin-left: 5vw;
     }
 }
+
+.checkbox-white[type="checkbox"] + label:before,
+  &:not(.filled-in) + label:after{
+     border: 2px solid #ffffff;
+}

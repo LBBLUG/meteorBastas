@@ -60,9 +60,65 @@ Meteor.publish("backups", function() {
 });
 
 Meteor.publish("giveAGiftSet", function() {
-    return Recipients.find({ webRecipient: true, webSelected: false }, { fields: { "name.first": 1, gender: 1, gifts: 1, webRecipient: 1, webSelected: 1 }});
+    return Recipients.find(
+        {
+            webRecipient: true,
+            webSelected: false
+        },
+        {
+            fields:
+            {
+                "name.first": 1,
+                gender: 1,
+                gifts: 1,
+                webRecipient: 1,
+                webSelected: 1,
+                marked_Purchased: 1
+            }
+        }
+    );
 });
 
 Meteor.publish("getMyRecipients", function() {
-    return Recipients.find({ webRecipient: true, webSelected: true, selectedById: this.userId });
+    return Recipients.find(
+        {
+            webRecipient: true,
+            webSelected: true,
+            selectedBy_id: this.userId,
+            marked_Purchased: false
+        },
+        {
+            fields:
+            {
+                "name.first": 1,
+                gender: 1,
+                gifts: 1,
+                webRecipient: 1,
+                webSelected: 1,
+                marked_Purchased: 1
+            }
+        }
+    );
+});
+
+Meteor.publish("myCompletedGifts", function(){
+    return Recipients.find(
+        {
+            webRecipient: true,
+            webSelected: true,
+            selectedBy_id: this.userId,
+            marked_Purchased: true
+        },
+        {
+            fields:
+            {
+                "name.first": 1,
+                gender: 1,
+                gifts: 1,
+                webRecipient: 1,
+                webSelected: 1,
+                marked_Purchased: 1
+            }
+        }
+    );
 });

@@ -445,10 +445,44 @@ Meteor.methods({
                     webSelected: true,
                     selectedBy_id: Meteor.userId(),
                     selectedBy_email: Meteor.user().emails[0].address,
+                    marked_Purchased: false,
                 }
             });
         }
-    }
+    },
+    'CompleteGifts.update' (giftsBoughtRecipId) {
+        check(giftsBoughtRecipId, [String]);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to update gift purchase information, or is not logged in.');
+        }
+
+        // query to see how many gifts the recipient has listed
+
+        let info = giftsBoughtRecipId.length;
+
+        for (f = 0; f < info; f++) {
+            // query to see how many gifts the recipient has listed
+            if (Recipients.findOne({ _id: giftsBoughtRecipId[f], "gifts.giftNo": 3 })) {
+                var giftCount = 3;
+            } else if (Recipients.findOne({ _id: giftsBoughtRecipId[f], "gifts.giftNo": 2 })) {
+                var giftCount = 2;
+            } else if (Recipients.findOne({ _id: giftsBoughtRecipId[f], "gifts.giftNo": 1 })) {
+                var giftCount = 1
+            } else {
+                console.log("No Gifts found for this recipient.");
+            }
+
+            for (g = 1; g <= giftCount; g++) {
+                Recipients.update({ _id: giftsBoughtRecipId[f], "gifts.giftNo": g }, {
+                    $set: {
+                        "gifts.$.selected": true,
+                        marked_Purchased: true,
+                    }
+                });
+            }
+        }
+    },
 
     // get numbers for gift counts
 

@@ -25,7 +25,7 @@ Template.sideNavAdmin.events({
         event.preventDefault();
         var clickedTarget = event.target.id;
         // console.log("User clicked: " + clickedTarget);
-        if (clickedTarget === 'home' || clickedTarget === 'giveAGift') {
+        if (clickedTarget === 'home' || clickedTarget === 'giveAGift' || clickedTarget === 'myRecipients' || clickedTarget === 'myCompletedGifts') {
             FlowRouter.go('/user/' + clickedTarget);
         } else if (clickedTarget !== "signIn" && clickedTarget !== "signOut") {
             FlowRouter.go('/admin/' + clickedTarget);

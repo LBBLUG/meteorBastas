@@ -2,45 +2,63 @@
     <div class="templateWrapper">
         <div class="container contentInfo">
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large green saveChanges">
+                <a class="btn-floating btn-large green completeThese">
                   <i class="large material-icons">done</i>
                 </a>
             </div>
+            <p>
+                <strong>Below are Seniors you've graciously chosen to provide gifts for in our community.</strong>
+            </p>
             {{#each areMyRecipients}}
-            <hr />
-
-                <div class="row">
-                    <div class="col s6">
-                        <span class="giveLabel">Recipient</span>
-                    </div>
-                    <div class="col s6">
-                        <input type="checkBox" id="{{_id}}" class="checkbox selectFromWeb"  />
-                        <label for="{{_id}}">Select</label>
-                    </div>
-                </div>
-                <div class="indentedSlightly">
-                    <div class="row">
-                        <div class="col s6">
-                            <label>Name: </label><span class="personInfo">{{name.first}}</span>
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card-content blue-grey darken-1 white-text">
+                                    <div class="row">
+                                        <div class="col s8">
+                                            <span class="card-title">{{name.first}}</span>
+                                        </div>
+                                        <div class="col s4">
+                                            <label>Gender: </label><span class="personInfo">{{gender}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Gifts</h5>
+                                    {{#each gifts}}
+                                        <div class="row">
+                                            <div class="col l6">
+                                                <label>Gift: </label><span class="giftInfo">{{giftType}}</span>
+                                            </div>
+                                            <div class="col l6">
+                                                <label>Size: </label><span class="giftInfo">{{giftSize}}</span>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="card-action">
+                                    <div class="row">
+                                        <div class="col s4">
+                                            <label>Completed: </label>
+                                        </div>
+                                        <div class="col s8">
+                                            <div class="switch">
+                                                <label>
+                                                          <input type="checkbox" class="giftBought" id="{{_id}}">
+                                                          <span class="lever"></span>
+                                                      Complete
+                                                </label>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col s6">
-                            <label>Gender: </label><span class="personInfo">{{gender}}</span>
-                        </div>
                     </div>
-                </div>
-                <h5>Gifts</h5>
-                {{#each gifts}}
-                <div class="indentedSlightly">
-                    <div class="row">
-                        <div class="col s12">
-                            <label>Gift: </label><span class="giftInfo">{{giftType}}</span>
-                        </div>
-                        <div class="col s12">
-                            <label>Size: </label><span class="giftInfo">{{giftSize}}</span>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
+              </div>
+          </div>
             {{/each}}
         </div>
     </div>
