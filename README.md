@@ -2,30 +2,30 @@ Meteor BASTAS is the Be a Santa To A Senior project done in Meteor.
 
 I chose Meteor for a few reasons:
 
-    1. As a non-developer it's pretty easy to grasp the concepts of meteor.
-    2. Setting up Meteor for the end user wanting to take advantage of this project is as simple as cloning the repo, getting into the directory created, and typing `meteor` into the terminal to start their server.
-    3. I like the ability to break the project into small pieces.  When I want to adjust the list of recipients, it's easy to find those parts, and make adjustments vs. having to look through a massive javascript file or html page to make the single adjustment I may want / need.
-    4. Meteor has a ton of great libraries that give it some great support.
-    5. MongoDB out of the box.
-    6. Live updating out of the box.
+1. As a non-developer it's pretty easy to grasp the concepts of meteor.
+2. Setting up Meteor for the end user wanting to take advantage of this project is as simple as cloning the repo, getting into the directory created, and typing `meteor` into the terminal to start their server.
+3. I like the ability to break the project into small pieces.  When I want to adjust the list of recipients, it's easy to find those parts, and make adjustments vs. having to look through a massive javascript file or html page to make the single adjustment I may want / need.
+4. Meteor has a ton of great libraries that give it some great support.
+5. MongoDB out of the box.
+6. Live updating out of the box.
 
 ## Install and start the server
 
 So, as described above, to run this project on your local machine simply do the following:
 
-    1. get meteor and install it on your intended server.
-        https://www.meteor.com/
-    2. install git if you don't already have it.  
-        https://git-scm.com/downloads
-    2. clone the repository.
-        git clone https://github.com/LBBLUG/meteorBastas.git
-    3. change into the directory created.
-        cd meteorBastas
-    4. type 'meteor' into the terminal window while in that directory.
-    5. This is generally technically started, and in the terminal you should see a message that says the server is available on http://localhost:3000, however, you may need to run a couple more commands.
-    6. Possibly, you'll want to do the command `meteor npm install --save babel-runtime`
-    7. Next you should go ahead and run `meteor npm install`
-    8. use http://localhost:3000 to reach the main page.
+1. get meteor and install it on your intended server.
+    https://www.meteor.com/
+2. install git if you don't already have it.  
+    https://git-scm.com/downloads
+3. clone the repository.
+    git clone https://github.com/LBBLUG/meteorBastas.git
+4. change into the directory created.
+    cd meteorBastas
+5. type 'meteor' into the terminal window while in that directory.
+6. This is generally technically started, and in the terminal you should see a message that says the server is available on http://localhost:3000, however, you may need to run a couple more commands.
+7. Possibly, you'll want to do the command `meteor npm install --save babel-runtime`
+8. Next you should go ahead and run `meteor npm install`
+9. use http://localhost:3000 to reach the main page.
 
 ## Install packages for Backup through the UI (User Interface)
 
@@ -33,8 +33,8 @@ If you want to use the backup feature, you'll also need to install ShellJS from 
 
 The only reason you need Mongo outside of the Mongo instance installed with meteor is so the mongodump backup command will work.
 
-    1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
-    2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
+1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
+2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
 
 If you get prompted, after the npm install of ShellJS, to run another npm command to install stubs dependencies, go ahead and run that.
 
@@ -66,10 +66,10 @@ Now kill ( `CTRL+C` ) and re-run the `meteor` command, and everything should wor
 
 I have completed the work to upload a csv file in bulk.  There are some rules for uploading a CSV.
 
-    1. there cannot be any commas ',' in the fields within the CSV.  
-    2. the header rows for the columns must be titled exactly as follows with capitalization as shown, the order of the columns is not important as long as the data in the column matches the column header row.
-        a. bastasId  // normally an incrementing unique number
-        b. route  // number assigned and used for delivery of gifts
+1. there cannot be any commas ',' in the fields within the CSV.  
+2. the header rows for the columns must be titled exactly as follows with capitalization as shown, the order of the columns is not important as long as the data in the column matches the column header row.
+a. bastasId  // normally an incrementing unique number
+b. route  // number assigned and used for delivery of gifts
 
     with respect to recipients name
         c. first
