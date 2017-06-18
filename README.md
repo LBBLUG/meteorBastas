@@ -22,23 +22,25 @@ So, as described above, to run this project on your local machine simply do the 
     3. change into the directory created.
         cd meteorBastas
     4. type 'meteor' into the terminal window while in that directory.
-    5. use http://localhost:3000 to reach the main page.
-    
-## Install packages for Backup through UI
+    5. This is generally technically started, and in the terminal you should see a message that says the server is available on http://localhost:3000, however, you may need to run a couple more commands.
+    6. Possibly, you'll want to do the command `meteor npm install --save babel-runtime`
+    7. Next you should go ahead and run `meteor npm install`
+    8. use http://localhost:3000 to reach the main page.
+
+## Install packages for Backup through the UI (User Interface)
 
 If you want to use the backup feature, you'll also need to install ShellJS from NPM, as well as make sure that Mongo is installed from mongodb.com.
 
-The only reason you need Mongo outside of the Mongo instance installed with meteor is so teh mongodump backup command will work.
+The only reason you need Mongo outside of the Mongo instance installed with meteor is so the mongodump backup command will work.
 
     1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
     2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
-    
+
 If you get prompted, after the npm install of ShellJS, to run another npm command to install stubs dependencies, go ahead and run that.
 
-Now kill and re-run the meteor command, and everything should work.
+Now kill ( `CTRL+C` ) and re-run the `meteor` command, and everything should work.
 
 ## Features now working
-
 
 - Recipients List now shows recipients and their selected gifts.
 - Find Recipients is a quick find of Recipient / gift info.  
@@ -46,14 +48,19 @@ Now kill and re-run the meteor command, and everything should work.
 - Detail View (reached from Recipients List or Find Recipients).
 - Editing of recipient and gift information through the detail view.
 - Recipients Import from .csv file
-    - depending on the server you are running on, you may need to break a large file into smaller pieces. 
+    - depending on the server you are running on, you may need to break a large file into smaller pieces.
 - Adding Recipients and Gifts manually
 - Adding content Text and Images for the home page
 - Adding a banner image for the home page.
 - Displaying the Home page
-- User account administration for changing user role / permissions
+- User account administration for changing user role / permissions, and deleting users.
 - Backup of the database through the user interface
 - Deleting of Recipients and gifts (prompted before delete)
+- End User (Giver) Sign-up
+- End User ability to select recipients to get gifts for.
+- End User ability to mark a recipient 'done' when their gifst have been purchased.
+- End user ability to see which recipients they have complted vs. still need to buy gifts for on different views.
+- Admin Dashboard.
 
 ### Uploading a .csv file for bulk import
 
@@ -77,7 +84,7 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
         j. giftType3
         k. giftSize3
 
-        * Note:  If any person has more than 2 gifts, you must have a full column for giftType3 and giftSize3.   At this time, the system cannot do more than 3 gifts due to parser limitations.  I will look into other options at a later time.
+        * Note:  If any one person has more than 2 gifts, you must have a full column for giftType3 and giftSize3.   At this time, the system cannot do more than 3 gifts due to parser limitations.  I will look into other options at a later time.
 
     with respect to addresses
         j. streetAddress
@@ -99,4 +106,4 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 
 ## Next up development
 
-    1. Fix bugs, start adding features for givers.
+    1. Fix bugs
