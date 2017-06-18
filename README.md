@@ -34,7 +34,7 @@ If you want to use the backup feature, you'll also need to install ShellJS from 
 The only reason you need Mongo outside of the Mongo instance installed with meteor is so the mongodump backup command will work.
 
 1. In the meteorBastas directory created from the initial Git Clone, run the command
-`meteor npm install shelljs --save` 
+    `meteor npm install shelljs --save` 
 in a terminal.
 
 2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
