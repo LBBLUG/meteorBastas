@@ -42,7 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .totalNumber {
     color: #b422ff;
-    font-size: 24px;
+    font-size: 2vw;
     color: #e2e2e2;
     text-align: center;
 }
@@ -50,13 +50,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .countsShown {
     margin-top: 2%;
     margin-bottom: 3%;
-    font-size: 56px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .countsTitle {
     color: #4e4ad2;
-    font-size: 24px;
+    font-size: 2vw;
     text-align: center;
 }
 
@@ -81,7 +81,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .blueTotalNumber {
     color: #b422ff;
-    font-size: 24px;
+    font-size: 2vw;
     color: #e2e2e2;
     text-align: center;
 }
@@ -89,13 +89,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .blueCountsShown {
     margin-top: 2%;
     margin-bottom: 3%;
-    font-size: 56px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .blueCountsTitle {
     color: #e2e2e2;
-    font-size: 24px;
+    font-size: 2vw;
     text-align: center;
 }
 
@@ -120,7 +120,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .redTotalNumber {
     color: #b422ff;
-    font-size: 24px;
+    font-size: 2vw;
     color: #e2e2e2;
     text-align: center;
 }
@@ -128,13 +128,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .redCountsShown {
     margin-top: 2%;
     margin-bottom: 3%;
-    font-size: 56px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .redCountsTitle {
     color: #e2e2e2;
-    font-size: 24px;
+    font-size: 2vw;
     text-align: center;
 }
 
@@ -159,7 +159,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .orangeTotalNumber {
     color: #b422ff;
-    font-size: 24px;
+    font-size: 2vw;
     color: #e2e2e2;
     text-align: center;
 }
@@ -167,13 +167,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .orangeCountsShown {
     margin-top: 2%;
     margin-bottom: 3%;
-    font-size: 56px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .orangeCountsTitle {
     color: #e2e2e2;
-    font-size: 24px;
+    font-size: 2vw;
     text-align: center;
 }
 
@@ -198,7 +198,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .purpleTotalNumber {
     color: #b422ff;
-    font-size: 24px;
+    font-size: 2vw;
     color: #e2e2e2;
     text-align: center;
 }
@@ -206,13 +206,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .purpleCountsShown {
     margin-top: 2%;
     margin-bottom: 3%;
-    font-size: 56px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .purpleCountsTitle {
     color: #e2e2e2;
-    font-size: 24px;
+    font-size: 2vw;
     text-align: center;
 }
 
@@ -221,70 +221,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     background: #7D26CD;
     border-radius: 8px;
 }
-
-/*
-.gauges {
-  width: 400px;
-  height: 200px;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  overflow: hidden;
-  text-align: center;
-  transform: translate(-50%, -50%);
-}
-
-.gauge-a {
-  z-index: 1;
-  position: absolute;
-  background-color: rgba(255,255,255,.2);
-  width: 400px;
-  height: 200px;
-  top: 0%;
-  border-radius: 250px 250px 0px 0px;
-}
-
-.gauge-b {
-  z-index: 3;
-  position: absolute;
-  background-color: #2a2a2a;
-  width: 250px;
-  height: 125px;
-  top: 75px;
-  margin-left: 75px;
-  margin-right: auto;
-  border-radius: 250px 250px 0px 0px;
-}
-
-.gauge-c {
-  z-index: 2;
-  position: absolute;
-  background-color: #5664F9;
-  width: 400px;
-  height: 200px;
-  top: 200px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 0px 0px 200px 200px;
-  transform-origin: center top;
-  transition: all 1.3s ease-in-out;
-}
-
-.gauge-c {
-    transform:rotate(.5turn);
-}
-
-.gauge-data { color: #5664F9 }
-
-.gauge-data {
-  z-index: 4;
-  font-size: 1.5em;
-  line-height: 25px;
-  position: absolute;
-  width: 400px;
-  height: 200px;
-  top: 90px;
-  margin-left: auto;
-  margin-right: auto;
-  transition: all 1s ease-out;
-} */

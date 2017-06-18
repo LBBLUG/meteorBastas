@@ -1,30 +1,28 @@
 <template name="allGiftsWidget">
-    <div id="countsSquare" class="purpleCounts">
-        <div class="row">
-            <div class="col s8">
-                <div class="row">
-                    <div class="col s12">
-                        <div id="title1" class="redCountsTitle">
-                            All Their Gifts
-                        </div>
+    <div class="row">
+        <div class="col s12 m10">
+          <div class="card">
+            <div class="card-image purple lighten-1">
+              <div id="AllGiftRecip"></div>
+              <span class="card-title"></span>
+            </div>
+            <div class="card-content purple darken-1">
+                <div class="row" id="actualCounts">
+                    <div class="col s8">
+                        Has All
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div id="AllGiftRecip"></div>
+                    <div class="col s4">
+                        {{allGifts}}
+                    </div>
+                    <div class="col s8">
+                        Total Recipients
+                    </div>
+                    <div class="col s4">
+                        {{totalRecips}}
                     </div>
                 </div>
             </div>
-                <div class="col s4 purpleCountNumber purpleCountsShown">
-                    {{allGifts}}
-                </div>
+          </div>
         </div>
-        <div class="purpleCounts-footer">
-            <div id="title2" class="purpleCountsTitle">
-                <div class="totalNumber">
-                    Total Recipients {{totalRecips}}
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
 </template>

@@ -1,30 +1,28 @@
 <template name="missingGiftsWidget">
-    <div id="countsSquare" class="redCounts">
-        <div class="row">
-            <div class="col s8">
-                <div class="row">
-                    <div class="col s12">
-                        <div id="title1" class="redCountsTitle">
-                            Missing a Gift
-                        </div>
+    <div class="row">
+        <div class="col s12 m10">
+          <div class="card">
+            <div class="card-image red lighten-1">
+              <div id="missingAGiftRecip"></div>
+              <span class="card-title"></span>
+            </div>
+            <div class="card-content red darken-1">
+                <div class="row" id="actualCounts">
+                    <div class="col s8">
+                        Missing Gifts
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div id="missingAGiftRecip"></div>
+                    <div class="col s4">
+                        {{missingGifts}}
+                    </div>
+                    <div class="col s8">
+                        Total Recipients
+                    </div>
+                    <div class="col s4">
+                        {{totalRecips}}
                     </div>
                 </div>
             </div>
-                <div class="col s4 redCountNumber redCountsShown">
-                    {{missingGifts}}
-                </div>
+          </div>
         </div>
-        <div class="redCounts-footer">
-            <div id="title2" class="redCountsTitle">
-                <div class="totalNumber">
-                    Total Recipients {{totalRecips}}
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
 </template>
