@@ -13,16 +13,16 @@ I chose Meteor for a few reasons:
 
 So, as described above, to run this project on your local machine simply do the following:
 
-1. get meteor and install it on your intended server.
+1. Get meteor and install it on your intended server.
     https://www.meteor.com/
-2. install git if you don't already have it.  
+2. Install Git on that server if you don't already have it.  
     https://git-scm.com/downloads
-3. clone the repository.
-    git clone https://github.com/LBBLUG/meteorBastas.git
-4. change into the directory created.
-    cd meteorBastas
-5. type 'meteor' into the terminal window while in that directory.
-6. This is generally technically started, and in the terminal you should see a message that says the server is available on http://localhost:3000, however, you may need to run a couple more commands.
+3. Clone the repository to your server using Git.
+    `git clone https://github.com/LBBLUG/meteorBastas.git`
+4. Change into the directory created.
+    `cd meteorBastas`
+5. Type `meteor` into the terminal window while in that directory.
+6. The server is now generally technically started, and in the terminal you should see a message that says the server is available on http://localhost:3000, however, you may need to run a couple more commands.
 7. Possibly, you'll want to do the command `meteor npm install --save babel-runtime`
 8. Next you should go ahead and run `meteor npm install`
 9. use http://localhost:3000 to reach the main page.
@@ -33,7 +33,10 @@ If you want to use the backup feature, you'll also need to install ShellJS from 
 
 The only reason you need Mongo outside of the Mongo instance installed with meteor is so the mongodump backup command will work.
 
-1. In the meteorBastas directory created from the initial Git Clone, run the command `meteor npm install shelljs --save` in a terminal.
+1. In the meteorBastas directory created from the initial Git Clone, run the command
+`meteor npm install shelljs --save` 
+in a terminal.
+
 2. Make sure to install MongoDB for your OS and architecture from Mongodb.com.
 
 If you get prompted, after the npm install of ShellJS, to run another npm command to install stubs dependencies, go ahead and run that.
