@@ -68,8 +68,8 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 
 1. there cannot be any commas ',' in the fields within the CSV.  
 2. the header rows for the columns must be titled exactly as follows with capitalization as shown, the order of the columns is not important as long as the data in the column matches the column header row.
-- bastasId  // normally an incrementing unique number
-- route  // number assigned and used for delivery of gifts
+    - bastasId  // normally an incrementing unique number
+    - route  // number assigned and used for delivery of gifts
 
 - with respect to recipients name
     - first
