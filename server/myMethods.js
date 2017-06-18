@@ -102,4 +102,12 @@ Meteor.methods({
         return totalGifts;
 
     },
+    'delete.user' (userId) {
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to add recipient information.');
+        }
+
+        Meteor.users.remove({ _id: userId });
+    },
 });

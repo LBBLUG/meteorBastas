@@ -7,16 +7,20 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Verified</th>
                 <th>Phone</th>
                 <th>Role</th>
+                <th>Actions</th>
             </tr>
             {{#each users}}
             <tr>
                 <td><a href="#" class="userIdLink">{{_id}}</a></td>
                 <td>{{profile.firstName}} {{profile.lastName}}</td>
                 <td>{{userEmail}}</td>
+                <td>{{emailVerified}}</td>
                 <td>{{profile.cellPhone}}</td>
                 <td>{{isAdmin}}</td>
+                <td><i class="material-icons deleteUser">delete</i></td>
             </tr>
             {{/each}}
         </table>

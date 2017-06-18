@@ -37,6 +37,13 @@ Template.manageUsers.helpers({
     userEmail: function() {
         return this.emails[0].address;
     },
+    emailVerified: function() {
+        if (this.emails[0].verified == true) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    },
     isAdmin: function() {
         return Roles.getRolesForUser( this._id );
     },
@@ -58,6 +65,22 @@ Template.manageUsers.events({
             $("#myModalTextSection").html(myModalText);
         }
     },
+    'click .deleteUser' (event) {
+        event.preventDefault();
+        let userId = this._id;
+
+        Meteor.call("delete.user", userId, function(err, result) {
+            if (err) {
+                Session.set("snackbarText", "Delete Failed!");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
+            } else {
+                Session.set("snackbarText", "User Deleted");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
+            }
+        });
+    }
 });
 
 Template.changeUserRole.helpers({
