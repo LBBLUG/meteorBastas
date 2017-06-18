@@ -68,40 +68,40 @@ I have completed the work to upload a csv file in bulk.  There are some rules fo
 
 1. there cannot be any commas ',' in the fields within the CSV.  
 2. the header rows for the columns must be titled exactly as follows with capitalization as shown, the order of the columns is not important as long as the data in the column matches the column header row.
-    a. bastasId  // normally an incrementing unique number
-    b. route  // number assigned and used for delivery of gifts
+- bastasId  // normally an incrementing unique number
+- route  // number assigned and used for delivery of gifts
 
-    with respect to recipients name
-        c. first
-        d. last
-        e. gender
+- with respect to recipients name
+    - first
+    - last
+    - gender
 
-    with respect to gifts
-        f. giftType1
-        g. giftSize1
-        h. giftType2
-        i. giftSize2
-        j. giftType3
-        k. giftSize3
+- with respect to gifts
+    - giftType1
+    - giftSize1
+    - giftType2
+    - giftSize2
+    - giftType3
+    - giftSize3
 
         * Note:  If any one person has more than 2 gifts, you must have a full column for giftType3 and giftSize3.   At this time, the system cannot do more than 3 gifts due to parser limitations.  I will look into other options at a later time.
 
-    with respect to addresses
-        j. streetAddress
-        i. aptNo (apartment number)
-        j. complexName (apartment complex name)
-        k. zip
+- with respect to addresses
+    - streetAddress
+    - aptNo (apartment number)
+    - complexName (apartment complex name)
+    - zip
 
-    with respect to phone numbers
-        l. home
-        m. cell
+- with respect to phone numbers
+    - home
+    - cell
 
     the above columns do not have to be in any particular order, but the header row for each must be labeled as described above.
 
-    Additional columns can be added with header labels of
-        a. notes
-        b. city
-        c. state
+- Additional columns can be added with header labels of
+    - notes
+    - city
+    - state
 
 
 ## Next up development
