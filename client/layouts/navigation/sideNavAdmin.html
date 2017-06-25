@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                     <a href="#" id="signOut" class="navBtn">Sign Out</a>
 
-
+                    <hr />
                     <a href="#" id="home" class="navBtn"><i class="material-icons navBtn" id="home">home</i>&nbsp; Home</a>
 
 
@@ -39,20 +39,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     <a href="#" id="myRecipients" class="navBtn"><i class="material-icons navBtn" id="myRecipients">card_giftcard</i>&nbsp; My Recipients</a>
 
                     <a href="#" id="myCompletedGifts" class="navBtn"><i class="material-icons navBtn" id="myCompletedGifts">card_giftcard</i>&nbsp; My Completed Gifts</a>
-
+                    <hr />
 
                 {{#if isInRole 'Admin'}}
 
                         <a href="#" id="dashboard" class="navBtn"><i class="material-icons navBtn" id="dashboard">dashboard</i>&nbsp; Dashboard</a>
 
                 {{/if}}
-
+                    <hr />
                 {{#if isInRole 'Admin, Editor, Viewer, Adder'}}
 
                         <a href="#" id="recipientsList" class="navBtn"><i class="material-icons navBtn" id="recipientsList">group</i>&nbsp; Recipients List</a>
 
                         <a href="#" id="findRecipients" class="navBtn"><i class="material-icons navBtn" id="findRecipients">search</i>&nbsp; Find Recipients</a>
-
+                    <hr />
                 {{/if}}
 
                 {{#if isInRole 'Admin, Editor, Adder'}}
@@ -60,15 +60,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         <a href="#" id="addRecipients" class="navBtn"><i class="material-icons navBtn" id="addRecipients">groupadd</i>&nbsp; Add Recipients</a>
 
                         <a href="#" id="importRecipients" class="navBtn"><i class="material-icons navBtn" id="importRecipients">system_update_alt</i>&nbsp; Import Recipients</a>
-
+                    <hr />
                 {{/if}}
 
                 {{#if isInRole 'Admin'}}
-                        <a href="#" id="sendReminder" class="navBtn"><i class="material-icons navBtn" id="sendReminder">email</i>&nbsp; Send Reminder</a>
-                        <a href="#" id="manageUsers" class="navBtn"><i class="material-icons navBtn" id="manageUsers">supervisor_account</i>&nbsp; Manage Users</a>
-                        <a href="#" id="setWebRecipients" class="navBtn"><i class="material-icons navBton" id="setWebRecipients">person_pin</i>&nbsp; Set Web Recipients</a>
+                    <a href="#" id="sendReminder" class="navBtn"><i class="material-icons navBtn" id="sendReminder">email</i>&nbsp; Send Reminder</a>
+                    <a href="#" id="manageUsers" class="navBtn"><i class="material-icons navBtn" id="manageUsers">supervisor_account</i>&nbsp; Manage Users</a>
+                    <a href="#" id="setWebRecipients" class="navBtn"><i class="material-icons navBton" id="setWebRecipients">person_pin</i>&nbsp; Set Web Recipients</a>
                 {{/if}}
-
+                    <hr />
                 {{#if isInRole 'Admin, Editor'}}
                         <a href="#" id="settings" class="navBtn"><i class="material-icons navBtn" id="settings">settings</i>&nbsp; Setup</a>
                         <a href="#" id="backup-ui" class="navBtn"><i class="material-icons navBtn" id="backup-ui">dns</i>&nbsp; Backup Database</a>

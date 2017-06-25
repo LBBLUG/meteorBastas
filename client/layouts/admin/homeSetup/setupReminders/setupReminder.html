@@ -1,0 +1,63 @@
+<template name="setupReminder">
+    <div class="ui container contentInfo">
+        <form id="reminderSetupForm">
+            <div class="row">
+                <div class="col s6">
+                    <h4>Setup Reminders</h4>
+                    <p>
+                        Setup reminders for quick access to send to your givers.
+                    </p>
+                    <br />
+                    <div class="row">
+                        <div class="col s1">
+                            <i class="material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Salutatiion should be a simple, generic greeting such as 'Hello,' or 'Dear Giver,'">info</i>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="salutation" class="input salutation" />
+                            <label for="salutation">Salutation</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s1">
+                            <i class="material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Enter a simple, easy to understand reminder message for your giver.">info</i>
+                        </div>
+                        <div class="input-field col s11">
+                            <textarea id="messageToGiver" class="materialize-textarea input messageToGiver" rows="4"></textarea>
+                            <label for="messageToGiver">Message</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s1">
+                            <i class="material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Close with a polite 'Thank you,' or 'Best Wishes,' sentiment">info</i>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" class="input closingLine" id="closingLine" />
+                            <label for="closingLine">Closing</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <h4>Reminder Message Name</h4>
+                    <p>
+                        Give an easy to remembeer name, so your reminder message is easy to choose later when you need it.
+                    </p>
+                    <br />
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" id="reminderMsgName" class="input reminderMsgName" />
+                            <label for="reminderMsgName">Reminder Name</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <a id="btnCancelReminderMsgSetup" class="waves-effect waves-light btn orange">Cancel</a>
+                </div>
+                <div class="input-field col s6">
+                    <a id="btnSubmitReminderMsgSetup" class="waves-effect waves-light btn right"><i class="material-icons left">done</i>Save</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>
