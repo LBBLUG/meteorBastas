@@ -1,3 +1,13 @@
 Template.setupNav.onRendered(function() {
-    $('ul.tabs').tabs();
+
+});
+
+Template.setupNav.events({
+    'click .collNav' (event) {
+        event.preventDefault();
+
+        let clickedNav = event.currentTarget.id;
+
+        FlowRouter.go('/admin/' + clickedNav);
+    }
 });

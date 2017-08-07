@@ -24,6 +24,7 @@ import { Recipients } from '../imports/api/recipients.js';
 import { HomePageData } from '../imports/api/homePageData.js';
 import { HomePageBanner } from '../imports/api/homePageBanner.js';
 import { BastasDB } from '../imports/api/bastasDb.js';
+import { MessagingSettings } from '../imports/api/messagingSettings.js';
 
 Meteor.publish("recipients", function(){
     if (Roles.userIsInRole(this.userId, ['Admin', 'Editor', 'Adder', 'Viewer'])) {
@@ -57,6 +58,10 @@ Meteor.publish("allUsers", function() {
 
 Meteor.publish("backups", function() {
     return BastasDB.find({});
+});
+
+Meteor.publish("activeMsgSetup", function() {
+    return MessagingSettings.find({ active: true });
 });
 
 Meteor.publish("giveAGiftSet", function() {

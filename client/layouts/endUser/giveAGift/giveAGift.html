@@ -31,6 +31,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <p>
                 <strong>Select gifts below to give to Seniors in our Community.</strong>
             </p>
+
+            <!-- The following line uses a helper on this template to determine which recipients have
+                been listed as Web Based recipients, and loops through those recipients to list them using handlebar
+                based binding in the view.  -->
             {{#each isWebRecip}}
             <div class="row">
                 <div class="col s12 m12">
@@ -38,15 +42,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         <div class="row">
                             <div class="col s12">
                                 <div class="card-content blue-grey darken-1 white-text">
-                                    <div class="row">
-                                        <div class="col s8">
-                                            <span class="card-title"><input type="checkBox" id="{{_id}}" class="checkbox  selectFromWeb"  />
-                                            <label for="{{_id}}"></label>{{name.first}}</span>
+                                    <span class="card-title">
+                                        <div class="row">
+                                            <div class="col s8">
+                                                <input type="checkBox" id="{{_id}}" class="checkbox filled-in selectFromWeb white"  />
+                                                <label for="{{_id}}" class="white-text">Pick Me</label><br />
+                                                {{name.first}}
+                                            </div>
+                                            <div class="col s4">
+                                                <label class="white-text">Gender: </label><span class="personInfo">{{gender}}</span>
+                                            </div>
                                         </div>
-                                        <div class="col s4">
-                                            <label>Gender: </label><span class="personInfo">{{gender}}</span>
-                                        </div>
-                                    </div>
+                                    </span>
                                 </div>
                                 <div class="card-content">
                                     <h5>Gifts</h5>

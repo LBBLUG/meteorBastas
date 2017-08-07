@@ -17,7 +17,6 @@
     }
 }
 
-.checkbox-white[type="checkbox"] + label:before,
-  &:not(.filled-in) + label:after{
-     border: 2px solid #ffffff;
+[type="checkbox"].filled-in:not(:checked)+label:after{
+  border: 2px solid #ffffff;
 }

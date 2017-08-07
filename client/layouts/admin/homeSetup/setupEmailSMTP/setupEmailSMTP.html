@@ -1,0 +1,44 @@
+<template name="setupEmailSMTP">
+    <div class="templateWrapper">
+        <div class="madeIt">
+            <h4>Email / SMTP Setup</h4>
+            <p>
+                Use this form to setup the information required to send email through your email provider / service / server.
+            </p>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" class="input emailUser" id="emailUser" />
+                <label for="emailUser">Email Username (may be full email address)</label>
+            </div>
+            <div class="input-field col s6">
+                <input type="password" class="input userPass" id="userPass" />
+                <label for="userPass">Password for this Account</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" class="input smtpSrvURL" id="smtpSrvURL" />
+                <label for="smtpSrvURL">SMTP Server URL</label>
+            </div>
+            <div class="input-field col s6">
+                <input type="text" class="input smtpPort" id="smtpPort" />
+                <label for="smtpPort">SMTP Port Number (e.g. 25, 443, 587, etc)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <a id="cancelEmailSetup" class="waves-effect waves-light btn orange left">
+                    <i class="material-icons left">cancel</i>
+                    Cancel
+                </a>
+            </div>
+            <div class="col s6">
+                <a id="saveEmailSetup" class="waves-effect waves-light btn green right">
+                    <i class="material-icons left">done</i>Save
+                </a>
+            </div>
+        </div>
+    </div>
+    {{> snackbar}}
+</template>

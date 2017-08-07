@@ -21,15 +21,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { Meteor } from 'meteor/meteor';
+import { MessagingSettings } from '../imports/api/messagingSettings.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
-  smtp = {
-      username: '<username here>',
-      password: 'password here',
-      server: 'smtp url here',
-      port: 587
-  }
+  let msgSettings = MessagingSettings.findOne({ active: true });
+  let user = msgSettings.emailUser;
+  console.log("User = " + user);
+  if (msgSettings) {
+      smtp = {
+          username: msgSettings.emailUser,
+          password: msgSettings.emailPasswd,
+          server: msgSettings.smtpSrvUrl,
+          port: msgSettings.smtpPort
+      }
 
-  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
-});
+      process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+  }
+ });
