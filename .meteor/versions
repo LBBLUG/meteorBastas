@@ -34,6 +34,7 @@ email@1.2.3
 ephemer:reactive-datatables@1.1.0
 es5-shim@4.6.15
 fastclick@1.0.13
+fourseven:scss@3.10.1
 geojson-utils@1.0.10
 harrison:papa-parse@1.1.7
 hot-code-push@1.0.4
@@ -48,7 +49,7 @@ launch-screen@1.1.1
 livedata@1.0.18
 localstorage@1.1.0
 logging@1.1.17
-materialize:materialize@0.97.6
+materialize:materialize@0.98.2
 meteor@1.6.1
 meteor-base@1.1.0
 meteorhacks:aggregate@1.3.0

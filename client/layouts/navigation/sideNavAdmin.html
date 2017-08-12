@@ -36,9 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                     <a href="#" id="giveAGift" class="navBtn"><i class="material-icons navBtn" id="giveAGift">card_giftcard</i>&nbsp; Give a Gift</a>
 
-                    <a href="#" id="myRecipients" class="navBtn"><i class="material-icons navBtn" id="myRecipients">card_giftcard</i>&nbsp; My Recipients</a>
+                    <a href="#" id="myRecipients" class="navBtn"><i class="material-icons navBtn" id="myRecipients">card_giftcard</i>&nbsp; My Recipients <span class="badge blue white-text">{{chosenRecips}}</span></a>
 
-                    <a href="#" id="myCompletedGifts" class="navBtn"><i class="material-icons navBtn" id="myCompletedGifts">card_giftcard</i>&nbsp; My Completed Gifts</a>
+                    <a href="#" id="myCompletedGifts" class="navBtn"><i class="material-icons navBtn" id="myCompletedGifts">card_giftcard</i>&nbsp; My Completed Gifts <span class="badge green white-text">{{completeRecips}}</span></a>
 
 
                 {{#if isInRole 'Admin'}}

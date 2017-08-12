@@ -20,6 +20,37 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import { Recipients } from '../../../imports/api/recipients.js';
+
+Template.sideNavAdmin.onCreated(function() {
+    this.subscribe("getMyRecipients");
+    this.subscribe("myCompletedGifts");
+});
+
+Template.sideNavAdmin.helpers({
+    chosenRecips: function() {
+        return Recipients.find(
+            {
+                webRecipient: true,
+                webSelected: true,
+                selectedBy_id: Meteor.userId(),
+                marked_Purchased: false
+            }
+        ).count();
+    },
+    completeRecips: function() {
+        return Recipients.find(
+            {
+                webRecipient: true,
+                webSelected: true,
+                selectedBy_id: Meteor.userId(),
+                marked_Purchased: true
+            },
+        ).count();
+        // console.log("Meteor.userId() gives: " + Meteor.userId());
+    },
+});
+
 Template.sideNavAdmin.events({
     'click  .navBtn' (event) {
         event.preventDefault();

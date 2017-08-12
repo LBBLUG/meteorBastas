@@ -1,7 +1,7 @@
 import { Recipients } from '../../../../imports/api/recipients.js';
 
 Template.myRecipients.onCreated(function() {
-    this.subscribe('getMyRecipients');
+    this.subscribe('giveAGiftSet');
 });
 
 Template.myRecipients.onRendered(function() {
@@ -10,7 +10,13 @@ Template.myRecipients.onRendered(function() {
 
 Template.myRecipients.helpers({
     areMyRecipients: function() {
-        return Recipients.find({});
+        return Recipients.find(
+            {
+                webSelected: true,
+                selectedBy_id: Meteor.userId(),
+                marked_Purchased: false
+            }
+        );
     },
 });
 
