@@ -440,6 +440,29 @@ Meteor.methods({
         }
 
         for (i=0; i < recipientIds.length; i++) {
+            // find the recipient with this id first, and determine how many gifts
+            // he / she has.
+            let recipient = Recipients.findOne({ _id: recipientIds[i] });
+            let noGifts = recipient.gifts.length;
+
+            if (noGifts == 1) {
+                Recipients.update({ _id: recipientIds[i], "gifts.giftNo": noGifts }, {
+                     $set: { 'gifts.$.selected': true } },
+                );
+            } else if (noGifts == 2)  {
+                for (j = 0; j<noGifts; j++) {
+                    Recipients.update({ _id: recipientIds[i], "gifts.giftNo": j+1 }, {
+                        $set: { 'gifts.$.selected': true }
+                    });
+                }
+            } else if (noGifts == 3) {
+                for (k = 0; k<noGifts; k++) {
+                    Recipients.update({ _id: recipientIds[i], "gifts.giftNo": k+1 }, {
+                        $set: { 'gifts.$.selected': true }
+                    });
+                }
+            }
+
             Recipients.update({ _id: recipientIds[i] }, {
                 $set: {
                     webSelected: true,

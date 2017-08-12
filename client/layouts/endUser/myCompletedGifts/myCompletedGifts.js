@@ -15,3 +15,11 @@ Template.myCompletedGifts.helpers({
         );
     },
 });
+
+Template.myCompletedGifts.events({
+    'click .printThese' (event) {
+        event.preventDefault();
+
+        FlowRouter.go("/user/printComplete");
+    },
+});
