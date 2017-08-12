@@ -56,7 +56,6 @@ Template.countsWidget.onRendered(function() {
             max: 100,
             symbol: "%",
             levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
-            title: "Gifts Checked In"
         });
     }, 500);
 });
@@ -73,8 +72,7 @@ Template.countsRecipWidget.onRendered(function() {
             min: 0,
             max: 100,
             symbol: "%",
-            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
-            title: "At Least 1 Gift"
+            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137']
         });
     }, 500);
 });
@@ -117,8 +115,7 @@ Template.missingGiftsWidget.onRendered(function() {
             min: 0,
             max: 100,
             symbol: "%",
-            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
-            title: "Missing Gifts"
+            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137']
         });
     }, 500);
 });
@@ -147,8 +144,7 @@ Template.noGiftsWidget.onRendered(function() {
             min: 0,
             max: 100,
             symbol: "%",
-            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
-            title: "No Gifts At All"
+            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137']
         });
     }, 500);
 
@@ -178,8 +174,7 @@ Template.allGiftsWidget.onRendered(function() {
             min: 0,
             max: 100,
             symbol: "%",
-            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
-            title: "Has All Gifts"
+            levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137']
         });
     }, 500);
 });

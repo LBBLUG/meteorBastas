@@ -1,28 +1,30 @@
 <template name="countsRecipWidget">
     <div class="row">
-        <div class="col s12 m10">
-          <div class="card">
+        <div class="card horizontal">
             <div class="card-image green lighten-1">
-              <div id="oneGiftRecip"></div>
-              <span class="card-title"></span>
+               <div id="oneGiftRecip"></div>
             </div>
-            <div class="card-content green darken-1">
-                <div class="row" id="actualCounts">
-                    <div class="col s8">
-                        At Least 1
-                    </div>
-                    <div class="col s4">
-                        {{atLeat1Gift}}
-                    </div>
-                    <div class="col s8">
-                        Total Recipients
-                    </div>
-                    <div class="col s4">
-                        {{totalRecips}}
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
+            <div class="card-stacked">
+              <div class="card-content green darken-1 white-text">
+                  <div class="row" id="actualCounts">
+                      <div class="col s8">
+                          At Least 1
+                      </div>
+                      <div class="col s4">
+                          {{atLeat1Gift}}
+                      </div>
+                      <div class="col s8">
+                          Total Recipients
+                      </div>
+                      <div class="col s4">
+                          {{totalRecips}}
+                      </div>
+                  </div>
+              </div>
+              <div class="card-action green white-text">
+                  <span>At Least 1 Gift</span>
+              </div>
+              </div>
+          </div>    
       </div>
 </template>

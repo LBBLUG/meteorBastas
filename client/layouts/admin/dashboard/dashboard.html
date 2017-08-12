@@ -1,25 +1,23 @@
 <template name="dashboard">
     <div class="templateWrapper">
-        <div class="container contentInfo">
+        <div class="contentInfo">
             <h3>BASTAS Dashboard</h3>
             <div class="row">
-                <div class="col s4">
+                <div class="col s6">
                     {{#if Template.subscriptionsReady}}
                         {{> countsWidget}}
                     {{/if}}
                 </div>
-                <div class="col s4">
+                <div class="col s6">
                     {{#if Template.subscriptionsReady}}
                         {{> countsRecipWidget}}
                     {{/if}}
                 </div>
-                <div class="col s4">
+                <div class="col s6">
                     {{#if Template.subscriptionsReady}}
                         {{> missingGiftsWidget}}
                     {{/if}}
                 </div>
-            </div>
-            <div class="row">
                 <div class="col s6">
                     {{#if Template.subscriptionsReady}}
                         {{> noGiftsWidget}}

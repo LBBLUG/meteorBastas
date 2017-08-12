@@ -1,29 +1,30 @@
 <template name="countsWidget">
     <div class="row">
-        <div class="col s12 m10">
-          <div class="card">
-            <div class="card-image blue lighten-1">
-              <div id="checkedInGage"></div>
-              <span class="card-title"></span>
-            </div>
-            <div class="card-content blue darken-1">
-                <div class="row" id="actualCounts">
-                    <div class="col s8">
-                        Checked In
+          <div class="card horizontal">
+              <div class="card-image blue lighten-1">
+                <div id="checkedInGage"></div>
+              </div>
+              <div class="card-stacked">
+                <div class="card-content blue darken-1 white-text">
+                    <div class="row" id="actualCounts">
+                        <div class="col s8">
+                            Checked In
+                        </div>
+                        <div class="col s4">
+                            {{CheckedInCount}}
+                        </div>
+                        <div class="col s8">
+                            Total Gifts
+                        </div>
+                        <div class="col s4">
+                            {{TotalGifts}}
+                        </div>
                     </div>
-                    <div class="col s4">
-                        {{CheckedInCount}}
-                    </div>
-                    <div class="col s8">
-                        Total Gifts
-                    </div>
-                    <div class="col s4">
-                        {{TotalGifts}}
-                    </div>
-
+                </div>
+                <div class="card-action blue white-text">
+                    <span>Checked In</span>
+                </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </div>
+    </div>
 </template>

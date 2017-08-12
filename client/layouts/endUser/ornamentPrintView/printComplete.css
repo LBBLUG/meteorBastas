@@ -1,0 +1,16 @@
+@media print {
+    nav, aside, header, footer {
+        display: none;
+    }
+    body {
+        font: 13pt Tahoma, Geneva, sans-serif;
+    }
+    @page {
+        margin: 2cm;
+        margin-top: 2cm;
+    }
+    .together {
+        page-break-after:avoid;
+        page-break-inside:avoid
+    }
+}

@@ -1,28 +1,30 @@
 <template name="noGiftsWidget">
     <div class="row">
-        <div class="col s12 m10">
-          <div class="card">
-            <div class="card-image orange lighten-1">
-              <div id="noGiftRecip"></div>
-              <span class="card-title"></span>
-            </div>
-            <div class="card-content orange darken-1">
-                <div class="row" id="actualCounts">
-                    <div class="col s8">
-                        Has None
-                    </div>
-                    <div class="col s4">
-                        {{noGifts}}
-                    </div>
-                    <div class="col s8">
-                        Total Recipients
-                    </div>
-                    <div class="col s4">
-                        {{totalRecips}}
+          <div class="card horizontal">
+              <div class="card-image orange lighten-1">
+                <div id="noGiftRecip"></div>
+              </div>
+              <div class="card-stacked">
+                <div class="card-content orange darken-1 white-text">
+                    <div class="row" id="actualCounts">
+                        <div class="col s8">
+                            Has None
+                        </div>
+                        <div class="col s4">
+                            {{noGifts}}
+                        </div>
+                        <div class="col s8">
+                            Total Recipients
+                        </div>
+                        <div class="col s4">
+                            {{totalRecips}}
+                        </div>
                     </div>
                 </div>
+                <div class="card-action orange white-text">
+                    <span>No Gifts</span>
+                </div>
+                </div>
             </div>
-          </div>
-        </div>
       </div>
 </template>
