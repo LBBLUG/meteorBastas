@@ -17,6 +17,13 @@ Template.currentWebRecipients.helpers({
             return false;
         }
     },
+    isSelectedByUser: function() {
+        if (this.selectedBy_id != "" && this.selectedBy_id != null) {
+            return "checked";
+        } else {
+            return false;
+        }
+    }
 });
 
 Template.currentWebRecipients.events({

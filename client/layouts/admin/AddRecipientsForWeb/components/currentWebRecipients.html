@@ -3,6 +3,9 @@
         <thead>
             <tr>
                 <th>
+                    Selected
+                </th>
+                <th>
                     BastasID / Route
                 </th>
                 <th>
@@ -28,6 +31,10 @@
         <tbody>
             {{#each webRecipientsCurr}}
             <tr>
+                <td>
+                    <input type="checkbox" id="isSelectedByUser" checked="{{isSelectedByUser}}" />
+                    <label for="isSelectedByUser"></label>
+                </td>
                 <td>
                     {{bastasId}} / {{route}}
                 </td>

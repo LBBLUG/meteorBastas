@@ -10,7 +10,9 @@ Template.giveAGift.onRendered(function() {
 
 Template.giveAGift.helpers({
     isWebRecip: function() {
-        return Recipients.find({});
+        return Recipients.find({
+            webSelected: false
+        });
     },
 });
 
