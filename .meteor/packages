@@ -30,7 +30,6 @@ momentjs:moment         # get Date / Time in all kinds of great formats
 kadira:flow-router      # Routing for page loading
 kadira:blaze-layout
 meteortoys:allthings    # use CTRL+M to show some nice helpers on Chrome
-materialize:materialize@=0.98.2 # A nice user interface css library
 harrison:papa-parse     # parsing package to get csv to json
 meteorhacks:aggregate
 
@@ -41,3 +40,5 @@ dynamic-import
 session                     # handles session variables in production system
 practicalmeteor:mocha       # mocha testing framework for meteor
 email
+fourseven:scss@4.5.4        # necessary for materialize css
+appworkshop:materialize     # Material Design based css and jquery library

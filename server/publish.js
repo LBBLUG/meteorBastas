@@ -25,6 +25,7 @@ import { HomePageData } from '../imports/api/homePageData.js';
 import { HomePageBanner } from '../imports/api/homePageBanner.js';
 import { BastasDB } from '../imports/api/bastasDb.js';
 import { MessagingSettings } from '../imports/api/messagingSettings.js';
+import { ReminderMsgs } from '../imports/api/reminderMsgs.js';
 
 Meteor.publish("recipients", function(){
     if (Roles.userIsInRole(this.userId, ['Admin', 'Editor', 'Adder', 'Viewer'])) {
@@ -84,4 +85,8 @@ Meteor.publish("giveAGiftSet", function() {
             }
         }
     );
+});
+
+Meteor.publish("reminderMessages", function(){
+    return ReminderMsgs.find({});
 });

@@ -8,22 +8,22 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" class="input emailUser" id="emailUser" />
-                <label for="emailUser">Email Username (may be full email address)</label>
+                <input type="text" class="input emailUser" id="emailUser" value="{{emailSettings.emailUser}}"/>
+                <label for="emailUser" class="{{#if $eq editSettings true}}active{{/if}}">Email Username (may be full email address)</label>
             </div>
             <div class="input-field col s6">
-                <input type="password" class="input userPass" id="userPass" />
-                <label for="userPass">Password for this Account</label>
+                <input type="password" class="input userPass" id="userPass" value="{{emailSettings.emailPasswd}}" />
+                <label for="userPass" class="{{#if $eq editSettings true}}active{{/if}}">Password for this Account</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" class="input smtpSrvURL" id="smtpSrvURL" />
-                <label for="smtpSrvURL">SMTP Server URL</label>
+                <input type="text" class="input smtpSrvURL" id="smtpSrvURL" value="{{emailSettings.smtpSrvUrl}}"/>
+                <label for="smtpSrvURL" class="{{#if $eq editSettings true}}active{{/if}}">SMTP Server URL</label>
             </div>
             <div class="input-field col s6">
-                <input type="text" class="input smtpPort" id="smtpPort" />
-                <label for="smtpPort">SMTP Port Number (e.g. 25, 443, 587, etc)</label>
+                <input type="text" class="input smtpPort" id="smtpPort" value="{{emailSettings.smtpPort}}"/>
+                <label for="smtpPort" class="{{#if $eq editSettings true}}active{{/if}}">SMTP Port Number (e.g. 25, 443, 587, etc)</label>
             </div>
         </div>
         <div class="row">

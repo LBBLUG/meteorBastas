@@ -6,22 +6,24 @@ Template.setupEmailSMTP.onCreated(function() {
 
 Template.setupEmailSMTP.onRendered(function() {
     // get an active email setup
-    let msgSettings = MessagingSettings.findOne({});
-    if (msgSettings) {
-        Session.set("SettingsId", MessagingSettings._id);
-        Session.set("EditSettings", true);
-    } else {
-        Session.set("EditSettings", false);
-    }
+
 });
 
 Template.setupEmailSMTP.helpers({
     emailSettings: function() {
-        if (Session.get("EditSeetings") == true) {
+        let msgSettings = MessagingSettings.findOne({});
+        if (typeof msgSettings != 'undefined') {
+            Session.set("editSettings", true);
+            console.log("Edit Settings: true");
             return MessagingSettings.findOne({});
         } else {
-            return false
+            console.log("Edit Settings: false");
+            return false;
         }
+    },
+    editSettings: function() {
+        let editSettingsSet = Session.get("editSettings");
+        return editSettingsSet;
     },
 });
 
@@ -36,7 +38,7 @@ Template.setupEmailSMTP.events({
         let emailSrv = $("#smtpSrvURL").val();
         let emailPort = $("#smtpPort").val();
 
-        if (editMode) {
+        if (editMode == true) {
             // update existing active email settings
             Meteor.call('msgSettings.edit', editId, emailUser, emailPass, emailSrv, emailPort, function(err, result) {
                 if (err) {
