@@ -220,9 +220,9 @@ Meteor.methods({
     },
     'Recipients.import' (importData) {
         // check the data if needed
-        // check(importData, [String]);
+        // check(importData, { some object });
 
-        // uncomment the 2 (two) lines below to see the data being imported in the server console.
+        // *** uncomment the 2 (two) lines below to see the data being imported in the server console.
         // console.log('--------------------------------------------------');
         // console.dir(importData);
 
@@ -272,6 +272,7 @@ Meteor.methods({
                         deliveryPhone: importData.data[i].deliveryPhone1,
                     }],
                     notes: importData.data[i].notes,
+                    webRecipient: importData.data[i].webRecipient,
                     enteredBy: Meteor.user().emails[0].address,
                     addedOn: new Date(),
                 });
@@ -318,6 +319,7 @@ Meteor.methods({
                         deliveryPhone: importData.data[i].deliveryPhone2,
                     }],
                     notes: importData.data[i].notes,
+                    webRecipient: importData.data[i].webRecipient,
                     enteredBy: Meteor.user().emails[0].address,
                     addedOn: new Date(),
                 });
@@ -374,6 +376,7 @@ Meteor.methods({
                         deliveryPhone: importData.data[i].deliveryPhone3,
                     } ],
                     notes: importData.data[i].notes,
+                    webRecipient: importData.data[i].webRecipient,
                     enteredBy: Meteor.user().emails[0].address,
                     addedOn: new Date(),
                 });
