@@ -49,6 +49,7 @@ Template.setupEmailSMTP.events({
                 } else {
                     Session.set("snackbarText", "Email Settings Updated!");
                     Session.set("snackbarColor", "green");
+                    Session.set("NoEmailSet", false);
                     showSnackbar();
                 }
             });
@@ -63,7 +64,10 @@ Template.setupEmailSMTP.events({
                 } else {
                     Session.set("snackbarText", "Email Settings Added!");
                     Session.set("snackbarColor", "green");
+                    Session.set("NoEmailSet", false);
                     showSnackbar();
+                    let msgSettings = MessagingSettings.findOne({ active: true });
+                    Meteor.call('setEmailFromServer', msgSettings);
                 }
             });
         }

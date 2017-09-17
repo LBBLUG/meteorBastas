@@ -1,15 +1,26 @@
 import { HomePageData } from '../../../../imports/api/homePageData.js';
 import { HomePageBanner } from '../../../../imports/api/homePageBanner.js';
+import { MessagingSettings } from '../../../../imports/api/messagingSettings.js';
 
-Meteor.subscribe('homePageData');
-Meteor.subscribe('homePageBanner');
+Template.homeBody.onCreated(function() {
+    this.subscribe('homePageData');
+    this.subscribe('homePageBanner');
+    this.subscribe('activeMsgSetup');
+});
 
 Template.homeBody.onRendered(function() {
-    let noEmailSettings = Session.get("NoEmailSet");
-    if (noEmailSettings == true) {
-        console.log("Hey!");
-        Materialize.toast('You need to add Email Settings', 20000, "red");
-    }
+    // let noEmailSettings = Session.get("NoEmailSet");
+    setTimeout(function() {
+        let msgSettings = MessagingSettings.findOne({ active: true });
+        console.dir(msgSettings);
+        if (typeof msgSettings == 'undefined' || msgSettings == null || msgSettings == "") {
+            // add an if user is in role Admin then show this...
+            if (Roles.userIsInRole(Meteor.userId(), 'Admin')) {
+                console.log("Client side didn't find email settings.");
+                Materialize.toast('You need to add Email Settings', 20000, "red");
+            }
+        }
+    }, 1100);
 });
 
 Template.homeBody.helpers({

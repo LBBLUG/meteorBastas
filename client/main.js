@@ -22,12 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { MessagingSettings } from '../imports/api/messagingSettings.js';
 
 Meteor.startup(() => {
-    let msgSettings = MessagingSettings.findOne({ active: true });
-    if (typeof msgSettings == 'undefined' || msgSettings == null || msgSettings == "") {
-        // msg settings not set, route user to setup for message settings.
-        Session.set("NoEmailSet", true);
-    }
+
 });
