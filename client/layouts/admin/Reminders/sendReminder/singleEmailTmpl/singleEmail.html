@@ -1,0 +1,95 @@
+<template name="singleEmail">
+    <h4>Send a Reminder Email</h4>
+    <div class="row">
+        <div class="input-field col s6">
+            <select id="getUserEmail" class="input">
+                <option value="" disabled selected>
+                    Choose a user email...
+                </option>
+                {{#each userEmailList}}
+                    <option value="{{_id}}">
+                        {{userEmail}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="input-field col s6">
+            <select name="customOrTmpl" id="customOrTmpl" class="input">
+                <option value="" disabled selected>From Template or Custom...</option>
+                <option value="Custom">
+                    Custom Email
+                </option>
+                {{#each emailTmplList}}
+                    <option value="{{_id}}">
+                        {{reminderName}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <!-- If the user wants to send a custom email we enable here -->
+    {{#if $eq showCustom true}}
+    <div class="customEmailFields">
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="input custEmailSubject" id="custEmailSubject" />
+                <label for="custEmailSubject">Subject:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4">
+                <label>Salutation:</label>
+                Dear {{usersName}},
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="custEmailBody" class="materialize-textarea" data-length="2000" maxlength="2000"></textarea>
+                <label for="custEmailBody">Body</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4">
+                <input type="text" class="input custEmailClose" id="custEmailClose">
+                <label for="custEmailClose">Closing</label>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+    <!-- if the user selects a pre-defined email template, we show that here -->
+    {{#if $eq showCustom false}}
+        {{#each emailTemplate}}
+            <div class="templateEmailFields">
+                <div class="row">
+                    <div class="col s4">
+                        <label>Salutation:</label><br />
+                        {{reminderSalutation}} {{usersName}},
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <label>Body</label><br />
+                        {{reminderText}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <label>Closing</label><br />
+                        {{reminderClosing}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    {{/if}}
+    <div class="row">
+        <div class="col s6">
+            <a class="waves-effect waves-light btn cancelSendSingleEmail orange left">Cancel</a>
+        </div>
+        <div class="col s6">
+            <a class="waves-effect waves-light btn sendSingleEmail green right">Send</a>
+        </div>
+    </div>
+    {{> snackbar}}
+</template>

@@ -78,14 +78,7 @@ Template.setupReminder.events({
                     }
                 });
             }
-
         }
-
-
-
-
-
-
     },
     'click #btnCancelReminderMsgSetup' (event) {
         event.preventDefault();

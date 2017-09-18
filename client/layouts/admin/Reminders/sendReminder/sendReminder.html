@@ -1,17 +1,21 @@
 <template name="sendReminder">
-    <!-- Tabbed options page for sending single or multiple email reminders -->
-    <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s6"><a href="#singleEmail">Send Single Email</a></li>
-        <li class="tab col s6"><a href="#batchEmail">Send Batch Email</a></li>
-      </ul>
+    <div class="ui contentInfo">
+        <!-- Tabbed options page for sending single or multiple email reminders -->
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s6"><a href="#singleEmail">Send Single Email</a></li>
+                    <li class="tab col s6"><a href="#batchEmail">Send Batch Email</a></li>
+                </ul>
+            </div>
+            <div id="singleEmail" class="col s12">
+                {{#if Template.subscriptionsReady}}
+                    {{> singleEmail}}
+                {{/if}}
+            </div>
+            <div id="batchEmail" class="col s12">
+                <h3>Send a Reminder to Multiple Givers</h3>
+            </div>
+        </div>
     </div>
-    <div id="singleEmail" class="col s12">
-        <h3>Send a Reminder Email</h3>
-    </div>
-    <div id="batchEmail" class="col s12">
-        <h3>Send a Reminder to Multiple Givers</h3>
-    </div>
-  </div>
 </template>

@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 import { Recipients } from '../imports/api/recipients.js';
 import { BastasDB } from '../imports/api/bastasDb.js';
 import shelljs from 'shelljs';
@@ -109,5 +110,47 @@ Meteor.methods({
         }
 
         Meteor.users.remove({ _id: userId });
+    },
+    'sendSingleReminderEmail' (to, from, subject, text) {
+        check([to, from, subject, text], [String]);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to send reminder emails.');
+        }
+
+        console.log(" ---- **** ---- **** -----")
+        console.log("To: " + to);
+        console.log("From: " + from);
+        console.log("Subject: " + subject);
+        console.log(" ---- **** ---- **** -----");
+
+        // Let other method calls from the same client start running, without
+        // waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+            to: to,
+            from: from,
+            subject: subject,
+            html: text
+        });
+    },
+    'sendMultReminderEmails' (to, from, subject, text) {
+        check(to, [String]);
+        check([from, subject, text], [String]);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to send batch emails.');
+        }
+
+        // Let other method calls from the same client start running, without
+        // waiting for the email sending to complete.
+        this.unblock();
+
+        // loop through to email addresses, and send the emails out.
+        for (i = 0; i < to.length; i++) {
+            let toThisOne = to[i];
+            Email.send({ toThisOne, from, subject, text });
+        }
     },
 });
