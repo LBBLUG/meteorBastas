@@ -30,7 +30,7 @@ Template.singleEmail.helpers({
             let userInfo = Meteor.users.findOne({ _id: idOfEmail });
             Session.set("salutation", "Dear " + userInfo.profile.firstName + " " + userInfo.profile.lastName);
             Session.set("toEmail", userInfo.emails[0].address);
-            console.log("toEmail: " + userInfo.emails[0].address);
+            // console.log("toEmail: " + userInfo.emails[0].address);
             return (userInfo.profile.firstName + " " + userInfo.profile.lastName);
         }
     },
@@ -108,9 +108,10 @@ Template.singleEmail.events({
             let toUser = Session.get("toEmail");
             let emailTmpl = $("#customOrTmpl").val();
             console.log("Reminder Message ID: " + emailTmpl);
-            let subject = "Friendly Reminder from B.A.S.T.A.S.";
+
 
             let emailTmplInfo = ReminderMsgs.findOne({ _id: emailTmpl });
+            let subject = emailTmplInfo.subjectLine;
             let tmplBody = emailTmplInfo.reminderSalutation + "<br /><br /> " + emailTmplInfo.reminderText + "<br /><br /> " + emailTmplInfo.reminderClosing;
             let from = Meteor.user().emails[0].address;
 

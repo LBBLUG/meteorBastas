@@ -33,6 +33,7 @@ Template.setupReminder.events({
 
         let reminderId = Session.get("reminderId");
 
+        let subjectLine = $("#subjectLine").val();
         let salutation = $("#salutation").val();
         let messageToGiver = $("#messageToGiver").val();
         let closingLine = $("#closingLine").val();
@@ -46,11 +47,15 @@ Template.setupReminder.events({
             Session.set("snackbarText", "Reminder Name is a Required Field.");
             Session.set("snackbarColor", "red");
             showSnackbar();
+        } else if (subjectLine == null || subjectLine == "") {
+            Session.set("snackbarText", "Subject Line is a Required Field.");
+            Session.set("snackbarColor", "red");
+            showSnackbar();
         } else {
             if (editMode == true) {
                 Session.set("editReminderMode", false);
 
-                Meteor.call('edit.ReminderMsg', reminderId, reminderMsgName, salutation, messageToGiver, closingLine, function(err, result) {
+                Meteor.call('edit.ReminderMsg', reminderId, reminderMsgName, subjectLine, salutation, messageToGiver, closingLine, function(err, result) {
                     if (err) {
                         Session.set("snackbarText", "Error Occurred adding Reminder!");
                         console.log("Error adding reminder: " + err);
@@ -65,7 +70,7 @@ Template.setupReminder.events({
             } else {
                 Session.set("editReminderMode", false);
 
-                Meteor.call('insert.reminder', reminderMsgName, salutation, messageToGiver, closingLine, function(err, result) {
+                Meteor.call('insert.reminder', reminderMsgName, subjectLine, salutation, messageToGiver, closingLine, function(err, result) {
                     if (err) {
                         Session.set("snackbarText", "Error Occurred adding Reminder!");
                         console.log("Error adding reminder: " + err);

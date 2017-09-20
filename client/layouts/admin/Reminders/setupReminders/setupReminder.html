@@ -10,6 +10,15 @@
                     <br />
                     <div class="row">
                         <div class="col s1">
+                            <i class="material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Enter a simple, informative Subject for the message you want to send.">info</i>
+                        </div>
+                        <div class="input-field col s11">
+                            <input type="text" id="subjectLine" class="input subjectLine {{#if $eq reminderMode true}}active{{/if}}" value="{{#if $eq reminderMode true}}{{editReminders.subjectLine}}{{/if}}" />
+                            <label for="subjectLine">Subject Line</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s1">
                             <i class="material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Salutatiion should be a simple, generic greeting such as 'Hello,' or 'Dear Giver,'">info</i>
                         </div>
                         <div class="input-field col s6">
@@ -66,9 +75,10 @@
                         <thead>
                             <tr>
                                 <th class="ten">Reminder Name</th>
+                                <th class="fifteen">Subject Line</th>
                                 <th class="ten">Salutation</th>
                                 <th class="fourty">Text</th>
-                                <th class="twenty">Closing</th>
+                                <th class="fifteen">Closing</th>
                                 <th class="ten">Actions</th>
                             </tr>
                         </thead>
@@ -76,6 +86,7 @@
                             {{#each getSavedReminders}}
                             <tr>
                                 <td>{{reminderName}}</td>
+                                <td>{{subjectLine}}</td>
                                 <td>{{reminderSalutation}}</td>
                                 <td>{{reminderText}}</td>
                                 <td>{{reminderClosing}}</td>

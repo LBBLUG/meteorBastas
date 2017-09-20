@@ -12,8 +12,9 @@ ReminderMsgs.allow({
 });
 
 Meteor.methods({
-    'insert.reminder' (remName, remSal, remText, remClose) {
+    'insert.reminder' (remName, remSubj, remSal, remText, remClose) {
         check(remName, String);
+        check(remSubj, String);
         check(remSal, String);
         check(remText, String);
         check(remClose, String);
@@ -24,6 +25,7 @@ Meteor.methods({
 
         return ReminderMsgs.insert({
             reminderName: remName,
+            subjectLine: remSubj,
             reminderSalutation: remSal,
             reminderText: remText,
             reminderClosing: remClose,
@@ -40,9 +42,10 @@ Meteor.methods({
 
         return ReminderMsgs.remove({ _id: reminderId });
     },
-    'edit.ReminderMsg' (reminderId, remName, remSal, remText, remClose) {
+    'edit.ReminderMsg' (reminderId, remName, remSubj, remSal, remText, remClose) {
         check(reminderId, String);
         check(remName, String);
+        check(remSubj, String);
         check(remSal, String);
         check(remText, String);
         check(remClose, String);
@@ -54,6 +57,7 @@ Meteor.methods({
         return ReminderMsgs.update({ _id: reminderId }, {
             $set: {
                 reminderName: remName,
+                subjectLine: remSubj,
                 reminderSalutation: remSal,
                 reminderText: remText,
                 reminderClosing: remClose,
