@@ -33,6 +33,7 @@ Template.setupHomeForm.events({
         event.preventDefault();
         let homePageText = $("#mainHomeInfo").val();
         let infoURL = $("#infoURLLink").val();
+        let infoURLText = $("#infoURLText").val();
         if ($(".isCurrent").prop('checked') == true) {
             isCurrent = true;
         } else {
@@ -41,7 +42,7 @@ Template.setupHomeForm.events({
 
         image64 = Session.get("encodedImage");
 
-        Meteor.call('homePageData.insert', homePageText, image64, infoURL, isCurrent, function(err, result){
+        Meteor.call('homePageData.insert', homePageText, image64, infoURL, infoURLText, isCurrent, function(err, result){
             if (err) {
                 Session.set("snackbarText", "Error adding Homepage Info!");
                 Session.set("snackbarColor", "red");

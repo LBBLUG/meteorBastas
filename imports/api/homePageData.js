@@ -34,7 +34,7 @@ HomePageData.allow({
 });
 
 Meteor.methods({
-    'homePageData.insert' (infoText, imageEncoded, infoURL, isCurrent) {
+    'homePageData.insert' (infoText, imageEncoded, infoURL, infoURLText, isCurrent) {
         // console.log('Made it to home setup Method.');
         // console.log('Info on method is: ' + infoText + ', ' + isCurrent);
 
@@ -47,6 +47,7 @@ Meteor.methods({
             infoText: infoText,
             imageFileEncoded: imageEncoded,
             infoURL: infoURL,
+            infoURLText: infoURLText,
             isCurrent: isCurrent,
             addedOn: new Date(),
             addedBy: Meteor.user().emails[0].address,
