@@ -19,7 +19,7 @@ Template.currentWebRecipients.helpers({
     },
     isSelectedByUser: function() {
         if (this.selectedBy_id != "" && this.selectedBy_id != null) {
-            return "checked";
+            return true;
         } else {
             return false;
         }

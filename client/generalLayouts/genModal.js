@@ -50,9 +50,5 @@ Template.genModal.events({
             myModal.style.display = "none";
         }
     },
-    'click #closeModalCheckmark' (event) {
-        event.preventDefault();
-        var myModal = document.getElementById("myModal");
-        myModal.style.display = "none";
-    },
+    non
 });

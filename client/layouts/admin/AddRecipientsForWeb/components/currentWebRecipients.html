@@ -32,8 +32,7 @@
             {{#each webRecipientsCurr}}
             <tr>
                 <td>
-                    <input type="checkbox" id="isSelectedByUser" checked="{{isSelectedByUser}}" />
-                    <label for="isSelectedByUser"></label>
+                    {{#if $eq isSelectedByUser true}}<i class="material-icons">done</i>{{/if}}
                 </td>
                 <td>
                     {{bastasId}} / {{route}}
