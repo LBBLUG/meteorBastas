@@ -150,7 +150,12 @@ Meteor.methods({
         // loop through to email addresses, and send the emails out.
         for (i = 0; i < to.length; i++) {
             let toThisOne = to[i];
-            Email.send({ toThisOne, from, subject, text });
+            Email.send({
+                to: toThisOne,
+                from: from,
+                subject: subject,
+                html: text
+            });
         }
     },
 });
