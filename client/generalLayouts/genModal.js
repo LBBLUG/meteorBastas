@@ -50,5 +50,4 @@ Template.genModal.events({
             myModal.style.display = "none";
         }
     },
-    non
 });
