@@ -70,7 +70,7 @@ Template.addGiftsForm.events({
 
         // check that the information is filled in for gift
         // type and size before save, and warn the user if not.
-        if (giftType === null || giftType === "" || giftSize === null || giftSize === "") {
+        if (giftType === null || giftType === "") {
             myModalTitle = "Missing Required Data";
             myModalText = "You have not filled in some required fields.  Please go back to the form, and fill in all required fields, then try to re-submit the form. <br />Required fields are notated with an asterisk (*) next to the field name.";
             var myModal = document.getElementById("missingDataModalView");
