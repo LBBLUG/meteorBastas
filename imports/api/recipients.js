@@ -440,13 +440,35 @@ Meteor.methods({
             throw new Meteor.Error('User is not authorized to make recipient web enabled, or is not logged in.');
         }
 
-        return Recipients.update({ _id: recipientId }, {
-             $set: {
-                 webRecipient: state,
-                 editedBy: Meteor.user().emails[0].address,
-                 lastEditedOn: new Date(),
+        if (state == true) {
+            return Recipients.update({ _id: recipientId }, {
+                 $set: {
+                     webRecipient: state,
+                     editedBy: Meteor.user().emails[0].address,
+                     lastEditedOn: new Date(),
+                    }
+                });
+        } else {
+            for (giftsCount = 0; giftsCount < 3; giftsCount++) {
+                let giftCount = giftsCount + 1;
+                Recipients.update({ _id: recipientId, "gifts.giftNo": giftCount }, {
+                     $set: {
+                         'gifts.$.selected': false,
+                         editedBy: Meteor.user().emails[0].address,
+                         lastEditedOn: new Date(), } },
+                );
+            }
+
+            return Recipients.update({ _id: recipientId }, {
+                $set: {
+                    webRecipient: state,
+                    webSelected: false,
+                    selectedBy_id: "",
+                    selectedBy_email: "",
+                    marked_Purchased: false,
                 }
             });
+        }
     },
     'SelectForWeb.update' (recipientIds) {
         check(recipientIds, [String]);
