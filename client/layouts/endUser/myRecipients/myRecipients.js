@@ -6,6 +6,7 @@ Template.myRecipients.onCreated(function() {
 
 Template.myRecipients.onRendered(function() {
     completeByMe = [];
+    Session.set("giftBoughtChanged", false);
 });
 
 Template.myRecipients.helpers({
@@ -18,6 +19,10 @@ Template.myRecipients.helpers({
             }
         );
     },
+    giftBoughtChanged: function() {
+        let giftBought = Session.get("giftBoughtChanged");
+        return giftBought;
+    }
 });
 
 Template.myRecipients.events({
@@ -26,6 +31,8 @@ Template.myRecipients.events({
         console.log("ID of Target Complete: " + thisRecipient);
 
         var completeState = event.currentTarget.checked;
+
+        Session.set("giftBoughtChanged", true);
 
         if (completeState === true) {
             completeByMe.push(thisRecipient);
@@ -42,7 +49,7 @@ Template.myRecipients.events({
         let completeTotal = Session.get("completeByMe");
 
         if (completeTotal == '' || completeTotal == null) {
-            Session.set("snackbarText", "Please Select at least 1 Recipient.");
+            Session.set("snackbarText", "Please Update at least 1 Gift Purchase to Save.");
             Session.set("snackbarColor", "orange");
             showSnackbar();
         } else {

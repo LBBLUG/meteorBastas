@@ -1,13 +1,16 @@
 <template name="myRecipients">
+    {{#if currentUser}}
     <div class="templateWrapper">
         <div class="container contentInfo">
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large green completeThese">
+                <a class="btn-floating btn-large green completeThese {{#if $eq giftBoughtChanged true}}pulse{{/if}}">
                   <i class="large material-icons">done</i>
                 </a>
             </div>
             <p>
-                <strong>Below are Seniors you've graciously chosen to provide gifts for in our community.</strong>
+                <strong>Below are Seniors you've graciously chosen to provide gifts for in our community. When you've purchased the
+                gifts for each recipient, you can move the completed switch to the right, then click the save button to save your changes.
+                Your completed purchases will show up on the My Completed Gifts page along with instructions and locations to drop them off.</strong>
             </p>
             {{#each areMyRecipients}}
             <div class="row">
@@ -22,6 +25,14 @@
                                         </div>
                                         <div class="col s4">
                                             <label class="white-text">Gender: </label><span class="personInfo">{{gender}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s6">
+                                            <label class="white-text">Bastas ID </label><span class="white-text">{{bastasId}}</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <label class="white-text">Route </label><span class="white-text">{{route}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -63,4 +74,11 @@
         </div>
     </div>
     {{> snackbar}}
+    {{else}}
+        <div class="signInWrapper">
+            <div class="container contentInfo">
+                <h5>Please Sign In or Register to access this page.</h5>
+            </div>
+        </div>
+    {{/if}}
 </template>

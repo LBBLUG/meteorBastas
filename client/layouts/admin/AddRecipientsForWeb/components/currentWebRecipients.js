@@ -3,6 +3,7 @@ import { Recipients } from '../../../../../imports/api/recipients.js';
 Template.currentWebRecipients.onCreated(function() {
     this.autorun(() => {
         this.subscribe('webRecipients');
+        this.subscribe('allUsers');
     });
 });
 
@@ -20,6 +21,18 @@ Template.currentWebRecipients.helpers({
     isSelectedByUser: function() {
         if (this.selectedBy_id != "" && this.selectedBy_id != null) {
             return true;
+        } else {
+            return false;
+        }
+    },
+    giverAndPhone: function() {
+        let userId = this.selectedBy_id;
+        let giverInfo = Meteor.users.findOne({ _id: userId });
+        if (typeof giverInfo != 'undefined' && giverInfo != "" && giverInfo != null) {
+            let giverName = giverInfo.profile.firstName + " " + giverInfo.profile.lastName;
+            let giverPhone = giverInfo.profile.cellPhone;
+            let giver = giverName + " " + giverPhone;
+            return giver;
         } else {
             return false;
         }

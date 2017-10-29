@@ -6,13 +6,17 @@ Template.giveAGift.onCreated(function() {
 
 Template.giveAGift.onRendered(function() {
     selectForMe = [];
+    Session.set("madeChange", false);
 });
 
 Template.giveAGift.helpers({
     isWebRecip: function() {
-        return Recipients.find({
-            webSelected: false
-        });
+        return Recipients.find({ webSelected: false });
+    },
+    changeMade: function() {
+        // a change is detected by user checking a person
+        let madeChange = Session.get("madeChange");
+        return madeChange;
     },
 });
 
@@ -22,6 +26,8 @@ Template.giveAGift.events({
         console.log("Id of Target: " + thisRecipient);
 
         const state = event.currentTarget.checked;
+
+        Session.set("madeChange", true);
 
         if (state === true) {
             selectForMe.push(thisRecipient);
@@ -40,7 +46,7 @@ Template.giveAGift.events({
         // now loop through these and add the givers userId and email to these recipients
         // and toggle the webSelected value to true.
         if (selectFinal == "" || selectFinal == null ) {
-            Session.set("snackbarText", "Please Select at least 1 Recipient.");
+            Session.set("snackbarText", "Please Select at least 1 Recipient to Save.");
             Session.set("snackbarColor", "orange");
             showSnackbar();
         } else {

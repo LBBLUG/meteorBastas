@@ -1,4 +1,5 @@
 <template name="myCompletedGifts">
+    {{#if currentUser}}
     <div class="templateWrapper">
         <div class="container contentInfo">
             <div class="fixed-action-btn">
@@ -7,7 +8,9 @@
                 </a>
             </div>
             <p>
-                <strong>Below are Seniors you've completed purchasing gifts for.  Please make sure to drop off your gifts at:</strong>
+                <strong>Below are Seniors you've completed purchasing gifts for.  Please take a minute to print the gift tags using the
+                    print button in the bottom right. Attach the tag to each gift, and make sure to drop off your gifts at one of the
+                    following locations.:</strong>
             </p>
 
             <div class="row">
@@ -17,11 +20,33 @@
                             <div class="col s12">
                                 <div class="card-content">
                                     <div class="row">
-                                        <div class="col s12">
+                                        <div class="col s4">
                                             Home Instead Senior Care<br />
                                             1010 Slide Rd.<br />
-                                            Lubbock, TX 79410<br /><br />
-                                            M - F, 8 am - 5 pm
+                                            Lubbock, TX 79413<br /><br />
+                                        </div>
+                                        <div class="col s4">
+                                            City Bank<br />
+                                            5219 City Bank Parkway<br />
+                                            Lubbock, TX 79407
+                                        </div>
+                                        <div class="col s4">
+                                            Lakeridge Chapel and<br />
+                                            Memorial Designers<br />
+                                            6025 82nd St.<br />
+                                            Lubbock, TX 79424
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s4 offset-s2">
+                                            Tom's Tree place<br />
+                                            5104 34th ST<br />
+                                            Lubbock, TX 79401
+                                        </div>
+                                        <div class="col s4">
+                                            Walmart Supercenter<br />
+                                            4215 S. Loop 289<br />
+                                            Lubbock, TX 79423
                                         </div>
                                     </div>
                                 </div>
@@ -76,4 +101,11 @@
         </div>
     </div>
     {{> snackbar}}
+    {{else}}
+        <div class="signInWrapper">
+            <div class="container contentInfo">
+                <h5>Please Sign In or Register to access this page.</h5>
+            </div>
+        </div>
+    {{/if}}
 </template>
