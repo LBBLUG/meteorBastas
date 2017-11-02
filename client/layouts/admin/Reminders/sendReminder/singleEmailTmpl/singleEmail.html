@@ -8,7 +8,7 @@
                 </option>
                 {{#each userEmailList}}
                     <option value="{{_id}}">
-                        {{userEmail}}
+                        {{userEmail}} - {{profile.firstName}} {{profile.lastName}}
                     </option>
                 {{/each}}
             </select>
