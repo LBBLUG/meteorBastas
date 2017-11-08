@@ -66,4 +66,11 @@ Template.myRecipients.events({
             });
         }
     },
+    'click .removeFromList' (event) {
+        event.preventDefault();
+
+        let recipientId = this._id;
+
+        console.log("Removed from list: " recipientId);
+    }
 });
