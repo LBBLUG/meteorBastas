@@ -29,7 +29,7 @@ Template.batchEmail.helpers({
         return Session.get('showCust');
     },
     outstanding: function() {
-        return Recipients.find({ webSelected: true, webRecipient: true, marked_Purchased: false });
+        return Recipients.find({ webSelected: true, webRecipient: true, "gifts.checkedIn": false });
     },
 });
 
