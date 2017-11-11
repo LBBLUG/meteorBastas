@@ -24,28 +24,12 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Recipients } from '../imports/api/recipients.js';
 import { BastasDB } from '../imports/api/bastasDb.js';
-import shelljs from 'shelljs';
 
 Meteor.methods({
     newRole(id, newUserRole, currRole) {
         Roles.removeUsersFromRoles(id, currRole);
         Roles.addUsersToRoles(id, newUserRole);
         return;
-    },
-    'backup.bastasDB' (outputPath) {
-        // console.log("Got in the backup method");
-        // check if user is logged in before continuing
-        if (!this.userId) {
-            throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
-        }
-
-        var backupdt = new Date();
-
-        shelljs.exec('mongodump -h 127.0.0.1 --port 3001 --out ' + outputPath + ' -d meteor', function(code, out, err) {
-            // console.log("Exit code: " + code);
-            // console.log("Std Out: " + out);
-            // console.log("Std Err:" + err)
-        });
     },
     'get.CheckedInCount' () {
         // console.log("getting checked in gifts:");
