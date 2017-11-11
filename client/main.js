@@ -24,5 +24,6 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Meteor.startup(() => {
-
+    global.Buffer = function() {};
+    global.Buffer.isBuffer = () => false;
 });
