@@ -25,7 +25,7 @@ import { Recipients } from '../../../../imports/api/recipients.js';
 Template.importRecipients.events({
     'change #recipientFile' (event) {
         var filename = $("#recipientFile").val();
-        // console.log("Filename is: " + filename);
+        // // console.log("Filename is: " + filename);
         document.getElementById('customFileUpload').innerHTML = filename;
         document.getElementById("customFileUpload").className = "custom-file-selected";
     },
@@ -57,12 +57,12 @@ Template.importRecipients.events({
                         // console.dir(data);
                         Meteor.call('Recipients.import', data, function(err, results){
                             if (err) {
-                                // console.log('Error: ' + err);
+                                // // console.log('Error: ' + err);
                                 Session.set("snackbarText", "Error Importing File!");
                                 Session.set("snackbarColor", "red");
                                 showSnackbar();
                             } else {
-                                // console.log('Insert Result: ' + results);
+                                // // console.log('Insert Result: ' + results);
                                 // add snackbar notice that save was good.
                                 Session.set("snackbarText", "File imported successfully!");
                                 Session.set("snackbarColor", "green");

@@ -77,7 +77,7 @@ Template.batchEmail.events({
             } else {
                 Meteor.call('sendBatchReminderEmail', toUsers, from, subject, body, function(err, result) {
                     if (err) {
-                        console.log("An Error occurred sending emails: " + err);
+                        // console.log("An Error occurred sending emails: " + err);
                         Session.set("snackbarText", "Sending Email Failed!");
                         Session.set("snackbarColor", "red");
                         showSnackbar();
@@ -93,7 +93,7 @@ Template.batchEmail.events({
             // get users array of emails to send to
 
             let emailTmpl = $("#customOrTmpl").val();
-            console.log("Reminder Message ID: " + emailTmpl);
+            // console.log("Reminder Message ID: " + emailTmpl);
 
             let emailTmplInfo = ReminderMsgs.findOne({ _id: emailTmpl });
             let subject = emailTmplInfo.subjectLine;
@@ -102,7 +102,7 @@ Template.batchEmail.events({
 
             Meteor.call('sendBatchReminderEmail', toUsers, from, subject, tmplBody, function(err, result) {
                 if (err) {
-                    console.log("An Error occurred sending emails: " + err);
+                    // console.log("An Error occurred sending emails: " + err);
                     Session.set("snackbarText", "Sending Email Failed!");
                     Session.set("snackbarColor", "red");
                     showSnackbar();
@@ -124,13 +124,13 @@ Template.batchEmail.events({
 
             giversToSendTo.recipientId = giverEmail;
             Session.set("giversToSendTo", giversToSendTo);
-            console.log(giversToSendTo);
+            // console.log(giversToSendTo);
         } else {
             // remove the unchecked item from the object
 
             delete giversToSendTo.recipientId;
             Session.set("giversToSendTo", giversToSendTo);
-            console.log(giversToSendTo);
+            // console.log(giversToSendTo);
         }
     },
 });

@@ -173,7 +173,7 @@ Meteor.methods({
         });
     },
     'gifts.update' (irecipientsId, igiftNo, giftInfo, giftType) {
-        // console.log("made it to the update for gifts.");
+        // // console.log("made it to the update for gifts.");
         // check that the info being sent is what's expected
         check(igiftNo, Number);
         check(giftInfo, String);
@@ -227,7 +227,7 @@ Meteor.methods({
         // check(importData, { some object });
 
         // *** uncomment the 2 (two) lines below to see the data being imported in the server console.
-        // console.log('--------------------------------------------------');
+        // // console.log('--------------------------------------------------');
         // console.dir(importData);
 
         // ensure the user is logged in and has privileges
@@ -422,13 +422,13 @@ Meteor.methods({
     },
     getGift(id, giftNo) {
         var giftsFor = Recipients.find({ _id: id, "gifts.giftNo": giftNo  }, { "gifts.$": 1 });
-        // console.log(giftsFor);
+        // // console.log(giftsFor);
         return giftsFor;
     },
     'deleteRecipient' (recipientId) {
         check(recipientId, String);
-        // console.log("--------------------------------");
-        // console.log(" User Deleted ");
+        // // console.log("--------------------------------");
+        // // console.log(" User Deleted ");
 
         return Recipients.remove({ _id: recipientId });
     },
@@ -522,7 +522,7 @@ Meteor.methods({
         } else if (Recipients.findOne({ _id: giftsBoughtRecipId, "gifts.giftNo": 1 })) {
             var giftCount = 1
         } else {
-            console.log("No Gifts found for this recipient.");
+            // console.log("No Gifts found for this recipient.");
         }
 
         for (g = 1; g <= giftCount; g++) {
@@ -541,24 +541,24 @@ Meteor.methods({
             throw new Meteor.Error('User is not authorized to remove a recipient from this list, or is not logged in.');
         }
 
-        console.log("removing for ID " + recipientId);
+        // console.log("removing for ID " + recipientId);
 
         // query to see how many gifts the recipient has listed
         if (Recipients.findOne({ _id: recipientId, "gifts.giftNo": 3 })) {
-            // console.log("Found three gifts");
+            // // console.log("Found three gifts");
             var removeGifts = 3;
         } else if (Recipients.findOne({ _id:recipientId, "gifts.giftNo": 2 })) {
-            // console.log("found 2 gifts");
+            // // console.log("found 2 gifts");
             var removeGifts = 2;
         } else if (Recipients.findOne({ _id: recipientId, "gifts.giftNo": 1 })) {
-            // console.log("Found 1 gift.");
+            // // console.log("Found 1 gift.");
             var removeGifts = 1;
         } else {
-            console.log("No Gifts found for this recipient.");
+            // console.log("No Gifts found for this recipient.");
         }
 
         for (h=0; h < removeGifts; h++) {
-            // console.log("Removing gift " + (h+1));
+            // // console.log("Removing gift " + (h+1));
             Recipients.update({ _id: recipientId, "gifts.giftNo": h+1 }, {
                 $set: {
                     "gifts.$.selected": false,

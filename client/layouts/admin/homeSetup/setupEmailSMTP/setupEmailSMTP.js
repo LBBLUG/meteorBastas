@@ -14,10 +14,10 @@ Template.setupEmailSMTP.helpers({
         let msgSettings = MessagingSettings.findOne({});
         if (typeof msgSettings != 'undefined') {
             Session.set("editSettings", true);
-            console.log("Edit Settings: true");
+            // console.log("Edit Settings: true");
             return MessagingSettings.findOne({});
         } else {
-            console.log("Edit Settings: false");
+            // console.log("Edit Settings: false");
             return false;
         }
     },
@@ -44,7 +44,7 @@ Template.setupEmailSMTP.events({
                 if (err) {
                     Session.set("snackbarText", "Error Updatingn Email Settings");
                     Session.set("snackbarColor", "red");
-                    console.log("Error updating email settings: " + err);
+                    // console.log("Error updating email settings: " + err);
                     showSnackbar();
                 } else {
                     Session.set("snackbarText", "Email Settings Updated!");
@@ -59,7 +59,7 @@ Template.setupEmailSMTP.events({
                 if (err) {
                     Session.set("snackbarText", "Error Updatingn Email Settings");
                     Session.set("snackbarColor", "red");
-                    console.log("Error adding email settings: " + err);
+                    // console.log("Error adding email settings: " + err);
                     showSnackbar();
                 } else {
                     Session.set("snackbarText", "Email Settings Added!");

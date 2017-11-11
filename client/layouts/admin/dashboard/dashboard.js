@@ -12,7 +12,7 @@ Template.countsWidget.onCreated(function() {
     this.autorun(()=>{
         Meteor.call('get.totalGifts', function(err, result){
             if (err) {
-                // console.log("Error: " + err);
+                // // console.log("Error: " + err);
                 var errorType = "get count";
                 var errorMsg = err;
                 var templateName = "countsWidget";
@@ -34,7 +34,7 @@ Template.countsWidget.onCreated(function() {
         });
         Meteor.call('get.CheckedInCount', function(err, result) {
             if (err) {
-                // console.log("Error: " + err);
+                // // console.log("Error: " + err);
             } else {
                 var checkedInCount = result[0].count;
                 Session.set("checkedInCount", checkedInCount);
@@ -48,7 +48,7 @@ Template.countsWidget.onRendered(function() {
         var total = Session.get("totalCount");
         var checkedIn = Session.get("checkedInCount");
         var percentage = Math.floor((checkedIn / total) * 100);
-        // console.log("Percent complete = " + percentage);
+        // // console.log("Percent complete = " + percentage);
         var checkedInG = new JustGage({
             id: "checkedInGage",
             value: percentage,
@@ -65,7 +65,7 @@ Template.countsRecipWidget.onRendered(function() {
         var totalRecipients = Session.get('totalRecipients');
         var oneGift = Session.get('oneGift');
         var percent = Math.floor((oneGift / totalRecipients) * 100);
-        // console.log("One Gift Percent: " + percent);
+        // // console.log("One Gift Percent: " + percent);
         var oneGiftR = new JustGage({
             id: "oneGiftRecip",
             value: percent,
@@ -108,7 +108,7 @@ Template.missingGiftsWidget.onRendered(function() {
         var totalRecipients = Session.get('totalRecipients');
         var missingGiftRecipients = Session.get('missingGiftRecipients');
         var percentMissing = Math.floor((missingGiftRecipients / totalRecipients) * 100);
-        // console.log(missingGiftRecipients + " / " + totalRecipients + " * 100 = " + percentMissing);
+        // // console.log(missingGiftRecipients + " / " + totalRecipients + " * 100 = " + percentMissing);
         var missingGiftR = new JustGage({
             id: "missingAGiftRecip",
             value: percentMissing,
@@ -137,7 +137,7 @@ Template.noGiftsWidget.onRendered(function() {
         var totalRecipients = Session.get('totalRecipients');
         var noGiftRecipients = Session.get('noGiftRecipients');
         var percentNone = Math.floor((noGiftRecipients / totalRecipients) * 100);
-        // console.log(noGiftRecipients + " / " + totalRecipients + " * 100 = " + percentNone);
+        // // console.log(noGiftRecipients + " / " + totalRecipients + " * 100 = " + percentNone);
         var noGiftR = new JustGage({
             id: "noGiftRecip",
             value: percentNone,
@@ -167,7 +167,7 @@ Template.allGiftsWidget.onRendered(function() {
         var totalRecipients = Session.get('totalRecipients');
         var allGiftsRecip = Session.get('allGiftsRecip');
         var percentAll = Math.floor((allGiftsRecip / totalRecipients) * 100);
-        // console.log(allGiftsRecip + " / " + totalRecipients + " * 100 = " + percentAll);
+        // // console.log(allGiftsRecip + " / " + totalRecipients + " * 100 = " + percentAll);
         var noGiftR = new JustGage({
             id: "AllGiftRecip",
             value: percentAll,

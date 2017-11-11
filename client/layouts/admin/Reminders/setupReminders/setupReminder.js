@@ -15,7 +15,7 @@ Template.setupReminder.helpers({
     },
     reminderMode: function() {
         let reminder = Session.get("editReminderMode");
-        // console.log("Mode: " + reminder);
+        // // console.log("Mode: " + reminder);
         return reminder;
     },
     editReminders: function() {
@@ -58,7 +58,7 @@ Template.setupReminder.events({
                 Meteor.call('edit.ReminderMsg', reminderId, reminderMsgName, subjectLine, salutation, messageToGiver, closingLine, function(err, result) {
                     if (err) {
                         Session.set("snackbarText", "Error Occurred adding Reminder!");
-                        console.log("Error adding reminder: " + err);
+                        // console.log("Error adding reminder: " + err);
                         Session.set("snackbarColor", "red");
                         showSnackbar();
                     } else {
@@ -73,7 +73,7 @@ Template.setupReminder.events({
                 Meteor.call('insert.reminder', reminderMsgName, subjectLine, salutation, messageToGiver, closingLine, function(err, result) {
                     if (err) {
                         Session.set("snackbarText", "Error Occurred adding Reminder!");
-                        console.log("Error adding reminder: " + err);
+                        // console.log("Error adding reminder: " + err);
                         Session.set("snackbarColor", "red");
                         showSnackbar();
                     } else {
@@ -98,7 +98,7 @@ Template.setupReminder.events({
         Meteor.call('delete.ReminderMsg', reminderId, function(err, result) {
             if (err) {
                 Session.set("snackbarText", "Error Occurred Deleting Reminder!");
-                console.log("Error deleting reminder: " + err);
+                // console.log("Error deleting reminder: " + err);
                 Session.set("snackbarColor", "red");
                 showSnackbar();
             } else {

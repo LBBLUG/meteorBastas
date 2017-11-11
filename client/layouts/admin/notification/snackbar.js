@@ -1,7 +1,7 @@
 // This is called to display the snackbar notification
 
 showSnackbar = function() {
-    // console.log("Snackbar Called!");
+    // // console.log("Snackbar Called!");
     var snackbarText = Session.get("snackbarText");
     var notificationColor = Session.get("snackbarColor");
     var snackbarNotification = document.getElementById("snackbar");

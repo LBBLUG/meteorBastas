@@ -30,7 +30,7 @@ Template.singleEmail.helpers({
             let userInfo = Meteor.users.findOne({ _id: idOfEmail });
             Session.set("salutation", "Dear " + userInfo.profile.firstName + " " + userInfo.profile.lastName);
             Session.set("toEmail", userInfo.emails[0].address);
-            // console.log("toEmail: " + userInfo.emails[0].address);
+            // // console.log("toEmail: " + userInfo.emails[0].address);
             return (userInfo.profile.firstName + " " + userInfo.profile.lastName);
         }
     },
@@ -60,7 +60,7 @@ Template.singleEmail.events({
         event.preventDefault();
 
         let idOfEmail = $("#getUserEmail").val();
-        console.log("ID selected: " + idOfEmail);
+        // console.log("ID selected: " + idOfEmail);
         Session.set("idOfEmail", idOfEmail);
     },
     'click .cancelSendSingleEmail' (event) {
@@ -92,7 +92,7 @@ Template.singleEmail.events({
             } else {
                 Meteor.call('sendSingleReminderEmail', toUser, from, subject, body, function(err, result) {
                     if (err) {
-                        console.log("An Error occurred sending email: " + err);
+                        // console.log("An Error occurred sending email: " + err);
                         Session.set("snackbarText", "Sending Email Failed!");
                         Session.set("snackbarColor", "red");
                         showSnackbar();
@@ -107,7 +107,7 @@ Template.singleEmail.events({
             // get user email and template id
             let toUser = Session.get("toEmail");
             let emailTmpl = $("#customOrTmpl").val();
-            console.log("Reminder Message ID: " + emailTmpl);
+            // console.log("Reminder Message ID: " + emailTmpl);
 
 
             let emailTmplInfo = ReminderMsgs.findOne({ _id: emailTmpl });
@@ -117,7 +117,7 @@ Template.singleEmail.events({
 
             Meteor.call('sendSingleReminderEmail', toUser, from, subject, tmplBody, function(err, result) {
                 if (err) {
-                    console.log("An Error occurred sending email: " + err);
+                    // console.log("An Error occurred sending email: " + err);
                     Session.set("snackbarText", "Sending Email Failed!");
                     Session.set("snackbarColor", "red");
                     showSnackbar();

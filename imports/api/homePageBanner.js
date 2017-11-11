@@ -35,13 +35,13 @@ HomePageBanner.allow({
 
 Meteor.methods({
     'homePageBanner.insert' (bannerImage, isCurrent) {
-        // console.log('Made it to insert banner image call');
+        // // console.log('Made it to insert banner image call');
 
         //make sure user is logged in
         if (!this.userId) {
             throw new Meteor.Error('User is not logged in, and not authorized to create a home page banner.');
         } else {
-            // console.log('User is logged in and able to add home page banner.');
+            // // console.log('User is logged in and able to add home page banner.');
         }
 
         return HomePageBanner.insert({

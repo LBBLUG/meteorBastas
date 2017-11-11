@@ -32,7 +32,7 @@ Meteor.methods({
         return;
     },
     'get.CheckedInCount' () {
-        // console.log("getting checked in gifts:");
+        // // console.log("getting checked in gifts:");
 
         var keepGifts = {
             $project: {
@@ -71,7 +71,7 @@ Meteor.methods({
 
     },
     'get.totalGifts' () {
-        // console.log("getting total gifts:");
+        // // console.log("getting total gifts:");
 
         var totalGifts = Recipients.aggregate({
             $unwind: "$gifts"
@@ -102,11 +102,11 @@ Meteor.methods({
             throw new Meteor.Error('User is not authorized to send reminder emails.');
         }
 
-        console.log(" ---- **** ---- **** -----")
-        console.log("To: " + to);
-        console.log("From: " + from);
-        console.log("Subject: " + subject);
-        console.log(" ---- **** ---- **** -----");
+        // console.log(" ---- **** ---- **** -----")
+        // console.log("To: " + to);
+        // console.log("From: " + from);
+        // console.log("Subject: " + subject);
+        // console.log(" ---- **** ---- **** -----");
 
         // Let other method calls from the same client start running, without
         // waiting for the email sending to complete.

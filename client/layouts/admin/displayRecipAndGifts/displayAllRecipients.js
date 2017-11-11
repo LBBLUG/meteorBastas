@@ -47,12 +47,12 @@ Template.displayAllRecipients.events({
         });
     },
     'click .checkFilter' (event) {
-         // console.log('checked or unchecked');
+         // // console.log('checked or unchecked');
          var colId = event.currentTarget.id;
          var state = event.currentTarget.checked;
-         // console.log('State of ' + colId + ' is now ' + state);
-         // console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
-         // console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
+         // // console.log('State of ' + colId + ' is now ' + state);
+         // // console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
+         // // console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
 
          if (state === true) {
              switch(colId) {
@@ -101,7 +101,7 @@ Template.displayAllGifts.events({
     'click .details' (event, target) {
          if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor', 'Viewer'])) {
              Session.set( "recipientId", this._id );
-             // console.log("Details clicked: " + this._id);
+             // // console.log("Details clicked: " + this._id);
              var recipientDetailModal = document.getElementById("detailsFormView");
              recipientDetailModal.style.display = "block";
          } else {
@@ -128,7 +128,7 @@ Template.displayAllGifts.events({
          const selectedState = event.currentTarget.checked;
          const giftTypeInfo = this.giftType;
          const indexNo = this.index +1;
-         // console.log("Is selected should be called");
+         // // console.log("Is selected should be called");
          // call the method to update this checkbox
          if (selectedState === false) {
              Meteor.call('Selected.update', this._id, selectedState, indexNo);
@@ -144,7 +144,7 @@ Template.displayAllGifts.events({
          const checkedInState = event.currentTarget.checked;
          const giftTypeInfo = this.giftType;
          const indexNo = this.index +1;
-         // console.log("Is checked in should be called");
+         // // console.log("Is checked in should be called");
          // call the method to update the checkbox in database
          // if checked in is being set to true, we must also set Selected to true.
          if (checkedInState === true) {
@@ -162,7 +162,7 @@ Template.displayAllGifts.events({
          const outForDeliveryState = event.currentTarget.checked;
          const giftTypeInfo = this.giftType;
          const indexNo = this.index +1;
-         // console.log("Is Out for Delivery should be called");
+         // // console.log("Is Out for Delivery should be called");
          // call method to set checkbox in db
          // if outForDelivery is being set to true, then we must also set Selected and
          // checkedIn to true.
@@ -181,7 +181,7 @@ Template.displayAllGifts.events({
          const isDeliveredState = event.currentTarget.checked;
          const giftTypeInfo = this.giftType;
          const indexNo = this.index +1;
-         // console.log("Is delivered method should be called.");
+         // // console.log("Is delivered method should be called.");
          //call method to set checkbox state in db
          // if isDelivered is being set to true, then we must set Selected, CheckedIn,
          // and OutForDelivery to true as well.

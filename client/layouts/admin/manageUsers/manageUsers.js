@@ -108,7 +108,7 @@ Template.changeUserRole.events({
         var newRole = $("#newUserRole").val();
         if (newRole != currRole) {
             Meteor.call("newRole", this._id, newRole, currRole, function() {
-                // console.log("Done!");
+                // // console.log("Done!");
                 Session.set("snackbarText", "User Role updated successfully!");
                 Session.set("snackbarColor", "green");
                 showSnackbar();

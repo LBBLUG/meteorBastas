@@ -31,7 +31,7 @@ Template.recipientDetailUpdate.events({
     // add the Save / Update here.  Update all items even if they aren't changed.
     'click .saveDetail' (event) {
         event.preventDefault();
-        // console.log('Save Clicked.');
+        // // console.log('Save Clicked.');
 
         var recipId = Session.get("recipientId");
         var bastasId = $("#bastasId").val();
@@ -55,9 +55,9 @@ Template.recipientDetailUpdate.events({
         } else {
             Meteor.call('recipients.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
                 if (err) {
-                    // console.log('Error: Unable to update details - ' + err);
+                    // // console.log('Error: Unable to update details - ' + err);
                 } else {
-                    // console.log('Detail updated successfully.');
+                    // // console.log('Detail updated successfully.');
                     Session.set("snackbarText", "Recipient Detail updated successfully!");
                     Session.set("snackbarColor", "green");
                     showSnackbar();
@@ -81,17 +81,17 @@ Template.giftDetailUpdateForm.events({
         var targetId = event.currentTarget.id;
         var giftNo = Number(targetId.substr(targetId.length - 1)) + 1;
         var giftType = targetId.slice(0, -1);
-        // console.log("Gift type key is: " + giftType);
-        // console.log("field id changed is: " + targetId);
-        // console.log("Gift No is " + giftNo)
+        // // console.log("Gift type key is: " + giftType);
+        // // console.log("field id changed is: " + targetId);
+        // // console.log("Gift No is " + giftNo)
         var newGiftValue = $("#" + targetId).val();
-        // console.log("new value is: " + newGiftValue);
+        // // console.log("new value is: " + newGiftValue);
         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor'])) {
             Meteor.call('gifts.update', Session.get("recipientId"), giftNo, newGiftValue, giftType, function(err, result) {
                 if (err) {
-                    // console.log("Error occurred updating giftInfo: " + err);
+                    // // console.log("Error occurred updating giftInfo: " + err);
                 } else {
-                    // console.log("Gift updated successfully!");
+                    // // console.log("Gift updated successfully!");
                     Session.set("snackbarText", "Gift updated successfully!");
                     Session.set("snackbarColor", "green");
                     showSnackbar();

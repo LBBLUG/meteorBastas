@@ -35,8 +35,8 @@ HomePageData.allow({
 
 Meteor.methods({
     'homePageData.insert' (infoText, imageEncoded, infoURL, infoURLText, isCurrent) {
-        // console.log('Made it to home setup Method.');
-        // console.log('Info on method is: ' + infoText + ', ' + isCurrent);
+        // // console.log('Made it to home setup Method.');
+        // // console.log('Info on method is: ' + infoText + ', ' + isCurrent);
 
         // make sure user is logged in
         if (!this.userId) {

@@ -29,7 +29,7 @@ Template.genModal.events({
             var recipientId = Session.get("recipientId");
             Meteor.call('deleteRecipient', recipientId, function(err, result) {
                 if (err) {
-                    // console.log('Something happened');
+                    // // console.log('Something happened');
                     Session.set("snackbarText", "An error occurred deleting the recipient.");
                     Session.set("snackbarColor", "red");
                     showSnackbar();
@@ -37,7 +37,7 @@ Template.genModal.events({
                     // hide the modal
                     var myModal = document.getElementById("myModal");
                     myModal.style.display = "none";
-                    // console.log("Should have a green notification");
+                    // // console.log("Should have a green notification");
 
                     // show the notification bar
                     Session.set("snackbarText", "Recipient and gifts deleted!");

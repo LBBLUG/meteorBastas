@@ -23,7 +23,7 @@ Template.giveAGift.helpers({
 Template.giveAGift.events({
     'click .selectFromWeb' (event) {
         let thisRecipient = this._id;
-        console.log("Id of Target: " + thisRecipient);
+        // console.log("Id of Target: " + thisRecipient);
 
         Session.set("madeChange", true);
 

@@ -16,7 +16,7 @@ Template.homeBody.onRendered(function() {
         if (typeof msgSettings == 'undefined' || msgSettings == null || msgSettings == "") {
             // add an if user is in role Admin then show this...
             if (Roles.userIsInRole(Meteor.userId(), 'Admin')) {
-                console.log("Client side didn't find email settings.");
+                // console.log("Client side didn't find email settings.");
                 Materialize.toast('You need to add Email Settings', 20000, "red");
             }
         }
