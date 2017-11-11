@@ -2,13 +2,8 @@
     {{#if currentUser}}
     <div class="templateWrapper">
         <div class="container contentInfo">
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large green completeThese {{#if $eq giftBoughtChanged true}}pulse{{/if}}">
-                  <i class="large material-icons">done</i>
-                </a>
-            </div>
             <p>
-                <strong>Below are Seniors you've graciously chosen to provide gifts for in our community. When you've purchased the gifts for each recipient, you can move the completed switch to the right, then click the save button <i class="material-icons green-text">check_circle</i> to save your changes. Your completed purchases will show up on the Purchased Gifts page on the menu along with instructions and locations to drop them off.</strong>
+                <strong>Below are Seniors you've graciously chosen to provide gifts for in our community. When you've purchased the gifts for each recipient, you can click the 'Mark as Complete' button to show shopping is complete for that recipient. Your completed purchases will show up on the Purchased Gifts page on the menu along with instructions and locations to drop them off.</strong>
             </p>
             {{#each areMyRecipients}}
             <div class="row">
@@ -49,20 +44,11 @@
                                 </div>
                                 <div class="card-action">
                                     <div class="row">
-                                        <div class="col s4">
-                                            <label>Completed: </label>
+                                        <div class="col s6">
+                                            <a class="waves-effect waves-light btn markPurchaseComplete" id="{{_id}}">Mark As Complete</a>
                                         </div>
                                         <div class="col s6">
-                                            <div class="switch">
-                                                <label>
-                                                          <input type="checkbox" class="giftBought" id="{{_id}}">
-                                                          <span class="lever"></span>
-                                                      Complete
-                                                </label>
-                                             </div>
-                                        </div>
-                                        <div class="col s6">
-                                            <a class="waves-effect waves-light btn removeFromList">Remove From My List</a>
+                                            <a class="waves-effect waves-light btn removeFromList orange">Remove From My List</a>
                                         </div>
                                     </div>
                                 </div>

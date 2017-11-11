@@ -24,13 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     {{#if currentUser}}
     <div class="templateWrapper">
         <div class="container contentInfo">
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large green selectThese {{#if $eq changeMade true}}pulse{{/if}}">
-                  <i class="large material-icons">done</i>
-                </a>
-            </div>
             <p>
-                <strong>Select participants below to give Christmas gifts to Seniors in our Community. After selecting as many seniors as you want to give, please click the save button <i class="material-icons green-text">check_circle</i>  in the bottom right to save your changes. Your selected recipients will then show on the My Recipients page on the menu. The gifts items and sizes will be listed on the screen for you to purchase.</strong>
+                <strong>Select participants below to give Christmas gifts to Seniors in our Community. To select a Senior to give a gift to, simply click the 'Pick Me' button on that Senoir's card. Your selected recipients will then show on the My Recipients page on the menu. The gifts items and sizes will be listed on that screen for you to purchase.</strong>
             </p>
 
             <!-- The following line uses a helper on this template to determine which recipients have
@@ -46,8 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                     <span class="card-title">
                                         <div class="row">
                                             <div class="col s8">
-                                                <input type="checkBox" id="{{_id}}" class="checkbox filled-in selectFromWeb white"  />
-                                                <label for="{{_id}}" class="white-text">Pick Me</label><br />
+                                                <a class="waves-effect waves-light btn selectFromWeb" id="{{_id}}">Pick Me</a>
                                                 {{name.first}}
                                             </div>
                                             <div class="col s4">

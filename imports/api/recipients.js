@@ -471,77 +471,101 @@ Meteor.methods({
         }
     },
     'SelectForWeb.update' (recipientIds) {
-        check(recipientIds, [String]);
+        check(recipientIds, String);
 
         if (!this.userId) {
             throw new Meteor.Error('User is not authorized to select a web recipient, or is not logged in.');
         }
 
-        for (i=0; i < recipientIds.length; i++) {
-            // find the recipient with this id first, and determine how many gifts
-            // he / she has.
-            let recipient = Recipients.findOne({ _id: recipientIds[i] });
-            let noGifts = recipient.gifts.length;
+        let recipient = Recipients.findOne({ _id: recipientIds });
+        let noGifts = recipient.gifts.length;
 
-            if (noGifts == 1) {
-                Recipients.update({ _id: recipientIds[i], "gifts.giftNo": noGifts }, {
-                     $set: { 'gifts.$.selected': true } },
-                );
-            } else if (noGifts == 2)  {
-                for (j = 0; j<noGifts; j++) {
-                    Recipients.update({ _id: recipientIds[i], "gifts.giftNo": j+1 }, {
-                        $set: { 'gifts.$.selected': true }
-                    });
-                }
-            } else if (noGifts == 3) {
-                for (k = 0; k<noGifts; k++) {
-                    Recipients.update({ _id: recipientIds[i], "gifts.giftNo": k+1 }, {
-                        $set: { 'gifts.$.selected': true }
-                    });
-                }
+        if (noGifts == 1) {
+            Recipients.update({ _id: recipientIds, "gifts.giftNo": noGifts }, {
+                 $set: { 'gifts.$.selected': true } },
+            );
+        } else if (noGifts == 2)  {
+            for (j = 0; j<noGifts; j++) {
+                Recipients.update({ _id: recipientIds, "gifts.giftNo": j+1 }, {
+                    $set: { 'gifts.$.selected': true }
+                });
             }
-
-            Recipients.update({ _id: recipientIds[i] }, {
-                $set: {
-                    webSelected: true,
-                    selectedBy_id: Meteor.userId(),
-                    selectedBy_email: Meteor.user().emails[0].address,
-                    marked_Purchased: false,
-                }
-            });
+        } else if (noGifts == 3) {
+            for (k = 0; k<noGifts; k++) {
+                Recipients.update({ _id: recipientIds, "gifts.giftNo": k+1 }, {
+                    $set: { 'gifts.$.selected': true }
+                });
+            }
         }
+
+        Recipients.update({ _id: recipientIds }, {
+            $set: {
+                webSelected: true,
+                selectedBy_id: Meteor.userId(),
+                selectedBy_email: Meteor.user().emails[0].address,
+                marked_Purchased: false,
+            }
+        });
     },
     'CompleteGifts.update' (giftsBoughtRecipId) {
-        check(giftsBoughtRecipId, [String]);
+        check(giftsBoughtRecipId, String);
 
         if (!this.userId) {
             throw new Meteor.Error('User is not authorized to update gift purchase information, or is not logged in.');
         }
 
         // query to see how many gifts the recipient has listed
+        if (Recipients.findOne({ _id: giftsBoughtRecipId, "gifts.giftNo": 3 })) {
+            var giftCount = 3;
+        } else if (Recipients.findOne({ _id: giftsBoughtRecipId, "gifts.giftNo": 2 })) {
+            var giftCount = 2;
+        } else if (Recipients.findOne({ _id: giftsBoughtRecipId, "gifts.giftNo": 1 })) {
+            var giftCount = 1
+        } else {
+            console.log("No Gifts found for this recipient.");
+        }
 
-        let info = giftsBoughtRecipId.length;
+        for (g = 1; g <= giftCount; g++) {
+            Recipients.update({ _id: giftsBoughtRecipId, "gifts.giftNo": g }, {
+                $set: {
+                    "gifts.$.selected": true,
+                    marked_Purchased: true,
+                }
+            });
+        }
+    },
+    'UnSelectRecipient' (recipientId) {
+        check(recipientId, String);
 
-        for (f = 0; f < info; f++) {
-            // query to see how many gifts the recipient has listed
-            if (Recipients.findOne({ _id: giftsBoughtRecipId[f], "gifts.giftNo": 3 })) {
-                var giftCount = 3;
-            } else if (Recipients.findOne({ _id: giftsBoughtRecipId[f], "gifts.giftNo": 2 })) {
-                var giftCount = 2;
-            } else if (Recipients.findOne({ _id: giftsBoughtRecipId[f], "gifts.giftNo": 1 })) {
-                var giftCount = 1
-            } else {
-                console.log("No Gifts found for this recipient.");
-            }
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to remove a recipient from this list, or is not logged in.');
+        }
 
-            for (g = 1; g <= giftCount; g++) {
-                Recipients.update({ _id: giftsBoughtRecipId[f], "gifts.giftNo": g }, {
-                    $set: {
-                        "gifts.$.selected": true,
-                        marked_Purchased: true,
-                    }
-                });
-            }
+        console.log("removing for ID " + recipientId);
+
+        // query to see how many gifts the recipient has listed
+        if (Recipients.findOne({ _id: recipientId, "gifts.giftNo": 3 })) {
+            // console.log("Found three gifts");
+            var removeGifts = 3;
+        } else if (Recipients.findOne({ _id:recipientId, "gifts.giftNo": 2 })) {
+            // console.log("found 2 gifts");
+            var removeGifts = 2;
+        } else if (Recipients.findOne({ _id: recipientId, "gifts.giftNo": 1 })) {
+            // console.log("Found 1 gift.");
+            var removeGifts = 1;
+        } else {
+            console.log("No Gifts found for this recipient.");
+        }
+
+        for (h=0; h < removeGifts; h++) {
+            // console.log("Removing gift " + (h+1));
+            Recipients.update({ _id: recipientId, "gifts.giftNo": h+1 }, {
+                $set: {
+                    "gifts.$.selected": false,
+                    marked_Purchased: false,
+                    webSelected: false,
+                }
+            });
         }
     },
 
