@@ -564,6 +564,7 @@ Meteor.methods({
                     "gifts.$.selected": false,
                     marked_Purchased: false,
                     webSelected: false,
+                    selectedBy_id: "",
                 }
             });
         }
