@@ -1,0 +1,54 @@
+<template name="noGiftReport">
+    <div class="templateWrapper">
+        {{#if $lte notCheckedInGiftsCount 0}}
+        <p class="flow-text">There don't currently appear to be any recipients without gifts checked in.  Well done!</p>
+        {{else}}
+        {{#each notCheckedInGifts}}
+            <strong>Name:</strong><br />
+            <div class="row">
+                <div class="col s3">
+                    <strong>Bastas ID:</strong> {{bastasId}}
+                </div>
+                <div class="col s3">
+                    <strong>Route No:</strong> {{route}}
+                </div>
+                <div class="col s3">
+                    <strong>Name:</strong> {{name.first}} {{name.last}}
+                </div>
+                <div class="col s3">
+                    <strong>Gender:</strong> {{gender}}
+                </div>
+                <div class="col s12">
+                    <strong>Address:</strong> {{address.streetAddress}}, {{address.aptNo}}, {{address.city}}
+                </div>
+            </div>
+            <div class="row">
+                <strong>Gifts:</strong><br />
+                {{#each gifts}}
+                <div class="row thin {{#if $eq checkedIn true}}green darken-2 white-text{{/if}}">
+                    <div class="col s3">
+                        <strong>Gift No:</strong> {{giftNo}}
+                    </div>
+                    <div class="col s3">
+                        <strong>Gift:</strong> {{giftType}}
+                    </div>
+                    <div class="col s3">
+                        <strong>Size:</strong> {{giftSize}}
+                    </div>
+                    <div class="col s3">
+                        <strong>Checked In:</strong> &nbsp;&nbsp; {{#if $eq checkedIn true}}Yes{{/if}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="row">
+                <strong>Notes:</strong><br />
+                <div class="col s12">
+                    {{notes}}
+                </div>
+            </div>     
+            <hr />
+        {{/each}}
+        {{/if}}
+    </div>
+</template>
