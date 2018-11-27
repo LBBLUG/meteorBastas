@@ -1,5 +1,6 @@
 <template name="noGiftReport">
     <div class="templateWrapper">
+    {{#if Template.subscriptionsReady}}
         {{#if $lte notCheckedInGiftsCount 0}}
         <p class="flow-text">There don't currently appear to be any recipients without gifts checked in.  Well done!</p>
         {{else}}
@@ -40,9 +41,12 @@
                     </div>
                 </div>
                 {{/each}}
-            </div>    
+            </div>
             <hr />
         {{/each}}
         {{/if}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
     </div>
 </template>
