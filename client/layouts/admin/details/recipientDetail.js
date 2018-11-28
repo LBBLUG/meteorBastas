@@ -49,7 +49,7 @@ Template.recipientDetailUpdate.events({
         var cellPhone = $("#cellPhone").val();
         var notes = $("#notes").val();
 
-        if (gender !== 'F' && gender !== 'M' && gender !== '') {
+        if (gender !== 'F' || gender !== 'M' || gender !== '') {
             Session.set("snackbarText", "You must use a proper Gender.");
             Session.set("snackbarColor", "red");
         } else {
