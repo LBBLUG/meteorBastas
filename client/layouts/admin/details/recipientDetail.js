@@ -31,7 +31,7 @@ Template.recipientDetailUpdate.events({
     // add the Save / Update here.  Update all items even if they aren't changed.
     'click .saveDetail' (event) {
         event.preventDefault();
-        // // console.log('Save Clicked.');
+        console.log('Save Clicked.');
 
         var recipId = Session.get("recipientId");
         var bastasId = $("#bastasId").val();
@@ -49,15 +49,15 @@ Template.recipientDetailUpdate.events({
         var cellPhone = $("#cellPhone").val();
         var notes = $("#notes").val();
 
-        if (gender !== 'F' && gender !== 'M' && gender !== '') {
+        if (gender != 'F' && gender != 'M' && gender != '' && gender != null) {
             Session.set("snackbarText", "You must use a proper Gender.");
             Session.set("snackbarColor", "red");
         } else {
             Meteor.call('recipients.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
                 if (err) {
-                    // // console.log('Error: Unable to update details - ' + err);
+                    console.log('Error: Unable to update details - ' + err);
                 } else {
-                    // // console.log('Detail updated successfully.');
+                    console.log('Detail updated successfully.');
                     Session.set("snackbarText", "Recipient Detail updated successfully!");
                     Session.set("snackbarColor", "green");
                     showSnackbar();
