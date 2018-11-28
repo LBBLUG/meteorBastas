@@ -32,10 +32,10 @@ Template.noGiftReport.onRendered(function() {
 
 Template.noGiftReport.helpers({
     notCheckedInGiftsCount: function() {
-        return Recipients.find({ "gifts.checkedIn": false }).count();
+        return Recipients.find( { $or: [ { "gifts.checkedIn": false }, { "gifts.checkedIn": null } ] }).count();
     },
     notCheckedInGifts: function() {
-        return Recipients.find({ "gifts.checkedIn": false });
+        return Recipients.find( { $or: [ { "gifts.checkedIn": false }, { "gifts.checkedIn": null } ] });
     },
 });
 
