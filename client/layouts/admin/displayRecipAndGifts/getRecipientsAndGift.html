@@ -101,13 +101,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             {{else}}
             {{#each gifts}}
             <div class="row">
-                <div class="col s6">
+                <div class="col s4">
                     <label>Gift</label><br />
                     {{giftType}}
                 </div>
-                <div class="col s6">
+                <div class="col s4">
                     <label>Size</label><br />
                     {{giftSize}}
+                </div>
+                <div class="col s4">
+                    <label>Checked In</label><br />
+                    {{checkedIn}}
                 </div>
             </div>
             {{/each}}
