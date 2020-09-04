@@ -1,12 +1,11 @@
 <template name="adminHeader">
-    <header>
-        <nav>
-            <div class="nav-wrapper myHeader">
-              <a href="#" class="center headerText">Be A Santa To A Senior</a>
-              {{#if currentUser}}
+    {{> sideNavAdmin}}
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Be A Santa To A Senior</a>
+        {{#if currentUser}}
               <ul id="nav-mobile" class="left">
-                  <!-- <li class="menu"><a href="#" class="menu"><i class="material-icons menu">more_vert</i></a></li> -->
-                  <li class="menu"><a href="#" class="menu">menu</a></li>
+                  <li data-target="adminMenu" class="menu sidenav-trigger"><a href="#" class="menu">menu</a></li>
               </ul>
               {{else}}
               <ul id="signInRegDiv" class="right">
@@ -14,9 +13,7 @@
                       <a class="waves-effect waves-light btn signInReg">Sign In / Up</a>
                   </li>
               </ul>
-              {{/if}}
-            </div>
-        </nav>
-    </header>
-    {{> sideNavAdmin}}
+        {{/if}}
+    </div>
+  </nav>
 </template>

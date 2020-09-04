@@ -17,7 +17,7 @@ Template.homeBody.onRendered(function() {
             // add an if user is in role Admin then show this...
             if (Roles.userIsInRole(Meteor.userId(), 'Admin')) {
                 // console.log("Client side didn't find email settings.");
-                Materialize.toast('You need to add Email Settings', 20000, "red");
+                M.toast({html: 'You need to add Email Settings', displayLength: 15000, classes: "red"});
             }
         }
     }, 1100);

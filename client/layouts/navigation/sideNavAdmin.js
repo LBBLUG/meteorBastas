@@ -27,6 +27,10 @@ Template.sideNavAdmin.onCreated(function() {
     this.subscribe("myCompletedGifts");
 });
 
+Template.sideNavAdmin.onRendered(function() {
+    $(".sidenav").sidenav();
+});
+
 Template.sideNavAdmin.helpers({
     chosenRecips: function() {
         return Recipients.find(
@@ -56,6 +60,7 @@ Template.sideNavAdmin.events({
         event.preventDefault();
         var clickedTarget = event.target.id;
         // // console.log("User clicked: " + clickedTarget);
+
         if (clickedTarget === 'home' || clickedTarget === 'giveAGift' || clickedTarget === 'myRecipients' || clickedTarget === 'myCompletedGifts') {
             FlowRouter.go('/user/' + clickedTarget);
         } else if (clickedTarget !== "signIn" && clickedTarget !== "signOut") {
@@ -71,7 +76,7 @@ Template.sideNavAdmin.events({
         AccountsTemplates.logout();
         FlowRouter.go('/user/home');
     },
-    'click .closebtn': () => {
-        document.getElementById("adminMenu").style.width = "0";
-    },
+    // 'click .closebtn': () => {
+    //     document.getElementById("adminMenu").style.width = "0";
+    // },
 });
