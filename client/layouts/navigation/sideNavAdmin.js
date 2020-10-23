@@ -51,7 +51,7 @@ Template.sideNavAdmin.helpers({
                 marked_Purchased: true
             },
         ).count();
-        // // console.log("Meteor.userId() gives: " + Meteor.userId());
+        // console.log("Meteor.userId() gives: " + Meteor.userId());
     },
 });
 
@@ -59,14 +59,14 @@ Template.sideNavAdmin.events({
     'click  .navBtn' (event) {
         event.preventDefault();
         var clickedTarget = event.target.id;
-        // // console.log("User clicked: " + clickedTarget);
+        // console.log("User clicked: " + clickedTarget);
 
         if (clickedTarget === 'home' || clickedTarget === 'giveAGift' || clickedTarget === 'myRecipients' || clickedTarget === 'myCompletedGifts') {
             FlowRouter.go('/user/' + clickedTarget);
         } else if (clickedTarget !== "signIn" && clickedTarget !== "signOut") {
             FlowRouter.go('/admin/' + clickedTarget);
         }
-        document.getElementById("adminMenu").style.width = "0";
+        
     },
     'click #signIn': () => {
         var signInModal = document.getElementById('signInModal');
@@ -76,7 +76,4 @@ Template.sideNavAdmin.events({
         AccountsTemplates.logout();
         FlowRouter.go('/user/home');
     },
-    // 'click .closebtn': () => {
-    //     document.getElementById("adminMenu").style.width = "0";
-    // },
 });

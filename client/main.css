@@ -62,14 +62,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     margin-left: 3%;
 }
 
-.myHeader {
+/* .myHeader {
     background: #9C1C1F;
 }
 
 .headerText {
     font-size: 5vw;
     text-align: center;
-}
+} */
 
 @media screen and (max-width: 480px) {
     .headerText {
@@ -77,13 +77,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     }
 }
 
-header {
+/* header {
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     z-index: 2;
-}
+} */
 
 .trMain .trMainData {
     border: 3px solid #4c4c4c;
