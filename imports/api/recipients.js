@@ -569,6 +569,21 @@ Meteor.methods({
             });
         }
     },
+    "note.edit" (recipientId, noteText) {
+        check(noteText, String);
+
+        if (!this.userId) {
+            throw new Meteor.Error('User is not authorized to remove a recipient from this list, or is not logged in.');
+        }
+
+        Recipients.update({ _id: recipientId}, {
+            $set: {
+                notes: noteText,
+                editedBy: Meteor.user().emails[0].address,
+                lastEditedOn: new Date(),
+            }
+        });
+    },
 
     // get numbers for gift counts
 

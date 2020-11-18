@@ -76,12 +76,12 @@ Template.displayRecipAndGifts.events({
         Session.set("searchType", "firstName");
     },
     'click .checkFilter' (event) {
-        // // console.log('checked or unchecked');
+        // console.log('checked or unchecked');
         var colId = event.currentTarget.id;
         var state = event.currentTarget.checked;
-        // // console.log('State of ' + colId + ' is now ' + state);
-        // // console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
-        // // console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
+        // console.log('State of ' + colId + ' is now ' + state);
+        // console.log('Unchecked Count: ' + $('input:checkbox.isSelected:not(:checked)').length);
+        // console.log('Checked Count: ' + $('input:checkbox.isSelected:checked').length);
 
         if (state === true) {
             switch(colId) {
@@ -116,12 +116,29 @@ Template.displayRecipAndGifts.events({
     },
 });
 
+Template.getRecipientsAndGift.onRendered(function() {
+    Session.set("noteView", "read");
+});
+
+Template.getRecipientsAndGift.helpers({
+    isWeb: function() {
+        if (this.webRecipient === true) {
+            return "checked";
+        } else {
+            return false;
+        }
+    },
+    noteView: function() {
+        return Session.get("noteView");
+    }
+});
+
 // getDetails when button clicked for a row
 Template.getRecipientsAndGift.events({
     'click .details' (event, target) {
         if (Roles.userIsInRole(Meteor.userId(), ['Admin', 'Editor', 'Viewer'])) {
             Session.set( "recipientId", this._id );
-            // // console.log("Details clicked: " + this._id);
+            // console.log("Details clicked: " + this._id);
             var recipientDetailModal = document.getElementById("detailsFormView");
             recipientDetailModal.style.display = "block";
         } else {
@@ -149,7 +166,6 @@ Template.getRecipientsAndGift.events({
 
         // add code to toggle the webRecipient property for this recipient.
         const state = event.currentTarget.checked;
-        // const indexNo = this.index + 1
 
         Meteor.call('webRecip.update', this._id, state, function(err, result){
             if (err) {
@@ -163,14 +179,29 @@ Template.getRecipientsAndGift.events({
             }
         });
     },
-});
+    "click .clickToEdit" (event) {
+        event.preventDefault();
 
-Template.getRecipientsAndGift.helpers({
-    isWeb: function() {
-        if (this.webRecipient === true) {
-            return "checked";
-        } else {
-            return false;
-        }
+        Session.set("noteView", "edit");
+    },
+    "click .saveNote" (event) {
+        event.preventDefault();
+        let noteId = event.currentTarget.id;
+        console.log("Note Save triggered for: " + noteId);
+        let noteText = $("#notes").val();
+
+        Meteor.call('note.edit', noteId, noteText, function(err, result){
+            if (err) {
+                console.log("Error saveing note: " + err);
+                Session.set("snackbarText", "Error saving note.");
+                Session.set("snackbarColor", "red");
+                showSnackbar();
+            } else {
+                Session.set("snackbarText", "Note Saved Successfully!");
+                Session.set("snackbarColor", "green");
+                showSnackbar();
+                Session.set("noteView", "read");
+            }
+        });
     },
 });
