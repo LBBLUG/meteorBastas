@@ -49,9 +49,10 @@ Template.recipientDetailUpdate.events({
         var cellPhone = $("#cellPhone").val();
         var notes = $("#notes").val();
 
-        if (gender != 'F' && gender != 'M' && gender != '' && gender != "Male" && gender != "Female" && gender != null) {
-            Session.set("snackbarText", "You must use a proper Gender.");
+        if (gender != 'F' && gender != 'M') {
+            Session.set("snackbarText", "You must use either M or F for Gender.");
             Session.set("snackbarColor", "red");
+            showSnackbar();
         } else {
             Meteor.call('recipients.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
                 if (err) {
