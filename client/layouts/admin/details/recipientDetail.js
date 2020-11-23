@@ -22,6 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Recipients } from '../../../../imports/api/recipients.js';
 
+Template.recipientDetailUpdate.onRendered(function() {
+    $('select').formSelect();
+});
+
 Template.recipientDetailUpdate.events({
     'click .closeUpdateNoSave' (event) {
         event.preventDefault();
