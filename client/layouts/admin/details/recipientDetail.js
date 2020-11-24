@@ -23,9 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Recipients } from '../../../../imports/api/recipients.js';
 
 Template.recipientDetailUpdate.onRendered(function() {
-    setTimeout(function() {
-        $('select').formSelect();
-    }, 250);
+    
 });
 
 Template.recipientDetailUpdate.events({
@@ -55,16 +53,21 @@ Template.recipientDetailUpdate.events({
         var cellPhone = $("#cellPhone").val();
         var notes = $("#notes").val();
 
-        if (gender != 'F' && gender != 'M') {
-            Session.set("snackbarText", "You must use either M or F for Gender.");
+        if (gender != 'F' && gender != 'M' && gender != 'm' && gender != 'Male' && gender != 'Female' && gender != 'male' && gender != 'female' && gender != 'MALE' && gender != 'FEMALE') {
+            Session.set("snackbarText", "You must use either M, F, Male, Female, MALE, FEMALE, m, f, male or female for Gender.");
             Session.set("snackbarColor", "red");
             showSnackbar();
         } else {
+            if (gender == 'M' || gender == 'Male' || gender == 'm' || gender == 'MALE' || gender == 'male') {
+                gender = 'M';
+            } else {
+                gender = 'F';
+            }
             Meteor.call('recipients.update', recipId, bastasId, route, firstName, lastName, gender, streetAddress, complexName, aptNo, city, state, zip, homePhone, cellPhone, notes, function(err, results) {
                 if (err) {
                     console.log('Error: Unable to update details - ' + err);
                 } else {
-                    console.log('Detail updated successfully.');
+                    // console.log('Detail updated successfully.');
                     Session.set("snackbarText", "Recipient Detail updated successfully!");
                     Session.set("snackbarColor", "green");
                     showSnackbar();
